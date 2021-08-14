@@ -1,0 +1,179 @@
+<ion-card *ngIf = 'formScreen === 1' class="log-card-top">
+    <ion-row>
+    <ion-col size="5">
+    <h1  class="head">Durity</h1>
+    <p  class="head">Keeping you & your family secure</p>
+    </ion-col>
+    <ion-col size="7">
+    <ion-card class="log-card">
+        <img src="assets/imgs/Family.png" class="log-img">
+    </ion-card>
+    </ion-col>
+    </ion-row>
+</ion-card>
+<ion-content *ngIf = 'formScreen === 1' >
+
+<!-- 
+ <ion-toolbar class="login-home-page durity-bg" >
+    <div class="durity-back-btn">
+        <ion-buttons slot="start" >
+          <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+              <ion-icon name="ios-arrow-back"></ion-icon>
+              <small style="font-weight: bold;">Back</small>
+          </ion-button>
+        </ion-buttons>
+    </div>
+    <div class = 'ion-text-center'>
+        Sign Up
+    </div>
+ </ion-toolbar> -->
+ <form [formGroup] = 'otpForm'>
+    <div class="mobile-number">
+        <p style="font-weight: bold;font-size: 16px;text-align: center;color: #5D5D5D;">
+            Please enter your Phone Number.
+        </p>
+    </div>
+    <div class="signup-padding">
+        <ion-item class="signup-input" lines="none">
+                <ion-select style="font-size: 14px;" [(ngModel)]="selectedCountry" class="signUpInputs" (ionChange)="onChange(selectedCountry)" [ngModelOptions]="{standalone: true}">
+                        <!-- formControlName="countryControl" -->
+                        <ion-select-option  *ngFor="let country of  countryCodes" [value]="country">   
+                            {{country.Code }}&nbsp;{{ country.Name}}</ion-select-option>
+                    </ion-select>
+           <ion-input placeholder="Mobile Number" class="signUpInputs" formControlName="phoneNoEntered" class="tele">
+            </ion-input>
+        </ion-item>
+      
+
+    </div>
+    <div>
+
+
+         <!-- <div  style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 15%;" *ngIf="!otpForm.valid">
+            <ion-button type='submit' expand="block" style="height: 40px;" [disabled]="!otpForm.valid" ><label style="text-transform: capitalize;font-weight: bold;color: black;">GET <label style="text-transform: uppercase;font-weight: bold;color: black;">OTP</label></label></ion-button>
+        </div>  -->
+        <div  style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 50%;"  >
+            <ion-button  [disabled]="!otpForm.valid" color="myblue" (click)="otpPage()" expand="block" style="height: 40px;"><label style="text-transform: capitalize;font-weight: bold;color: #fff;">Get <label style="text-transform: uppercase;font-weight: bold;color:#fff;">OTP</label></label></ion-button>
+          </div>
+      </div>
+    
+ </form>
+
+<!-- <div *ngIf = 'formScreen === 2'>
+        <ion-toolbar class="login-home-page durity-bg">
+            <div class="durity-back-btn">
+                <ion-buttons slot="start" >
+                  <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+                      <ion-icon name="ios-arrow-back"></ion-icon>
+                      <small style="font-weight: bold;">Back</small>
+                  </ion-button>
+                </ion-buttons>
+            </div>
+        </ion-toolbar>
+            <form [formGroup]="validateOtpForm"  #reg="ngForm">
+    
+            <div class="mobile-number">
+                    <p style="font-weight: bold;font-size: 16px;text-align: center;">OTP has been sent to {{otpForm.value.phoneNoEntered}}. <u style="color:#FFF851 ;" (click)="goBack()">Edit</u></p>
+            </div>
+    
+            <div class="otp-signup-padding">
+                <ion-item class="signp-input" lines="none">
+                    <ion-input placeholder="Enter OTP" formControlName="otpEntered"></ion-input>
+                </ion-item>
+                <div  style = 'padding-right:35px' float-right>
+                    <ng-container *ngIf = "show == false">
+                        <small class = 'timer'>
+                            <div class = 'ion-text-nowrap'>
+                                {{ time | async }}
+                            </div>
+                        </small>
+                    </ng-container>
+                    <ng-container *ngIf = "show == true" >
+                        <small (click) = "resend()" 
+                            style = color:#FFF851;font-size:13px;font-weight:bold;>
+                                <u>Resend OTP</u>
+                        </small>
+                    </ng-container>
+                </div>
+                <small *ngIf = "invalidOTP === true"  style = 'padding-left:31px' 
+                class="invalid-otp" float-left padding-left>{{ errorMsg }}</small>
+            </div>
+            
+            <div class = "abc1" style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 15%;" *ngIf="!validateOtpForm.valid">
+              <ion-button type='submit' expand="block" style="height: 40px;" 
+              [disabled]="!validateOtpForm.valid" >
+              <label style="text-transform: capitalize;font-weight: bold;color: black;">
+                Verify <label style="text-transform: uppercase;font-weight: bold;color: black;">
+                    OTP</label></label></ion-button>
+            </div>
+          <div class="abc" style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 15%;" *ngIf="validateOtpForm.valid">
+            <ion-button style = 'background-color:white' (click) = 'validateOtp()' expand="block" style="height: 40px;"><label style="text-transform: capitalize;font-weight: bold;color:black;">Verify <label style="text-transform: uppercase;font-weight: bold;color: black;">OTP</label></label></ion-button>
+          </div>
+        
+    
+        </form>
+</div>
+
+</ion-content> -->  </ion-content>
+
+
+
+
+<ion-content *ngIf="formScreen === 2" style="background-color: #ffffff;" >
+    <ion-toolbar style="margin-top: -5px;">
+        <div class="durity-back-btn">
+            <ion-buttons slot="start">
+              <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+                  <ion-icon size="small" name="ios-arrow-back"></ion-icon>
+                  <label><b style="margin-bottom: 2px;">Back</b></label>
+              </ion-button>
+            </ion-buttons>
+          </div>
+        </ion-toolbar>
+        <div class='otpImage'>
+            <img src="assets/imgs/OTP.png" >
+        </div>
+        <form [formGroup]="validateOtpForm"  #reg="ngForm" style="margin-top: -4%;">
+
+            <div class="mobile-number">
+                <h2 style="font-weight: 700;margin-left:13%;font-size: 21px;"><b style="color:#5D5D5D;">Verify with OTP</b></h2>
+                <p style="font-size: 12.5px;margin-left: 14%;color: #5D5D5D;margin-top: -7px;">Sent to {{selectedCountry.Code +otpForm.value.phoneNoEntered}}<b style="color:#163899 ;font-size: 14px;margin-left: 8px;font-weight: 700;" (click)="goBack()">Edit</b></p>
+                </div>
+
+        <div class="otp-signup-padding">
+            <ion-row align-items-center>
+                <ion-col size=3>
+                <ion-input type="tel" class="signp-input" required formControlName="otp1" (keyup)="moveFocus(b)"></ion-input>
+                </ion-col>
+                <ion-col size=3>
+                <ion-input type="tel" class="signp-input" required formControlName="otp2" #b (keyup)="moveFocus(c)"></ion-input>
+                </ion-col>
+                <ion-col size=3>
+                <ion-input type="tel" class="signp-input" required formControlName="otp3" #c (keyup)="moveFocus(d)"></ion-input>
+                </ion-col>
+                <ion-col size=3>
+                <ion-input type="tel" class="signp-input" required formControlName="otp4" #d ></ion-input>
+                </ion-col>
+            </ion-row>
+            <p *ngIf = "show == false"  style="color: #5D5D5D;font-size: 14px;margin-left: 2%;margin-top:10px;">Resend OTP in : <b class="time">{{ time | async }}</b></p>
+            <p *ngIf = "invalidOTP === true"  style = 'font-size: 14px;margin-left: 2%;margin-top:2px;color: red;' >{{ errorMsg }}</p>
+            <ng-container *ngIf = "show == true" >
+                <small (click) = "resend()" 
+                    class="time" style="margin-left: 2%;margin-top:10px;">
+                        <u>Resend OTP</u>
+                </small>
+            </ng-container>
+        </div>
+        
+        <!-- <div style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 50%;" *ngIf="!otpForm.valid">
+        <ion-button type='submit'  expand="block" style="height: 40px;color:#5D5D5D ;" [disabled]="!otpForm.valid" ><label style="text-transform: capitalize;font-weight: bold;color: black;">Verify <label style="text-transform: uppercase;font-weight: bold;color: black;">OTP</label></label></ion-button>
+      </div> -->
+      <div class="abc" style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 50%;" >
+        <ion-button [disabled]="!validateOtpForm.valid" color="tertiary" (click) = 'validateOtp()' expand="block" style="height: 40px;"><label style="text-transform: capitalize;font-weight: bold;color: #fff;">Verify <label style="text-transform: uppercase;font-weight: bold;color:#fff;">OTP</label></label></ion-button>
+      </div>
+      <!-- <div style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 15%;" *ngIf="otpForm.valid"> -->
+        <!-- <button (click)="next()" type="button" class="block font-16">Next</button> -->
+    <!-- </div> -->
+
+    </form>
+</ion-content>

@@ -1,0 +1,28 @@
+<form [formGroup]="myForm">
+<ion-content>
+  
+  <ion-title>
+  Add Category
+  <ion-icon name="close-circle" (click) = 'closePopOver()' float-right></ion-icon>
+</ion-title>
+
+  
+    <div class = 'input-padding'>
+      <div class = 'title-input'>
+        <ion-input 
+          placeholder="Type category name of your choice" #textValue formControlName="name">
+        </ion-input>
+        <span style="color:#ff0000" *ngIf="isSubmitted && errorControl.name.errors?.required">
+        field required
+      </span>
+      </div>
+    </div>
+    <ion-button (click) = 'onDismiss(textValue)' 
+     style = 'padding-right: 6%;' float-right>Done
+    </ion-button>
+  
+  </ion-content>
+</form>
+
+
+  

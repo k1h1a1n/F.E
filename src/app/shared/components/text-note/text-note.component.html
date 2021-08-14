@@ -1,0 +1,37 @@
+<ion-content padding>
+  <div text-start>
+    <p class="text font-16 mt-1">Enter Your Text Note</p>
+    <form [formGroup]="textForm" (ngSubmit)="onSubmit()" #reg="ngForm">
+    
+    <ion-input auto-grow=true formControlName="title" placeholder="Title"></ion-input>
+    <div
+                *ngIf="textForm.get('title').invalid  && (textForm.get('title').touched || textForm.get('title').dirty || reg.submitted)">
+                <small class="error" *ngIf="textForm.get('title').errors.required">Please enter a title</small>
+  
+            </div>
+    <div >
+      <quill-editor [styles]="{height: '255px'}" formControlName="data"></quill-editor>
+    </div>
+
+    <div
+    *ngIf="textForm.get('data').invalid  && (textForm.get('data').touched || textForm.get('data').dirty || reg.submitted)">
+    <small class="error" *ngIf="textForm.get('data').errors.required">Please enter some text</small>
+
+</div>
+  
+    
+    
+          <div class="btn-section">
+    <ion-row>
+      <ion-col>
+        <ion-button fill="clear" (click)="cancel()">cancel</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button  type ="submit">save</ion-button>
+      </ion-col>
+    </ion-row>
+    </div>
+  </form>
+  </div>
+
+</ion-content>

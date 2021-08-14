@@ -1,0 +1,32 @@
+<div>
+  <p class="heading"><b>Feedback</b></p> 
+   <p style="text-align: center; font-size: 13px ;">We would love to hear your thoughts, concerns or problems with anything so we can improve.</p>
+
+  <form [formGroup]="feedbackForm">
+    <div class=feedback-padding>
+      <ion-item class=title-input>
+        <ion-input type="text" placeholder="Title" formControlName="Title"></ion-input>
+      </ion-item>
+    </div>
+    <div class="feedback-padding">
+      <ion-item class="description">
+        <ion-textarea rows="20" cols="60" placeholder="Describe Feedback" formControlName = "Description"></ion-textarea>
+      </ion-item>
+    </div>
+    
+    <div class="font-13" style="padding-right: 2px;">
+      <span style="left: 0%;">
+        <input type="radio" name="issue" value="Bug Report" checked> Bug Report
+      </span>  
+      <span text-center>
+        <input type="radio" name="issue" value="Question"> Question
+      </span>
+      <span style="right: 0%;">
+        <input type="radio" name="issue" value="Comment"> Comment
+      </span>
+   </div>
+    <div (click)="submitFeedback()" class= "submit-button">
+      <ion-button type="submit" style="float: right; right: 5%; position: relative; text-transform: none; width:100px" expand="block" ><b>Submit</b></ion-button>
+    </div>
+    </form> 
+</div>

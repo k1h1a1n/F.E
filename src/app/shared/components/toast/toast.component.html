@@ -1,0 +1,63 @@
+
+<div padding *ngIf="attachmentMessage">
+
+  <ion-item lines="none">
+    <img src="./assets/imgs/success.svg">
+    <p class="font-20 toast">Document Deleted Successfully</p>
+  </ion-item>
+
+</div>
+
+<div padding *ngIf="contactMessage">
+
+  <ion-item lines="none">
+    <img src="./assets/imgs/success.svg">
+    <p class="font-20 toast">Contact Deleted Successfully</p>
+  </ion-item>
+
+</div>
+
+<div padding *ngIf="revokeAccessMessage">
+
+  <ion-item lines="none">
+    <img src="./assets/imgs/success.svg">
+    <p class="font-20 toast">Deleted Trustee Successfully</p>
+  </ion-item>
+
+</div>
+
+<div padding *ngIf="feedbackMessage">
+
+  <ion-item lines="none">
+    <img src="./assets/imgs/success.svg">
+    <p class="font-20 toast">Feedback submitted Successfully</p>
+  </ion-item>
+
+</div>
+
+<div padding *ngIf="updateProfile">
+
+  <ion-item lines="none">
+    <img src="./assets/imgs/success.svg">
+    <p class="font-20 toast">Profile updated Successfully</p>
+  </ion-item>
+
+</div>
+
+<div padding *ngIf="contactUs">
+  <ion-item style="vertical-align: middle;" lines="none">
+    <img src="./assets/imgs/success.svg">
+    <p class="font-20 toast">Thanks for contact us we will get back to you shortly</p>
+  </ion-item>
+</div>
+<div padding *ngIf="changePassword">
+  <ion-item style="vertical-align: middle;" lines="none">
+    <img src="./assets/imgs/success.svg">
+    <p class="font-20 toast">Login password changed successfully</p>
+  </ion-item>
+  <div class="ion-text-center">
+    <ion-button (click)="login()" style="text-transform: none; width:90px;" ><b>Login</b></ion-button>
+  </div>
+</div>
+
+

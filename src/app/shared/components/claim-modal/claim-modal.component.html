@@ -1,0 +1,38 @@
+<ion-toolbar style="padding-top: 5%">
+    <div class="durity-back-btn">
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+            <ion-icon name="ios-arrow-back"></ion-icon>
+            <small style="font-weight: bold;">Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <div class = 'ion-text-center'>
+        <b>Claim Form</b>
+    </div>
+</ion-toolbar>
+
+<ion-grid style = 'padding-top:40%'>
+  <ion-row>
+    <ion-col>
+      <div style="text-align:center">
+        <ion-icon style="height: 129px;width: 129px;" src = "assets/imgs/Group 740.svg"  size = 'large'></ion-icon>
+      </div>
+    </ion-col> 
+  </ion-row>
+  <ion-row>
+    <ion-col class = 'ion-text-center'>
+        Your details have been sent sucessfully.<br>
+      We will verify your information and get back<br>
+              to you within 72 hours.
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
+<ion-footer no-border>  
+  <ion-toolbar class = "durity-bg">
+    <ion-item lines = 'none' class = 'durity-bg'>
+      <button  type = 'button' class="nextBtn" (click) = 'onDone()'>Done</button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

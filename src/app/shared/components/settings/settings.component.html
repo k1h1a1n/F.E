@@ -1,0 +1,40 @@
+<ion-toolbar style="padding-top: 5%;">
+  <div class="durity-back-btn">
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+            <ion-icon name="ios-arrow-back"></ion-icon>
+            <small>Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+<div text-center class="settings">
+    <ion-label><b>Settings</b></ion-label>
+</div>
+<ion-buttons slot="end">
+  <ion-button slot="icon-only" fill="clear" (click)="goto('home')">
+    <span style="color:#FF715B;font-size:25px;">
+      <ion-icon name="home"></ion-icon>
+    </span>
+  </ion-button>
+</ion-buttons>
+</ion-toolbar>
+<ion-content>
+  <div class="menu">
+    <ion-list padding lines="full">
+      <ion-item *ngFor="let s of settingsPages" lines="full" (click)="goto(s)">
+        <ion-icon *ngIf = "s.icon" slot="start" [name]="s.icon"></ion-icon>
+        <img *ngIf = "s.src" slot="start" [src]="s.src">
+        <ion-label padding>
+          {{s.title}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+      <ion-item lines="none" (click)="closeAccount()">
+        <ion-icon slot="start" src='assets/imgs/how_to_reg2-24px.svg'>
+        </ion-icon>
+        <ion-label padding style="color: #FF715B;">
+          Close Account
+        </ion-label>
+      </ion-item>
+  </div>
+</ion-content>

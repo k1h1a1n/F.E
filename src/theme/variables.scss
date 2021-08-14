@@ -1,0 +1,504 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+/* Font family 1 */
+// regular
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+
+/* Font family 2 */
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+.searchbarinput {
+  input{
+     border-radius: 50px !important; 
+     background: rgba(242, 239, 239, 0.789) !important;
+
+  }
+}
+/** Ionic CSS Variables **/
+:root {
+
+ /** yesbtn **/
+  --ion-color-yesbtn:#0cd2e8 ;
+  --ion-color-yesbtn-rgb: 56, 123, 255;
+  --ion-color-yesbtn-contrast: #fcffff;
+  --ion-color-yesbtn-contrast-rgb: 255, 255, 255;
+  --ion-color-yesbtn-shade: #3071e0;
+  --ion-color-yesbtn-tint: #4c8fff;
+
+
+
+  /** primary **/
+  --ion-color-primary: #4895F1;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #4895F1;
+  --ion-color-primary-tint: #4895F1;
+
+  /** secondary **/
+  --ion-color-secondary: #0cd1e8;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+
+  /** tertiary **/
+  --ion-color-tertiary:#163899;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #163899;
+  --ion-color-tertiary-tint: #163899;
+
+  /** success **/
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+  --ion-color-signlink:#FFF851;
+
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #d6d8e2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /* durity varaibales */
+  --durity-bg: #78B2F7; //secondary
+  --durity-bg2: #4895F1;  // primary linear-gradient(to right ,#4895F1,#78B2F7)
+  --durity-bg-white: #ffffff;
+  --durity-bg-pgbg: #FBFBFB;
+  --durity-bg3: #6F42FC;
+
+  --durity-primary-shade: #ff715b;
+
+  --durity-border-radius: 5px;
+  --durity-color-text: #2d3047;
+  --durity-color-btn-bg: #ffffff;
+  --durity-color-line:#BFBFBF;
+
+  --durity-color-text2: #ffffff;
+  --durity-color-btn-bg2: #4895F1;
+  --durity-color-disable:#CCE3FF;
+
+  --durity-color-shade: rgba(0, 115, 255);
+  --durity-color-shade-50: rgba(0, 115, 255, 0.5);
+
+  --durity-font-family: "Source Sans Pro", sans-serif;
+  --durity-font-family2: "Roboto", sans-serif;
+
+  --durity-link-color: #75788f;
+  --bg1: #0078ff;
+
+  --durity-text-color: #333333;
+  --durity-secondary-text-color: #333333E6;
+  --ion-color-durity-btn-color:#FF715B;
+}
+
+.swiper-pagination-bullet {
+  background: #163899;
+  width: 13px;
+    height: 13px;
+}
+
+.custom-popOver .popover-content {
+  width: 100% !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  top: calc(100% - 250px) !important;
+  max-height: 250px;
+  min-height: 200px; 
+  border: 1px solid #4895F1;
+  border-radius: 8px;
+  background: #4895F1 0% 0% no-repeat padding-box;;
+}
+
+.custom-PopOver .popover-content {
+  width: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0  !important;
+  // bottom: calc(100% - 350px) !important;
+  // max-height: 350px;
+  // min-height: 300px; 
+  // border-radius: 8px;
+ 
+}
+.custom-confirmpass .popover-content{
+  width: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: calc(100% - 250px) !important;
+  max-height: 250px;
+  min-height: 200px; 
+
+  
+    
+}
+
+.myadditonalEncOpts-popover .popover-content{
+  width: 100% !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  top: calc(100% - 558px) !important;
+  border-radius: 8px;
+}
+
+
+.additonalEncOpts-popover .popover-content{
+  width: 100% !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  top: calc(100% - 360px) !important;
+  max-height: 360px;
+  min-height: 200px; 
+  border-radius: 8px;
+}
+
+.custom-popoverEncryption .popover-content{
+width: 100% !important;
+height: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
+.custom-sharePopOver .popover-content{
+  width: 100% !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  top: calc(100% - 200px) !important;
+  max-height: 200px;
+  min-height: 150px; 
+  border-radius: 8px 8px 0px 0px;
+}
+
+.delete-modal {
+  width: 100% !important;
+  left: 0 !important;
+  bottom: calc(100% - 250px) !important;
+  right: 0 !important;
+  top: 0  !important;
+  max-height: 200px;
+  min-height: 250px; 
+  border: 1px solid #c3c9c5;
+  border-radius: 0px 0px 8px 8px;
+  background: #4895F1 0% 0% no-repeat padding-box;;
+
+}
+
+.my-custom-act-class  {
+  // background: #e5e5e5;
+  header : {
+    font-weight: bold;
+    
+  }
+  // --background: #e5e5e5;
+}
+
+.enterFileDownloadOtp-popover .popover-content{
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  bottom: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.showFileDetails-popover .popover-content{
+  // position: absolute;
+  // padding-top: 10%;
+  width: 75% !important;
+  height: 30% !important;
+  bottom: 10% !important;
+  top: 10% !important;
+  left: 10% !important;
+  right: 10% !important;
+}
+
+.willDisclaimer-popover .popover-content{
+  position: absolute;
+  width: 100% !important;
+  height: 80%;
+  bottom: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.willDownloadAlert-popover .popover-content{
+  position: absolute;
+  width: 100% !important;
+  height: 75%;
+  bottom: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.verificatioAdvisor-popover .popover-content{
+  position: absolute;
+  width: 100% !important;
+  height: 30%;
+  bottom: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.clientAdvisorCode-popover .popover-content{
+  position: absolute;
+  width: 100% !important;
+  height: 45%;
+  bottom: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.typeofUser-popover .popover-content{
+  position: absolute;
+  width: 100% !important;
+  height: 80%;
+  bottom: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.simple-delete-modal {
+  width: 100% !important;
+  left: 0 !important;
+  bottom: calc(100% - 200px) !important;
+  right: 0 !important;
+  top: 0  !important;
+  max-height: 200px;
+  min-height: 150px; 
+  border: 1px solid #c3c9c5;
+  border-radius: 0px 0px 8px 8px;
+  background: #4895F1 0% 0% no-repeat padding-box;;
+}
+
+.simple-delete-user-modal {
+  width: 100% !important;
+  height: 40% !important;
+  left: 0 !important;
+  bottom: calc(100% - 100px) !important;
+  right: 0 !important;
+  top: 0  !important;
+  max-height: 300px;
+  min-height: 200px;
+  border: 1px solid #C3C9C5;
+  border-radius: 0px 0px 8px 8px;
+  background: #4895F1 0% 0% no-repeat padding-box;;
+}
+
+.sure-bold {
+  button{
+    font-weight: bold;
+
+  }
+}
+
+.warning-icon {
+ font-size: 1.2rem;
+  color: #FFAB00;
+
+}
+
+.custom-successPopover{
+  width: 100% !important;
+  height: 30% !important;
+       left: 0 !important;
+       top: 0 !important;
+     background:  #FFFFFF 0% 0% no-repeat padding-box;
+    
+      
+}
+
+.custom-updatePopover .modal-wrapper {
+  position: absolute;
+  width: 100% !important;
+  height: 55% !important;
+  bottom: 0 !important;
+  top: calc(100% - 55%)!important;
+  left: 0 !important;
+  //background: #4895F1 0% 0% no-repeat padding-box;
+  background: linear-gradient(180deg, rgb(58, 75, 97) 0%, #4895F1 100%) 0% 0% no-repeat padding-box;
+}
+
+
+.custom-updatePopover ion-backdrop{
+  visibility:visible;
+  z-index: 0;
+}
+
+
+.custom-feedbackPopover {
+  width: 100% !important;
+  height: 30% !important;
+       left: 0 !important;
+       top: 0 !important;
+       border-top-left-radius: 0px;
+       border-top-right-radius: 0px;
+     background:  #FFFFFF 0% 0% no-repeat padding-box;
+      
+}
+
+.custom-profilePopover{
+  width: 100% !important;
+  height: 30% !important;
+       left: 0 !important;
+       top: 0 !important;
+       border-top-left-radius: 0px;
+       border-top-right-radius: 0px;
+     background:  #FFFFFF 0% 0% no-repeat padding-box;
+
+}
+
+.custom-alert .alert-wrapper {
+  background: white;
+  height: 100%;
+  width: 100%;
+  .alert-sub-title {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 50%;
+    color: #348de0;
+  }
+  .alert-message {
+    font-size: 80px;    
+    margin-top: 10%;
+    text-align: center;
+    color: #3d4042;
+  }
+}
+
+
+.custom-alert-finadv .alert-wrapper {
+  background: white;
+  height: 50%;
+  width: 100%;
+  .alert-sub-title {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 50%;
+    color: #348de0;
+  }
+  .alert-message {
+    font-size: 80px;    
+    margin-top: 10%;
+    text-align: center;
+    color: #3d4042;
+  }
+  
+}
+.my-custom-class .popover-content{
+  width:95vw;
+  height:40vw;
+}
+.my-custom-class .popover-content{
+  width:95vw;
+  height:40vw;
+}
+.add-category-class .popover-content{
+  width: 95vw;
+  height:45vw;
+}
+
+
+
+
+:root {
+  --ion-color-myblue: #163899;
+  --ion-color-myblue-rgb: 105,187,123;
+  --ion-color-myblue-contrast: #163899;
+  --ion-color-myblue-contrast-rgb: 255,255,255;
+  --ion-color-myblue-shade: #163899;
+  --ion-color-myblue-tint: #163899;
+}
+
+
+.ion-color-myblue {
+  --ion-color-base: var(--ion-color-myblue);
+  --ion-color-base-rgb: var(--ion-color-myblue-rgb);
+  --ion-color-contrast: var(--ion-color-myblue-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-myblue-contrast-rgb);
+  --ion-color-shade: var(--ion-color-myblue-shade);
+  --ion-color-tint: var(--ion-color-myblue-tint);
+}
+
+
+
+:root {
+  --ion-color-mygrey: #5d5d5d;
+  --ion-color-mygrey-rgb: 105,187,123;
+  --ion-color-mygrey-contrast: #5d5d5d;
+  --ion-color-mygrey-contrast-rgb: 255,255,255;
+  --ion-color-mygrey-shade: #5d5d5d;
+  --ion-color-mygrey-tint: #5d5d5d;
+}
+
+.ion-color-mygrey {
+  --ion-color-base: var(--ion-color-mygrey);
+  --ion-color-base-rgb: var(--ion-color-mygrey-rgb);
+  --ion-color-contrast: var(--ion-color-mygrey-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-mygrey-contrast-rgb);
+  --ion-color-shade: var(--ion-color-mygrey-shade);
+  --ion-color-tint: var(--ion-color-mygrey-tint);
+}
+:root {
+  --ion-color-ble: #0047a7;
+  --ion-color-ble-rgb: rgba(0,71,167,255);
+  --ion-color-ble-contrast: #0047a7;
+  --ion-color-ble-contrast-rgb: 255,255,255;
+  --ion-color-ble-shade: #0047a7;
+  --ion-color-ble-tint: #0047a7;
+}
+
+.ion-color-ble {
+  --ion-color-base: var(--ion-color-ble);
+  --ion-color-base-rgb: var(--ion-color-ble-rgb);
+  --ion-color-contrast: var(--ion-color-ble-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-ble-contrast-rgb);
+  --ion-color-shade: var(--ion-color-ble-shade);
+  --ion-color-tint: var(--ion-color-ble-tint);
+}

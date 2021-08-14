@@ -1,0 +1,263 @@
+.div-section {
+  position: relative;
+  color: black;
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.error {
+  color: darkred;
+  text-align: start;
+  padding: 7%;
+}
+
+.img-section {
+  padding-top: 3%;
+  position: relative;
+}
+
+.signup-input {
+  --background: var(--ion-color-light-tint) 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  color: black;
+  height: 38px;
+  border: 1px solid #2d3047;
+  border-color: #2d3047;
+}
+.signup-input ion-input {
+  font-size: 12px;
+  bottom: 10%;
+  color: #000000;
+}
+
+.signin-link {
+  color: var(--ion-color-signlink);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.signup-padding {
+  padding-top: 1%;
+  padding-bottom: 2.5%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.signin-padding {
+  padding-top: 2.5%;
+  padding-right: 11%;
+  padding-left: 11%;
+}
+
+ion-select {
+  font-size: 12px;
+  margin-left: -15px;
+  border-right: 1px solid #dfdcdc;
+}
+
+.tele {
+  margin-top: 3%;
+  font-size: 12px;
+  margin-left: 2%;
+}
+
+.show-password-icon {
+  position: relative;
+  bottom: 10%;
+  font-size: 1.5rem;
+  color: #979494;
+}
+
+.google-logo {
+  padding: 0% 5% 0% 2%;
+}
+
+.sign-in-with-google {
+  position: relative;
+  width: 60%;
+  text-align: center;
+  left: 20%;
+}
+
+.sign-up {
+  padding: 5% 10% 0% 10%;
+}
+
+.or-padding {
+  padding: 5% 0% 0% 0%;
+}
+
+@media screen and (min-width: 321px) {
+  .img-section {
+    padding-top: 10%;
+    position: relative;
+  }
+
+  .sign-in-with-google {
+    margin-top: 6%;
+    position: relative;
+    width: 60%;
+    text-align: center;
+    left: 20%;
+  }
+
+  .signup-padding {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .signin-padding {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-right: 11%;
+    padding-left: 11%;
+  }
+}
+@media screen and (min-width: 360px) and (max-width: 640px) {
+  .img-section {
+    padding-top: 5%;
+    position: relative;
+  }
+
+  .sign-in-with-google {
+    margin-top: 6%;
+    position: relative;
+    width: 60%;
+    text-align: center;
+    left: 20%;
+  }
+
+  .signup-padding {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .signin-padding {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-right: 11%;
+    padding-left: 11%;
+  }
+}
+.already-have-account {
+  font-size: 16px;
+}
+
+.terms {
+  font-size: 14px;
+}
+
+.question {
+  text-align: center;
+  color: black;
+  font-size: larger;
+}
+
+.QuestionControls {
+  text-align: center;
+}
+.QuestionControls .yesBtn {
+  margin-right: 80px;
+  width: 65px;
+  height: 29px;
+}
+.QuestionControls .noBtn {
+  width: 65px;
+  height: 28px;
+}
+
+.durity-bg {
+  padding: 20px;
+}
+
+.durity-button {
+  width: 43px;
+  border-radius: 50%;
+  color: white;
+  border: none;
+}
+
+.signin-padding {
+  text-align: center;
+}
+
+.submitBtn {
+  height: 46px;
+}
+
+.button-native {
+  padding: 0px;
+}
+
+.uploadPic {
+  padding-left: 50px;
+}
+.uploadPic .companyNameInput {
+  height: 35px;
+  width: 50%;
+  border: 1px solid #2d3047;
+  font-size: 12px;
+  top: 22px;
+  border-radius: 5%;
+}
+.uploadPic button {
+  background-color: white;
+  height: 24px;
+  padding-right: 25px;
+  color: #2d3047;
+  font-size: 22px;
+  margin-top: -20px;
+  float: right;
+}
+.uploadPic button label {
+  font-size: 18px;
+}
+.uploadPic button .span {
+  font-size: 11px;
+}
+
+.uploadedImageName {
+  margin-top: -9px;
+  float: right;
+  display: flex;
+}
+.uploadedImageName div {
+  width: 85px;
+}
+.uploadedImageName span {
+  padding-right: 10px;
+}
+.uploadedImageName span .removeLink {
+  color: orange;
+}
+
+.couponCodeInput {
+  height: 30px;
+  width: 50%;
+}
+
+.item-native {
+  border: none;
+}
+
+.backBtn {
+  padding: 0px 0px 0px 10px;
+  font-size: x-large;
+}
+
+.text-truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.AdvisorCodeErrors {
+  text-align: end;
+}

@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar>
+      <div class="durity-back-btn">
+              <ion-buttons slot="start">
+                  <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+                          <ion-icon name="ios-arrow-back"></ion-icon>
+                          <small style="font-weight: bold;">Back</small>
+                  </ion-button>
+              </ion-buttons>
+          </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+
+    class="ion-text-center"
+      <div class="font-14 mt-1" padding-bottom>Please Enter OPT send to your mail</div>
+      <div class="input">
+      <ion-input></ion-input>
+  </div>
+      <div class="mt-1" float-right padding-right>
+          <ion-button color="primary" (click)="confirm()" class="pass-file">
+
+              <span class="font-12">Confirm</span>
+          </ion-button>
+      </div>
+    
+
+</ion-content>

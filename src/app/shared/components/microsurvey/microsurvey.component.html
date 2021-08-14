@@ -1,0 +1,70 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>Survey</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-progress-bar *ngIf="endQuiz === false" style="color: #1473E7;" [value]="progress"></ion-progress-bar>
+    <div *ngIf="endQuiz === false" class="ion-text-end" style="margin-top: 15px; margin-right: 15px ;color: #3B3B3B;">
+
+      {{currentQ}}/{{total}}
+    </div>
+  </div>
+
+  <div *ngIf="endQuiz === false" class="ion-padding">
+    <h5><b style="color: #3B3B3B;">{{reference?.question}}</b></h5>
+  </div>
+
+  <div *ngIf="endQuiz === false" class="ion-padding">
+    <div *ngIf="reference.option1 !== '' ">
+      <ion-button id="one" style="margin-bottom: 15px;  height: 40px;text-transform: none;" expand="block" class="optionBtn" fill="outline" 
+      
+        (click)='nextButtonClick($event,"one") '>
+        {{reference?.option1}}
+      </ion-button>
+    </div>
+    <div *ngIf="reference.option2 !== '' ">
+      <ion-button id="two" style="margin-bottom: 15px; height: 40px;text-transform: none;" expand="block" class="optionBtn" fill="outline"
+        (click)='nextButtonClick($event,"two")'>{{reference?.option2}}
+      </ion-button>
+    </div>
+    <div *ngIf="reference.option3 !== '' ">
+      <ion-button id="three" style="margin-bottom: 15px;  height: 40px;text-transform: none;" expand="block" class="optionBtn" fill="outline"
+        (click)='nextButtonClick($event,"three")'>{{reference?.option3}}
+      </ion-button>
+    </div>
+    <div *ngIf="reference.option4 !== '' ">
+      <ion-button id="four" style="margin-bottom: 15px;  height: 40px;text-transform: none;" expand="block" class="optionBtn" fill="outline"
+        (click)='nextButtonClick($event,"four")'>{{reference?.option4}}
+      </ion-button>
+    </div>
+    <div *ngIf="currentQ != 1 && endQuiz === false ">
+      <ion-button slot="start" fill="clear" (click)='prevButtonClick()' style="color: #1473E7;text-transform: capitalize;">Previous
+      </ion-button>
+    </div>
+
+  </div>
+  <!-- <div class="ion-text-center" id="submit" *ngIf="currentQ ==4 " style="padding-top: 45%;font-weight: bold;">
+    <ion-button (click)="endSurvey($event,'submit')" [disabled]='!endQuiz' style="font-weight: bold;">Submit</ion-button>
+  </div> -->
+  <div class="ion-text-center"  *ngIf=" endQuiz == true ">
+    <div style="padding: 35% 5% 0% 5%;">
+      <img style="height: 200px;" src="/assets/imgs/Group 740.svg" alt="" />
+      <!-- <ion-icon style="height: 300px;" src="assets/imgs/greenColorTickIcon.svg"></ion-icon> -->
+  </div>
+    <label style="font-weight: bold;font-size: 30px;padding-left: 5%;padding-right: 5%;text-align: center;">
+      Thank you for your 
+    </label>
+    <label style="font-weight: bold;font-size: 30px;padding-left: 5%;padding-right: 5%;text-align: center;">
+      valuable feedback!
+    </label>
+    <!-- <ion-button (click)="endSurvey($event,'submit')">Submit</ion-button> -->
+  </div>
+
+
+</ion-content>

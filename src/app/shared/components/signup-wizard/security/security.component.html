@@ -1,0 +1,66 @@
+<div>
+  <div>
+      <section class="progress-section">
+        <ol class="progress-bar">
+          <li class="is-complete"><span></span></li>
+          <li [class.is-active]="activeSection == 'contacts'"
+            [class.is-complete]="activeSection == 'encryption' || activeSection == 'documents' || activeSection == 'documents'">
+            <span></span></li>
+          <li [class.is-active]="activeSection == 'encryption'"
+            [class.is-complete]="activeSection == 'encryption' || activeSection == 'documents'">
+            <span></span></li>
+          <li [class.is-active]="activeSection == 'documents'"><span></span></li>
+        </ol>
+      </section>
+    </div>
+  <ion-toolbar text-center> 
+        <div class="durity-back-btn">
+            <ion-buttons slot="start" style="margin-right: -65%;">
+                <ion-button slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+                    <ion-icon name="ios-arrow-back"></ion-icon>
+                    <small style="font-weight: bold;">Back</small>
+                </ion-button>
+            </ion-buttons>
+        </div>
+      <br>
+      <br>
+      <ion-row style="padding-top: 6%; font-size: 16px;" class="ion-align-items-center">
+        <ion-col size=4>
+          <img src="assets/imgs/undraw_sync_files_xb3r.svg" class="durity-img">
+      </ion-col>
+      <ion-col size=7 style="text-align: left;"  >
+        <p><b> Choose your security type to upload files </b></p>
+      </ion-col>     
+     </ion-row>
+     <br>
+     <br>
+     <div style="padding-right: 1%; padding-left: 1%;">
+     <ion-row  style="padding-top: 6%;" class=" format ion-align-items-center" [class.format]="upload">
+      <ion-col size=2>
+        <img src="assets/imgs/Layer.svg" class="durity-img">
+    </ion-col>
+    <ion-col size=7 class="info" >
+      <b>Built-in High security</b> <ion-row style="font-size:10px;"><hr align="left"/>(Or)<hr/></ion-row> <b>Upload encrypted file+ Built-in High security</b> 
+    </ion-col>
+    <ion-col size=3>
+      <input (click)="normalUpload()"  class="radio-btn" type="radio" name="issue" value="Built in security">
+    </ion-col>       
+   </ion-row>
+  </div>
+   <br>
+      <ion-row style="padding-top: 6%;" class="ion-align-items-center" [class.format]="!upload">
+        <ion-col size=2>
+          <img src="assets/imgs/Asset 9mdpi.svg" class="durity-img">
+      </ion-col>
+      <ion-col size=7 class="info" >
+        <p>Encrypt the file with your password + Built-in security </p>
+      </ion-col>
+      <ion-col size=3>
+        <input (click)="withEncrypt()" class="radio-btn" type="radio" name="issue" value="Built in security">
+      </ion-col>       
+     </ion-row>
+    <div class="add-more ion-text-center">
+      <ion-button (click)= "continue()" expand="block" class="add-btn">
+        <span style="text-transform:capitalize">Continue</span>
+      </ion-button>
+      </div>

@@ -1,0 +1,226 @@
+<!-- <ion-header no-border> -->
+
+	<ion-card class="welcome-card ma-0">
+		<ion-toolbar>
+			<div padding-top>
+				<ion-title>All Documents</ion-title>
+			</div>
+        <div class="durity-tabs">
+            <div class="durity-tab tab1" (click)="selectTab(1)" [class.active]="activeContactGroup == 'group1'"
+                value="0">
+                <ion-label>Name</ion-label>
+            </div>
+            <div class="durity-tab tab2" (click)="selectTab(2)" [class.active]="activeContactGroup == 'group2'"
+                tab="tab2">
+                <ion-label>Category</ion-label>
+            </div>
+        </div>
+        <div class="inkbar" [class.group1]="activeContactGroup == 'group1'"
+			[class.group2]="activeContactGroup == 'group2'" >
+		</div>
+			<!--<div padding-top>
+				<ion-button color="white" (click)="addDocument()" expand="block">-->
+
+					<!-- <img src="assets/imgs/doc.png" style="width:26px;height:22px;padding-right:10px;"> -->
+					<!--<span class="add-doc"><span style="font-size: 18px;">+</span> Add New Document </span>
+				</ion-button>
+
+			</div>-->
+		</ion-toolbar>
+	</ion-card>
+<!-- </ion-header> -->
+
+<ion-content padding class="durity-bg" style="--padding-bottom:0px">
+<ion-card class="document-list">	
+
+		<div class="durity-tabs-content" [ngSwitch]="activeContactGroup">
+            <!--First Tab(Tab1)-->
+                <div class="group-1" *ngSwitchCase="'group1'">
+					<ion-searchbar class="searchbarinput" placeholder="Name Search" [(ngModel)]="searchTermname" (ionChange)="setFilteredItemsname()"></ion-searchbar>
+					<div class="document-card-list">
+						<ion-card class="document-card" *ngFor="let dataDisplayName of dataDisplayNames; let i = index;">
+							<ion-row align-items-center>
+								<ion-col size="1">
+								</ion-col>
+								<ion-col size="3">
+									<div *ngIf= "dataDisplayName.isBiometricEnabled == true || dataDisplayName.isUserEncrypted == true">
+										<span class="document-img">
+											<img src="/assets/imgs/Doc_icon_with_lock.svg" alt="File">
+										</span>
+									</div>
+									<div *ngIf= "dataDisplayName.isUserEncrypted == false && dataDisplayName.isBiometricEnabled == false ">
+										<span class="document-img">
+											<img src="/assets/imgs/Doc_icon_without_lock.svg" alt="File">
+										</span>
+			
+									</div>
+								</ion-col>
+								<ion-col size="6">
+			
+									<ion-card-header (click) = "viewDocument(i)">
+										<ion-label>{{ dataDisplayName.filename.length >10? dataDisplayName.filename.substring(0,10)+"..." : dataDisplayName.filename }}</ion-label><br>
+										<small> {{dataDisplayName.uploaded_user_date |  date: 'dd MMM yyyy, H:mm'}}
+										</small><br>
+										<small>Category : {{dataDisplayName.category}}</small>
+										<!--<small *ngIf="(dataDisplayName.Beneficiary1.length == 1 && dataDisplayName.Beneficiary1[0]['contactId'] == '') && dataDisplayName.Beneficiary2.length == 0 && dataDisplayName.Beneficiary3.length == 0 ">No Beneficiary added</small>
+										<small *ngIf="(dataDisplayName.Beneficiary1[0]['contactId'] != '') || dataDisplayName.Beneficiary2.length != 0 || dataDisplayName.Beneficiary3.length != 0 ">Beneficiary added</small>-->
+			
+									</ion-card-header>
+								</ion-col>
+								<ion-col size="2">
+									<div>
+										<span class="actiondel-btn">
+											<ion-icon src="assets/imgs/baseline-delete-24px.svg" (click)="deleteAttachment(dataDisplayName.file_id)"></ion-icon>
+										</span>
+									</div>
+								</ion-col>
+							</ion-row>
+						</ion-card>
+						</div>
+				</div>
+				<div class="group-2" *ngSwitchCase="'group2'">
+					<ion-searchbar class="searchbarinput" placeholder="Category Search" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+					<!-- <ion-item *ngFor = "let r of this.dataDisplay">
+						<ion-col size="10">
+						<ion-label style="font-weight: 300;">
+							{{r.category}}
+						</ion-label>
+					    </ion-col>
+						<ion-col size="2">
+							<div>
+								<span class="actiondel-btn">
+									<ion-icon src="assets/imgs/baseline-delete-24px.svg" ></ion-icon>
+								</span>
+							</div>
+						</ion-col>
+					</ion-item> -->
+					 <ion-item *ngFor = "let r of dataDisplay">
+						<ion-col size="11">
+						<ion-label style="font-weight: 300;">
+							{{r.category}}
+						</ion-label>
+					    </ion-col>
+						<ion-col size="1">
+							<div>
+								<span class="actiondel-btn">
+									<ion-icon src="assets/imgs/baseline-delete-24px.svg" (click)="deleteCategory(r.category,r._id)" ></ion-icon>
+								</span>
+							</div>
+						</ion-col>
+					</ion-item>
+				</div>
+		</div>			
+</ion-card> 
+<ion-fab style="margin-right:15%;margin-bottom: 5%;" vertical="bottom" horizontal="end" slot="fixed">
+	<ion-fab-button (click)="choose()">
+		<ion-icon name="add"></ion-icon>
+	</ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+<!--<ion-content padding class="durity-bg">
+	<div>
+		<div>
+			<p class="total-docs"><small>Total Documents: {{attachments.length || 0}}</small></p>
+		</div>
+		<div class="document-card-list">
+			<ion-card class="document-card" *ngFor="let attachment of attachments; let i = index;">
+				<ion-row align-items-center>
+					<ion-col size="1">
+						//--><!-- <div *ngIf = "attachment.filename.substring(0, attachment.filename.lastIndexOf('.')) === 'encrypt'">
+							<span class="action-btn">
+								<ion-icon src="assets/imgs/baseline-lock-24px.svg"></ion-icon>
+							</span>
+						</div> --><!--//
+					</ion-col>
+					<ion-col size="3">
+						<div *ngIf= "attachment.isBiometricEnabled == true || attachment.isUserEncrypted == true">
+							<span class="document-img">
+								<img src="/assets/imgs/Doc_icon_with_lock.svg" alt="File">
+							</span>
+						</div>
+						<div *ngIf= "attachment.isUserEncrypted == false && attachment.isBiometricEnabled == false ">
+							<span class="document-img">
+								<img src="/assets/imgs/Doc_icon_without_lock.svg" alt="File">
+							</span>
+
+						</div>
+						//--><!-- <div *ngIf= "attachment.filename.substring(attachment.filename.lastIndexOf('.') + 1) === 'encrypt'">
+							<span class="document-img">
+								<img src="/assets/imgs/Doc_icon_with_lock.svg" alt="File">
+							</span>
+						</div>
+						<div *ngIf= "attachment.filename.substring(attachment.filename.lastIndexOf('.') + 1) !== 'encrypt'">
+							<span class="document-img">
+								<img src="/assets/imgs/Doc_icon_without_lock.svg" alt="File">
+							</span>
+
+						</div> --><!--//
+					</ion-col>
+					<ion-col size="6">
+
+						<ion-card-header (click) = "viewDocument(i)">
+							<ion-label>{{ attachment.filename.length >10? attachment.filename.substring(0,10)+"..." : attachment.filename }}</ion-label><br>
+							<small> {{attachment.uploaded_user_date |  date: 'dd MMM yyyy, H:mm'}}
+							</small><br>
+							<small *ngIf="(attachment.Beneficiary1.length == 1 && attachment.Beneficiary1[0]['contactId'] == '') && attachment.Beneficiary2.length == 0 && attachment.Beneficiary3.length == 0 ">No Beneficiary added</small>
+							<small *ngIf="(attachment.Beneficiary1[0]['contactId'] != '') || attachment.Beneficiary2.length != 0 || attachment.Beneficiary3.length != 0 ">Beneficiary added</small>
+
+						</ion-card-header>
+					</ion-col>
+					<ion-col size="2">
+						<div>
+							//--><!-- <span class="actiondwn-btn" (click)="download(attachment.file_id, attachment.filename)">
+								<ion-icon src="assets/imgs/download.svg"></ion-icon>
+							</span> --><!--//
+							<span class="actiondel-btn">
+								<ion-icon src="assets/imgs/baseline-delete-24px.svg" (click)="deleteAttachment(attachment.file_id)"></ion-icon>
+							</span>
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-card>
+		</div>
+	</div>
+</ion-content>-->
+
+<!--Footer for Login-->
+<ion-footer class="footer" *ngIf = "signInType === 'login'">
+	<ion-toolbar>
+		<ion-row text-center>
+			<ion-col size="2.5">
+				<div (click)="goto('home')">
+					<img src="assets/imgs/home-plain.png" alt="documents">
+
+					<p class="ma-0 font-12">Home</p>
+				</div>
+			</ion-col>
+			<ion-col size="7">
+				<div (click)="goto('document-list')" >
+					<img src="assets/imgs/document-blue.png"  alt="documents"
+					>
+					<p class="ma-0 font-12" style="color: #222428">Documents</p>
+				</div>
+			</ion-col>
+
+			<ion-col size="2.5">
+				<div (click)="goto('contact-list')">
+					<img src="assets/imgs/member-plain.png" alt="contacts" >
+					<p class="ma-0 font-12" >People</p>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+</ion-footer>
+
+
+<!--Footer for SignUp-->
+<ion-footer class="footer" *ngIf = "signInType === 'register'">
+	<ion-toolbar class="durity-bg" >
+		<ion-button (click)="next()" size="medium" float-right class="next-btn" color="white">
+			Done
+		</ion-button>
+	</ion-toolbar>
+	
+	</ion-footer>

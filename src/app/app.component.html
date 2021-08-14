@@ -1,0 +1,70 @@
+<ion-app>
+	<ion-split-pane>
+		<ion-menu type="overlay" class="durity-menu">
+			<ion-header *ngIf="isUserSignedUp === true">
+				<ion-toolbar class="durity-bg">
+					<div>
+						<ion-button slot="icon-only" fill="clear" (click)="goBack()">
+							<ion-icon name="arrow-back"></ion-icon>
+						</ion-button>
+					</div>
+					<div class="menu-toolbar  mb-1">
+						<div style="width: 40%;padding-top: 20px;" text-center>
+							<ion-avatar class="durity-img">
+								<img *ngIf="user.profile.picture.data == null || user.profile.picture.data == ''" src="assets\imgs\ionavatar.jpg"  class="durity-img">
+							  <img *ngIf="user.profile.picture.data; else noPic" [src]="profilePic" class="durity-img">
+							</ion-avatar>
+						</div>
+						<div class="width-60" >
+							<!-- <p class="ma-0"><small>{{user ? user.profile.name :''}}</small></p> -->
+							<p class="ma-0"><small style="font-weight: bold;">{{user ? user['profile'].name : ''}}</small></p>
+							<p class="ma-0"><small>{{user ? user.email : ''}}</small></p>
+							<p class="ma-0"><small>{{user ?user['profile'].telephoneNumber : ''}}</small></p>
+							<p class="ma-0"><small>Current Plan: <label style="font-weight: bold;">{{user ? user.userCurrentPlanDetails.planName : ''}}</label></small></p>
+
+							<ion-button (click)=gotoProfile() color="light" class="myProfile" type="myProfile" style="text-transform: none;" expand="block" ><b>My Profile</b></ion-button>
+						</div>
+					</div>
+				</ion-toolbar> 
+			</ion-header>
+			<ion-content *ngIf="isUserSignedUp === true" class="durity-bg">
+				<div class="navMenu">
+					<ion-list *ngIf="user.profile.isFinancialAdvisor == false">
+						<ion-item *ngFor="let p of appPagesForClient" (click)="goto(p)">
+							<ion-icon *ngIf = "p.iconImg == ''"  slot="start" [name]="p.icon"></ion-icon>
+							<ion-icon [src]="p.iconImg" *ngIf = "p.iconImg != ''"  slot="start" ></ion-icon>
+							<!-- <ion-icon *ngIf = "p.title == 'Upgrade'" slot="start" src="assets/imgs/upgrade-24px.svg"></ion-icon> -->
+							<ion-icon *ngIf = "!p.icon && !p.iconImg" slot="start" src="assets/imgs/how_to_reg-24px.svg"></ion-icon>
+							<ion-label>
+								{{p.title}}
+							</ion-label>
+						</ion-item>
+					</ion-list>
+					<ion-list *ngIf="user.profile.isFinancialAdvisor == true">
+						<ion-item *ngFor="let p of appPages" (click)="goto(p)">
+							<ion-icon *ngIf = "p.iconImg == ''"  slot="start" [name]="p.icon"></ion-icon>
+							<ion-icon [src]="p.iconImg" *ngIf = "p.iconImg != ''"  slot="start" ></ion-icon>
+							<!-- <ion-icon *ngIf = "p.title == 'Upgrade'" slot="start" src="assets/imgs/upgrade-24px.svg"></ion-icon> -->
+							<ion-icon *ngIf = "!p.icon && !p.iconImg" slot="start" src="assets/imgs/how_to_reg-24px.svg"></ion-icon>
+							<ion-label>
+								{{p.title}}
+							</ion-label>
+						</ion-item>
+					</ion-list>
+				</div>
+				<div class="otherMenu">
+					<hr>
+					<ion-list>
+						<ion-item *ngFor="let p of otherMenus" (click)="gotoLogin(p)">
+							<ion-icon slot="start" [name]="p.icon"></ion-icon>
+							<ion-label>
+								{{p.title}}
+							</ion-label>
+						</ion-item>
+					</ion-list>
+				</div>
+			</ion-content>
+		</ion-menu>
+		<ion-router-outlet main></ion-router-outlet>
+	</ion-split-pane>
+</ion-app>

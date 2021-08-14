@@ -1,0 +1,42 @@
+<ion-toolbar style="padding-top: 5%; padding-bottom: 5%;">
+  <div class="durity-back-btn">
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+            <ion-icon name="ios-arrow-back"></ion-icon>
+            <small style="font-weight: bold;">Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+<div text-center class="contact-us">
+    <ion-label><b>Contact us</b></ion-label>
+</div>
+<ion-buttons slot="end">
+  <ion-button slot="icon-only" fill="clear" (click)="goto('home')">
+    <span style="color:#FF715B;font-size:25px;">
+      <ion-icon name="home"></ion-icon>
+    </span>
+  </ion-button>
+</ion-buttons>
+</ion-toolbar> 
+<ion-content>
+<form [formGroup]="contactUsForm" (ngSubmit)="submitForm()" #reset="ngForm">
+  <div class=input-padding>
+    <ion-item class=title-input>
+      <ion-input type="text" placeholder="Enter Email id.." formControlName="emailId"></ion-input>
+    </ion-item>
+  </div>
+  <div class=input-padding>
+    <ion-item class=title-input>
+      <ion-input type="text" placeholder="What's this About?" formControlName="subject"></ion-input>
+    </ion-item>
+  </div>
+  <div class="input-padding">
+    <ion-item class="description">
+      <ion-textarea rows="20" cols="60" placeholder="Go ahead, we're listening..." formControlName = "Description"></ion-textarea>
+    </ion-item>
+  </div>
+  <div class= "submit-button">
+    <ion-button type="submit" style="float: right; right: 5%; position: relative; text-transform: none; width:100px" expand="block" ><b>Submit</b></ion-button>
+  </div>
+  </form> 
+</ion-content>

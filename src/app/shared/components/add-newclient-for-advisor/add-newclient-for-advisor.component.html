@@ -1,0 +1,126 @@
+<ion-content *ngIf="enableOtp == false" class="client-bg">
+
+<ion-toolbar text-center class="client-bg" style="padding-top: 10px;">
+  <div class="durity-back-btn security-back">
+      <ion-buttons slot="start" style="margin-top: 2%; ">
+          <ion-button  slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+              <ion-icon name="ios-arrow-back"></ion-icon>
+              <small style="font-weight: bold;">Back</small>
+          </ion-button>
+      </ion-buttons>
+    </div>
+    <span style="text-align: center;"><span  class="font-16 font-bold">Add New Client </span> </span>
+</ion-toolbar>
+
+  <div style="text-align:center;padding-top: 20px;">
+    <ion-icon style="height: 129px;width: 129px;" src="assets/imgs/account_circle-24px.svg"></ion-icon>
+
+  <!-- </div> -->
+
+  <!-- <div style="height: 60%;"> -->
+    <!-- <ion-icon src="assets/imgs/account_circle-24px.svg"></ion-icon> -->
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" style="padding: 10px;" #reg="ngForm">
+      <div class="login-padding">
+        <ion-item class="signin-input" lines="none">
+          <ion-label style="border-radius: 10px;border-color:#4895F1 ;color: #707070;" position="floating">Name*</ion-label>
+          <ion-input type="text" formControlName="name" required></ion-input>
+        </ion-item>
+        <div *ngIf="userForm.get('name').invalid  && (userForm.get('name').touched || userForm.get('name').dirty || reg.submitted)">
+          <small class="error" *ngIf="userForm.get('name').errors.required"> Name is required</small>
+          <!-- <small class="error" *ngIf="willGenerateForm1.get('fullName').errors.pattern">Please enter valid name</small> -->
+        </div>
+    </div>
+    
+    <div class="login-padding">
+      <ion-item class="signin-input" position='floating' lines="none">
+        <ion-label style="border-color:#4895F1 ;color: #707070;" position="floating">Email address*</ion-label>
+          <ion-input type="email"  formControlName="email"></ion-input>
+      </ion-item>
+      <div *ngIf="userForm.get('email').invalid  && (userForm.get('email').touched || userForm.get('email').dirty || reg.submitted)">
+        <small class="error" *ngIf="userForm.get('email').errors.required"> Email is required</small>
+        <small class="error" *ngIf="userForm.get('email').errors.pattern">Please enter valid email</small>
+      </div>
+  </div>
+  
+  <div class="login-padding">
+    <ion-item class="signin-input" lines="none">
+      <ion-label style="border-radius: 10px;border-color:#4895F1 ;color: #707070;" position="floating">Phone number*</ion-label>
+      <ion-input type="number" formControlName="phoneNumber" required></ion-input>
+    </ion-item>
+    <div *ngIf="userForm.get('phoneNumber').invalid  && (userForm.get('phoneNumber').touched || userForm.get('phoneNumber').dirty || reg.submitted)">
+      <small class="error" style="text-align: start;" *ngIf="userForm.get('phoneNumber').errors.required"> Phone Number is required</small>
+       <small class="error" style="text-align: start;" *ngIf="userForm.get('phoneNumber').errors.pattern">Enter a valid Phone number</small>
+      <small class="error" style="text-align: start;" *ngIf="userForm.get('phoneNumber').errors.pattern">
+        Enter a valid Phone number</small>
+        <small class="error" style="text-align: start;" *ngIf="userForm.get('phoneNumber').errors.minlength">Enter valid Phone number</small>
+
+        <small class="error" style="text-align: start;" *ngIf="userForm.get('phoneNumber').errors.maxlength">Enter valid Phone number</small>
+    
+    </div>
+</div>
+
+      <!-- <ion-item lines='none' style="padding-left: 40px;padding-right: 40px;" >
+        <ion-label style="border-radius: 10px;border-color:#4895F1 ;" position="floating">Name</ion-label>
+        <ion-input type="text" formControlName="name" required></ion-input>
+      </ion-item>
+      <ion-item lines='none'>
+        <ion-label style="border-radius: 10px;border-color:#4895F1 ;" position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email" required></ion-input>
+      </ion-item>
+      <ion-item lines='none'>
+        <ion-label style="border-radius: 10px;border-color:#4895F1 ;" position="floating">Phone number</ion-label>
+        <ion-input type="number" formControlName="phoneNumber" required></ion-input>
+      </ion-item> -->
+      <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+      <div class="login-padding">
+        <!-- <ion-item class="signin-input" lines="none"> -->
+          <ion-button type="submit" color="primary" expand="block">Create Account </ion-button>
+          <div style = 'text-align:center;padding-top: 5%;padding-bottom: 5%'>(or)</div>
+          <u style="color:#4081d0;" (click)="navigate()"><b>Add Client from Phonebook</b></u>  
+        <!-- </ion-item> -->
+    </div>
+  </form>
+  
+  </div>
+</ion-content>
+
+<ion-content *ngIf="enableOtp == true" class="client-bg">
+
+  <ion-toolbar text-center class="client-bg" style="padding-top: 10px;">
+    <div class="durity-back-btn security-back">
+        <ion-buttons slot="start" style="margin-top: 2%; ">
+            <ion-button  slot="icon-only" fill="clear" size="small" (click)="backBtn()" class="back-btn">
+                <ion-icon name="ios-arrow-back"></ion-icon>
+                <small style="font-weight: bold;">Back</small>
+            </ion-button>
+        </ion-buttons>
+      </div>
+      <span style="text-align: center;"><span  class="font-16 font-bold">Add New Client </span> </span>
+  </ion-toolbar>
+      <form [formGroup]="otpForm" (ngSubmit)="makeRegistration()" #reg="ngForm">
+
+          <div class="mobile-number">
+              <p style="font-weight: bold;font-size: 16px;text-align: center;">OTP has been sent to {{userForm.value.phoneNumber}}. <u style="color:#4895F1 ;" (click)="backBtn()">Edit</u></p>
+              </div>
+
+      <div class="otp-signup-padding">
+          <ion-item class="signp-input" lines="none">
+              <ion-input placeholder="Enter OTP" formControlName="otpEntered"></ion-input>
+          </ion-item>
+          <small class="timer" float-right padding-right>{{ time | async }}</small>
+          <small *ngIf="invalidOTP == true" class="invalid-otp" float-left padding-left>{{ errorMsg }}</small>
+
+      </div>
+      
+      <div style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 15%;" *ngIf="!otpForm.valid">
+      <ion-button type='submit' color="{{btnColor}}" expand="block" style="height: 40px;" [disabled]="!otpForm.valid" ><label style="text-transform: capitalize;font-weight: bold;color: white;">Verify <label style="text-transform: uppercase;font-weight: bold;color: white;">OTP</label></label></ion-button>
+    </div>
+    <div class="abc" style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 15%;" *ngIf="otpForm.valid">
+      <ion-button color="{{btnColo}}" (click)="makeRegistration()" expand="block" style="height: 40px;"><label style="text-transform: capitalize;font-weight: bold;color: white;">Verify <label style="text-transform: uppercase;font-weight: bold;color: white;">OTP</label></label></ion-button>
+    </div>
+    <!-- <div style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 15%;" *ngIf="otpForm.valid"> -->
+      <!-- <button (click)="next()" type="button" class="block font-16">Next</button> -->
+  <!-- </div> -->
+
+  </form>
+</ion-content>

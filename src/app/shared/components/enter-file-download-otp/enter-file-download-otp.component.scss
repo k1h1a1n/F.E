@@ -1,0 +1,81 @@
+.input{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // border:1px solid #7AB1FF;
+  // border-radius: 5px;
+  // height: 38px;
+  // width:150px;
+   padding-top: 8px;
+}
+ion-input{
+  border:1px solid  #FF715B;
+  border-radius: 5px;
+  height: 35px;
+  width:65%;
+  color: black;
+  font-weight: 500;
+  
+}
+.next-btn {
+  margin-top: 3rem !important;
+  margin-right: 1rem;
+}
+
+.heading{
+    padding-bottom: 2%;
+}
+
+// li {
+//   font-size: 30px;
+// }
+// li span {
+//   font-size: 18px;
+// }
+
+.otp{
+ text-align:left;
+ font-weight: bold;
+ padding-left:18%;
+ padding-top:7%;
+ font-family: 'Source Sans Pro', sans-serif;
+ font-size: 16px;
+}
+
+.resend{
+  color:#5F5F5F;
+  text-decoration: underline;
+ padding:1px 5px 10px 5px ;
+ text-align: left;
+}
+
+.btn-section{
+  padding-top:10%;
+}
+
+.timer{
+color: #FF715B;
+text-align: right;
+padding-right: 20%;
+}
+
+.error{
+  color: #FF715B;
+}
+
+ul.leaf {
+  list-style-image: url('/assets/imgs/greenColorTickIcon.svg');
+  }
+
+.upload-doc{
+  text-align:center;
+  font-weight: bold;
+  padding-top: 2px;
+  //  padding-left:40px;
+  // padding-right: -20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  backface-visibility: hidden;
+}

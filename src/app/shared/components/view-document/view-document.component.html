@@ -1,0 +1,335 @@
+<ion-content>
+  <ion-toolbar>
+      <div class="durity-back-btn">
+          <ion-buttons slot="start">
+              <ion-button slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+                  <ion-icon name="ios-arrow-back"></ion-icon>
+                  <small style="font-weight: bold;">Back</small>
+              </ion-button>
+          </ion-buttons>
+      </div>
+      <div class="select-doc">
+          <ion-label> Document Information</ion-label>
+      </div>
+      <ion-buttons slot="end">
+          <ion-button slot="icon-only" fill="clear" (click)="goto('home')">
+              <span style="color:#FF715B;font-size:25px;">
+                  <ion-icon name="home"></ion-icon>
+              </span>
+          </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+  <div class="doc-section">
+      <ion-card style="height: 90px;padding-left: 5%;border-radius: 5px;">
+      <ion-row class="ion-justify-content-center">
+          <ion-col size="5" style="padding-top: 10px;" text-center>
+              <!-- <img src="/assets/imgs/normal_doc.svg" alt="doc"> -->
+              <div  *ngIf= "lockToshow === true">
+                  <span>
+                      <img style="height: 62px;" src="/assets/imgs/Doc_icon_with_lock.svg" alt="doc">
+                  </span>
+              </div>
+              <div  *ngIf= "lockToshow === false">
+                  <span>
+                      <img style="height: 62px;" src="/assets/imgs/Doc_icon_without_lock.svg" alt="doc">
+                  </span>
+              </div>
+          </ion-col>
+          <ion-col size="7">
+              <div *ngIf="editFile == false" class="file-data font-14" style="padding-top: 20px;">
+                  <ion-label ><label style="font-weight: bold;">{{fileName}}</label></ion-label> <br>
+                  <!-- <ion-input *ngIf="editFile == true" placeholder="Name of document  (Ex:Insurance)" [(ngModel)]='editableFileName'></ion-input><br> -->
+
+                  <!-- <ion-label><label style="font-weight: bold;">Upload On:</label>  {{uploadedDate |  date: 'dd MMM yyyy H:mm'}}</ion-label> <br>
+                  <ion-label *ngIf = "nofileSize === false"><label style="font-weight: bold;">Size:</label>{{fileSize}}MB</ion-label> <br> -->
+              </div>
+              <div *ngIf="editFile == true" class="file-data font-14" style="padding-top: 20px;">
+                  <!-- <ion-label *ngIf="editFile == false"><label style="font-weight: bold;">{{editableFileName}}</label></ion-label> <br> -->
+                  <ion-input  placeholder="Name of document  (Ex:Insurance)" [(ngModel)]='editableFileName'></ion-input><br>
+                  <!-- <ion-label><label style="font-weight: bold;">Upload On:</label>  {{uploadedDate |  date: 'dd MMM yyyy H:mm'}}</ion-label> <br>
+                  <ion-label *ngIf = "nofileSize === false"><label style="font-weight: bold;">Size:</label>{{fileSize}}MB</ion-label> <br> -->
+              </div>
+              <!-- <small class="error" *ngIf="showerr == true ">Please enter file name</small> -->
+
+
+              <div >
+                  <p class="ma-0 mr-1">
+                      <span class="float-right durity-links font-bold font-18" (click)="showFileDetails()" >
+                          <ion-icon name="ios-arrow-down" style="font-size: 10px;color: #1473E7;"></ion-icon>
+                          <small style="font-size: 10px;color: #1473E7;">Show Details</small></span>
+                  </p>
+              </div>
+              <!-- <div>
+                  <ion-item lines="none" slot='end' style="font-size: 8px;color: #1473E7;"></ion-item>
+                  <ion-icon name="ios-arrow-down" style="font-size: 8px;color: #1473E7;"></ion-icon>
+                  <ion-label style="font-size: 8px;color: #1473E7;">SHOW DETAILS</ion-label> <br>
+                  </div> -->
+                  <!-- <ion-label><label style="font-weight: bold;">Upload On:</label>  {{uploadedDate |  date: 'dd MMM yyyy H:mm'}}</ion-label> <br>
+                  <ion-label *ngIf = "nofileSize === false"><label style="font-weight: bold;">Size:</label>{{fileSize}}MB</ion-label> <br> -->
+              
+          </ion-col>
+      </ion-row>
+  </ion-card>
+      <div class="btn-section">
+          <ion-row text-center>
+              <ion-col size="6">
+                  <div>
+                      <ion-button color="light" (click)="deleteAttachment(fileId)">
+                          <ion-icon slot="start" src="assets/imgs/baseline-delete-24px(3).svg"></ion-icon>
+                          <span style="text-transform: capitalize">Delete</span>
+                      </ion-button>
+                  </div>
+              </ion-col>
+              <ion-col size="6">
+                  <div>
+                      <ion-button color="primary" (click)="download(fileId,fileName)">
+                          <ion-icon slot="start" src="assets/imgs/cloud_download-24px.svg"></ion-icon>
+                          <span style="text-transform: capitalize">Download</span>
+                      </ion-button>
+                  </div>
+              </ion-col>
+          </ion-row>
+      </div>
+      <!-- <div  *ngIf="globalVariablesProvider.isUserAclient == true">
+         
+          
+      </div> -->
+      <div *ngIf="editFile == false" class="shared_section">
+          <ion-item *ngIf="globalVariablesProvider.isUserAclient == true && isFinAdv == false" style="padding-top: 30px;" lines="none">
+              <ion-label style=" font-size: 14px;padding-left: 6%;
+              color:black;
+              font-weight: bold;" >
+                  Give Access to Advisor 
+              </ion-label>
+              <ion-toggle  color='primary'  slot="end" disabled="true">
+              </ion-toggle>
+          </ion-item>
+          <p class="sharing">
+              Beneficiaries :
+          </p>
+          <div class="shared_details">
+              <div *ngIf="tier1.length != 0 || null || undefined">
+                  <ion-card *ngFor="let tier of tier1">
+                      <ion-row>
+                        <ion-col size="1" class="details font-14">
+                          <!-- <p > -->
+                            <ion-icon style="height: 21px;width: 21px;" name="md-contact"></ion-icon>
+                            <!-- </p> -->
+                      </ion-col>
+                          <ion-col size="7" class="details font-14">
+                              <ion-label style="color: #333333;font-size: 14px;padding-top: 5px;">
+                                {{tier.firstName}}</ion-label>
+                            
+                          </ion-col>
+                          <ion-col size="4" class="revoke" >
+                              <label>Level 1</label>
+                          </ion-col>
+                      </ion-row>
+                  </ion-card>
+              </div>
+              <div *ngIf="tier2.length != 0 || null || undefined">
+                  <ion-card *ngFor="let tier of tier2">
+                      <ion-row>
+                        <ion-col size="1" class="details font-14">
+                          <!-- <p > -->
+                            <ion-icon style="height: 21px;width: 21px;" name="md-contact"></ion-icon>
+                            <!-- </p> -->
+                      </ion-col>
+                          <ion-col size="7" class="details font-14">
+                              <ion-label style="color: #333333;font-size: 14px;padding-top: 5px;">{{tier.firstName}}</ion-label>
+                              <!-- <ion-label>Email: {{tier.primaryEmail}}</ion-label><br>
+                              <ion-label>Ph: {{tier.mobilePhone}}</ion-label> -->
+                          </ion-col>
+                          <ion-col size="4" class="revoke" >
+                            <label>Level 2</label>
+                          </ion-col>
+                      </ion-row>
+                  </ion-card>
+              </div>
+              <div *ngIf="tier3.length != 0 || null || undefined">
+                  <ion-card *ngFor="let tier of tier3">
+                      <ion-row>
+                        <ion-col size="1" class="details font-14">
+                          <!-- <p > -->
+                            <ion-icon style="height: 21px;width: 21px;" name="md-contact"></ion-icon>
+                            <!-- </p> -->
+                      </ion-col>
+                          <ion-col size="7" class="details font-14">
+                              <ion-label>{{tier.firstName}}</ion-label>
+                              <!-- <ion-label>Email: {{tier.primaryEmail}}</ion-label><br>
+                              <ion-label>Ph: {{tier.mobilePhone}}</ion-label> -->
+                          </ion-col>
+                          <ion-col size="4" class="revoke" >
+                            <label>Level 3</label>
+                          </ion-col>
+                      </ion-row>
+                  </ion-card>
+              </div>
+          </div>
+          <div *ngIf="(tier3.length != 0 || null || undefined) || (tier2.length != 0 || null || undefined) || (tier1.length != 0 || null || undefined)" class="add-more">
+          <ion-button (click)="editDetails()" expand="block"  class="add-btn">
+            <div style="color:white;font-size:25px;padding-right:8px;">
+              <ion-icon name="person-add"></ion-icon>
+            </div>
+            <span style="text-transform:capitalize">Add More</span>
+          </ion-button>
+        </div>
+        <div *ngIf="(tier3.length == 0 || null || undefined) && (tier2.length == 0 || null || undefined) && (tier1.length == 0 || null || undefined)" class="add-more">
+          <ion-button (click)="editDetails()" expand="block"  class="add-btn">
+            <div style="color:white;font-size:25px;padding-right:8px;">
+              <ion-icon name="person-add"></ion-icon>
+            </div>
+            <span style="text-transform:capitalize">Add Beneficiary</span>
+          </ion-button>
+        </div>
+      </div>
+
+      <div *ngIf="editFile == true">
+          <ion-item *ngIf="globalVariablesProvider.isUserAclient == true && isFinAdv == false" style="padding-top: 30px;" lines="none">
+              <ion-label style=" font-size: 14px;padding-left: 6%;
+              color:black;
+              font-weight: bold;" >
+                  Give Access to Advisor 
+              </ion-label>
+              <ion-toggle  color='primary' [(ngModel)]="advisorAccess" slot="end" (ionChange)="advAccess()">
+              </ion-toggle>
+          </ion-item>
+      <ion-row  >
+          <ion-col size="6">
+            <p class="sharing">Share With Beneficiary:</p>
+          </ion-col>
+  
+          <ion-col size="2">
+            <p class="sharing">Levels:</p>
+          </ion-col>
+          <ion-col size="4">
+  
+            <div class="help-btn">
+              <ion-icon name="help-circle" (click)="AddRec()"></ion-icon>
+              <span class="tooltiptext">Recommendation</span>
+            </div>
+  
+          </ion-col>
+  
+  
+        </ion-row>
+
+        <div class="select-type" [formGroup]="beneficiaryForm">
+          <div formArrayName="Beneficiaries"
+            *ngFor="let beneficiary of beneficiaryForm.controls.Beneficiaries['controls']; let idx = index;">
+            <ion-row align-items-center [formGroupName]="idx" *ngIf="contacts.length + 1 > idx">
+              <ion-col size="6">
+
+                <ion-select *ngIf="contacts.length == 0"  placeholder="Select One" 
+                class="selector select-popOver" (click)="toastForAddContcts()" >
+               
+              </ion-select>
+    
+                <!-- <ion-item lines="none"> -->
+                <ion-select *ngIf="contacts.length != 0"  [interfaceOptions]="customAlertOptions" interface="alert" placeholder="Select One" formControlName="contact_id"
+                  class="selector select-popOver" (ionChange)="checkIfEmailExists($event.target.value)">
+                  <ion-select-option [value]="contact._id" *ngFor="let contact of contacts; let i = index" class="option">
+                    {{contact.firstName.length > 10? contact.firstName.substring(0,10)+"...": contact.firstName}}
+                   
+                  </ion-select-option>
+                  <!-- <ion-select mode="ios" >
+                    <ion-select-option value="add-contact" class="noRadio" >
+                    <label style="color: red;">  Add Contact </label>
+                    </ion-select-option>
+                    </ion-select>
+                  <div>
+                    <ion-label>
+                      Contacts
+                    </ion-label>
+                    
+                  </div> -->
+    
+    
+                </ion-select>
+               
+                
+    
+                <!-- </ion-item> -->
+    
+              </ion-col>
+              <ion-col size="4.5">
+                <!-- <ion-item lines="none"> -->
+                <ion-select interface="popover" formControlName="tier" class="selector">
+                  <ion-select-option value="1" class="option">Beneficiary(L1)</ion-select-option>
+                  <ion-select-option value="2" class="option">Beneficiary(L2)</ion-select-option>
+                  <ion-select-option value="3" class="option">Guardian/Trustee</ion-select-option>
+                </ion-select>
+                <!-- </ion-item> -->
+              </ion-col>
+    
+              <ion-col size="1">
+                <span class="float-right delete-contact-btn">
+                  <ion-icon ios="ios-trash" md="md-trash" (click) = "deleteBen(idx,beneficiary)"></ion-icon>
+    
+                </span>
+    
+              </ion-col>
+    
+            </ion-row>
+    
+          </div>
+        </div>
+        <div class="add-more">
+          <ion-button type="submit" (click)="addMore()" class="add">
+            <!-- <div style="color:white;font-size:20px;padding-right:5px;">
+              <ion-icon name="person-add"></ion-icon>
+            </div> -->
+            <span class="add_more" style="text-transform: capitalize;">Add More</span>
+          </ion-button>
+        </div>
+      </div>
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="editFile == false" no-border>
+  <ion-toolbar class="durity-bg">
+       
+       <ion-item lines="none" class="durity-bg">
+      <!-- <button class=" skipbtn" (click)="skip()" >Skip</button> -->
+      <!-- <p (click)="cancelEditDetails()" class="skip font-16" >Cancel</p> -->
+      <button (click)="editDetails()" class="nextBtn font-16">Edit</button>
+  </ion-item>   
+ 
+
+  </ion-toolbar>
+</ion-footer>
+
+<ion-footer *ngIf="editFile == true" no-border>
+  <ion-toolbar class="durity-bg">
+       
+       <ion-item lines="none" class="durity-bg">
+      <!-- <button class=" skipbtn" (click)="skip()" >Skip</button> -->
+      <p (click)="cancelEditDetails()" class="skip font-16" >Cancel</p>
+      <button (click)="updateDetails()" class="nextBtn font-16">Update</button>
+  </ion-item>   
+ 
+
+  </ion-toolbar>
+</ion-footer>
+
+<!-- <ion-footer class="durity-bg" >
+  <ion-row  align-items-end>
+      <ion-col > -->
+      
+          <!-- <ion-button color="light"  style="float: right; right: 3%; position: relative;"> -->
+            <!-- <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon> -->
+            <!-- <span color="light"  style="float: right; right: 3%; position: relative;" class="encrypt_btn"><u>Cancel</u></span> -->
+          <!-- </ion-button> -->
+<!--       
+        </ion-col>
+    <ion-col >
+      
+      <ion-button color="light"  style="float: right; right: 3%; position: relative;"> -->
+        <!-- <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon> -->
+        <!-- <span class="encrypt_btn">Edit</span>
+      </ion-button>
+
+    </ion-col>
+  </ion-row>
+ 
+</ion-footer> -->

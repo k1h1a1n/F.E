@@ -1,0 +1,87 @@
+.select-doc{
+    text-align:center;
+    font-weight: bold;
+    padding-top: 1%;
+     padding-left:40px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+  }
+
+  .error{
+    color:darkred;
+    text-align: start;
+    padding:7%;
+    }
+
+  .login-padding{
+    padding: 2% 7% 2% 7%;
+    background-color: white;
+  }
+  .signin-input {
+    --background: var(--ion-color-light-tint);
+    --color: var(--ion-color-light-contrast);
+    border-radius: 5px;
+    height: 60px;
+    
+    ion-input{
+      font-size: 14px;
+      bottom: 10%;
+    }
+    
+  }
+  .signin-padding{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .mobile-number{
+    text-align:left;
+    color: black;
+    // font-weight: bold;
+    // padding-left:18%;
+    padding-top:7%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 11px;
+   }
+
+   .otp-signup-padding{
+    padding-top: 4%;
+    padding-bottom: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .signp-input {
+    // --background: #77B2F6 0% 0% no-repeat padding-box;
+    --background: var(--ion-color-light-tint) 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    color:black;
+    height: 38px;
+    border: 1px ;
+    border-radius: 5px;
+    padding-left: 10%;
+    padding-right: 10%;
+    // border-color: #2d3047;
+  
+    ion-input{
+      border-radius: 5px;
+      font-size: 14px;
+      bottom: 10%;
+      // color: #2d3047;
+    }
+  }
+
+  .timer{ 
+    // color: #FF715B;
+    text-align: right;
+    padding-right: 20%;
+    color: black;
+    }
+
+    .invalid-otp{ 
+      // color: #FF715B;
+      text-align: left;
+      padding-top: 10px;
+      font-size: 14px;
+      // padding-right: 20%;
+      color: red;
+      }

@@ -1,0 +1,45 @@
+.row{
+    border: 1px solid black;
+ }
+
+ .tick-mark{
+    padding-top: 10px;
+    font-size: 15px;
+    padding-right: 10px;
+   
+  }
+
+.x-mark{
+    padding-top: 10px;
+    font-size: 12px;
+    padding-right: 10px;
+}
+
+.error{
+  color:darkred;
+  text-align: start;
+  padding:7%;
+  }
+
+  .success{
+    color:#3BAE00;
+    text-align: start;
+    padding:7%;
+    }
+
+.form-input {
+  // --background: #77B2F6 0% 0% no-repeat padding-box;
+  --background: var(--ion-color-light-tint) 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  color:black;
+  height: 28px;
+  
+  ion-input{
+    font-size: 12px;
+    bottom: 10%;
+  }
+  }
+  .editIcon{
+    padding-left: 9px;
+    color: #4895F1;
+  }

@@ -1,0 +1,43 @@
+.info-section{
+    //height: 60%;
+    
+    .enter-form{
+      padding-top: 2%;
+      padding-left: 2%;
+      color: white;
+
+    }
+ 
+    .profile-input {
+        // --background: #77B2F6 0% 0% no-repeat padding-box;
+       // --background: var(--ion-color-light-tint) 0% 0% no-repeat padding-box;
+       background: #E5F0FF 0% 0% no-repeat padding-box;
+        border-radius: 5px;
+        color:black;
+        height: 41px;
+
+        ion-input{
+            font-size: 12px;
+            bottom: 10%;
+          }
+    }
+
+    .profile-display{
+        color:white;
+        height: 41px;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .update-button{
+        padding-top: 5%;
+
+    }
+       
+}
+.profile-padding{
+    padding-top: 1%;
+    padding-bottom: 2.5%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }

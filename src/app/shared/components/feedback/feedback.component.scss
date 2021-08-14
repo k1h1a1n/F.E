@@ -1,0 +1,49 @@
+.heading{
+    text-align: center;
+    font-size: 14px;
+    opacity: 1;
+    padding-top: 5%;
+}
+
+.title-input {
+   background: #E5F0FF 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    color:black;
+    height: 41px; 
+    border: 1px solid #DEDEDE;
+
+    ion-input{
+        font-size: 12px;
+        bottom: 10%;
+      }
+
+    
+}
+
+ input[type="radio"]{
+     margin: 0 0 0 10%;
+   }
+
+.description{
+    border-radius: 5px;
+    //height: 325px;
+    border: 1px solid #DEDEDE;
+
+    ion-textarea{
+        font-size: 12px;
+    }
+}
+
+.feedback-padding{
+    padding-top: 1%;
+    padding-bottom: 2.5%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .submit-button{
+    padding-top: 8%;
+    color:#4895F1;
+    padding-right: 5%;
+
+}

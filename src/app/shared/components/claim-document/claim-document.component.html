@@ -1,0 +1,194 @@
+
+  <ion-toolbar style="padding-top: 5%">
+    <div class="durity-back-btn">
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+            <ion-icon name="ios-arrow-back"></ion-icon>
+            <small style="font-weight: bold;">Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <div class = 'ion-text-center'>
+        <b>Claim Form</b>
+    </div>
+  </ion-toolbar>
+  
+ 
+  
+  <ion-content scroll = true>
+  <form [formGroup]="claimUsForm" (ngSubmit)="submitForm()" #reg="ngForm">
+    
+   
+    <div class = 'row'>
+      <div class = 'column'>
+        <div style = "padding-left: 14%; padding-bottom: 5%; padding-top: 5%; ">Durity Id</div>
+      </div>
+      <div class = 'column'>
+        <div class=input-padding>
+          <ion-item class = 'disablecolor'>
+           <ion-input type="text"  formControlName = 'DurityId' disabled></ion-input>
+          </ion-item>
+        </div>
+      </div>
+    </div>   
+    
+    <div class = 'row'>
+      <div class = 'column'>
+        <div style = "padding-left: 14%; padding-bottom: 5%;padding-top: 5%;">Benefactor's Durity Id</div>
+      </div>
+      <div class = 'column'>
+        <div class=input-padding>
+          <ion-item class=title-input>
+             <ion-input type="text" placeholder="DUXXXXXX" formControlName = "BeneDuriId"></ion-input>
+          </ion-item>
+        </div>
+        <div class="profile-padding"
+        *ngIf="claimUsForm.get('BeneDuriId').invalid && 
+         (claimUsForm.get('BeneDuriId').touched || 
+        claimUsForm.get('BeneDuriId').dirty || reg.submitted)">
+       
+        <small class="error" *ngIf="claimUsForm.get('BeneDuriId').errors.required">
+            This field is required.
+        </small>
+        <small class="error" *ngIf = "claimUsForm.get('BeneDuriId').errors.minlength">
+            Id should be of minimum 6 characters.
+        </small>
+        <small class = 'error' *ngIf = "claimUsForm.get('BeneDuriId').errors.maxlength">
+            Id cannot be more than 8 characters.
+        </small>
+      </div>
+      </div>
+    </div>
+  
+  
+    <div style = "padding-left: 7%">Your Aadhar Number</div>
+    <div class=input-padding1>
+      <ion-item class=title-input>
+         <ion-input type="text" placeholder="1234 3456 5678"  formControlName = 'AadharId'></ion-input>
+      </ion-item>
+      <div *ngIf="claimUsForm.get('AadharId').invalid && 
+                   (claimUsForm.get('AadharId').touched || 
+                  claimUsForm.get('AadharId').dirty || reg.submitted)">
+                 
+      <small class="error" *ngIf="claimUsForm.get('AadharId').errors.required">
+        This field is required.
+      </small>
+      <small class="error" *ngIf = "claimUsForm.get('AadharId').errors.minlength || 
+                      claimUsForm.get('AadharId').errors.maxlength">
+                      Aadhar Number should consist of 12 characters.
+      </small>
+      </div>
+    </div>
+    
+    <div style = "padding-left: 7%">Benefactor's Aadhar Number</div>
+      <div class=input-padding1>
+          <ion-item class=title-input>
+             <ion-input type="text" placeholder="1234 3456 5678"  formControlName = 'BenefactorId'></ion-input>
+          </ion-item>
+          <div *ngIf="claimUsForm.get('BenefactorId').invalid && 
+                       (claimUsForm.get('BenefactorId').touched || 
+                      claimUsForm.get('BenefactorId').dirty || reg.submitted)">
+                     
+        <small class="error" *ngIf="claimUsForm.get('BenefactorId').errors.required">
+                          This filed is required.
+        </small>
+        <small class="error" *ngIf = "claimUsForm.get('BenefactorId').errors.minlength || 
+                          claimUsForm.get('BenefactorId').errors.maxlength">
+                          Aadhar Number should consist of 12 characters.
+        </small>
+        </div>
+      </div>
+  
+       
+     
+      
+    <div style = "padding-left: 7%">Upload Benefactor's Death Certificate</div>
+    <div class=input-padding1>
+      <ion-item class=title-input>
+        <div style="text-align:center">
+          <ion-grid>
+            <ion-row>
+              <ion-col size = 10>
+                <ion-input  placeholder = 'Upload Death Certificate' formControlName = 'DeathCertificate'
+          disabled>
+        </ion-input>
+              </ion-col>
+              <ion-col size = 1 >
+                <ion-buttons>
+                  <ion-button slot = 'icon-only' (click) = 'fileUpload()'>
+                    <ion-icon style="margin-left: 28px;margin-bottom: 10px;" src = "assets/imgs/backup.svg"  size = 'small' >
+                            
+                    </ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+
+
+         
+          <!-- <div class = file>
+          </div> -->
+          
+        
+        
+        </div>
+        
+             
+       
+            
+      </ion-item>
+      <div *ngIf="claimUsForm.get('DeathCertificate').invalid && 
+                   (claimUsForm.get('DeathCertificate').touched || 
+                  claimUsForm.get('DeathCertificate').dirty || reg.submitted)">
+        <small class="error" *ngIf="claimUsForm.get('DeathCertificate').errors.required">
+                    This filed is required.
+        </small>
+      </div>
+    </div>
+   <ion-row style="height:180px"></ion-row>
+    
+  
+   <!-- <div style="position: fixed;top:575px; left: 0px; width: 100%"> -->
+    <div style ="left: 0px; width: 100%;">
+      <ion-grid> 
+        <ion-row>
+          <ion-col style = "padding-left: 7%;padding-top: 5%">
+            <input type = checkbox  color = 'primary' formControlName = 'checkBox'>
+          </ion-col>
+           
+          <ion-col size = '10'>
+            <div class="ion-text-nowrap">
+              <span style="font-size: 12px;">
+                I acknowledge that the above information is correct<br>
+                and I shall be liable to prove the same.<br>
+            </span>
+            </div>
+            
+            <div *ngIf="claimUsForm.get('checkBox').invalid && 
+                   (claimUsForm.get('checkBox').touched || 
+                  claimUsForm.get('checkBox').dirty || reg.submitted)">
+           <small class="error1" *ngIf="claimUsForm.get('checkBox').errors.required">
+                 <b>Please accept to our Terms to continue.</b>
+           </small>
+            </div>
+           
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  
+    
+    <div style="bottom: 0px; left: 0px; width: 100%" id = copyright>
+    
+  <!-- <ion-footer no-border style = "position: absolute;"> -->
+    
+    <ion-toolbar class = "durity-bg">
+      <ion-item lines = 'none' class = 'durity-bg'>
+        <button  type = 'submit' class="nextBtn"><b>Submit</b></button>
+      </ion-item>
+    </ion-toolbar>
+   </div>
+  </form>
+ </ion-content> 

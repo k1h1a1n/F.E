@@ -1,0 +1,40 @@
+<!--<div>
+  <section class="progress-section">
+    <ol class="progress-bar">
+      <li class="is-complete"><span></span></li>
+      <li class="is-complete"><span></span></li>
+    </ol>
+  </section>
+</div>-->
+
+<div class="willCategory">
+  <div class="will" >
+    <img class="willImg" src="../../../../../assets/imgs/will icon.svg">
+    <span class="willInfo">Use the template designed by our lawyers & create your Will in just 5 minutes.</span>
+  </div>
+  <div  class="willDoc">
+    <ion-row class="willDocData">
+      <ion-col size="2" ><span class="number">1</span></ion-col>
+      <ion-col size="10"> Click on the "Create your Will" option in the home screen.</ion-col>
+    </ion-row>
+    <ion-row class="willDocData">
+      <ion-col size="2" ><span class="number">2</span></ion-col>
+      <ion-col size="10"> Enter your family details.</ion-col>
+    </ion-row>
+    <ion-row class="willDocData">
+      <ion-col size="2" ><span class="number">3</span></ion-col>
+      <ion-col size="10" class="willInfoThree"> Download the Will, print it & get it signed along with 2 witnesses to make it legally valid.</ion-col>
+    </ion-row>
+    <ion-row class="willQes">
+      <p *ngFor="let questions of willQes"><a href="https://will.durity.life/">{{questions}}</a></p>
+    </ion-row>
+  </div>
+</div>
+
+<ion-footer class="getStarted-btn">
+  <div >
+  <button (click)="getStarted()">
+   Get Started
+  </button>
+</div>
+</ion-footer>

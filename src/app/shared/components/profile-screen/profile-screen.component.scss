@@ -1,0 +1,209 @@
+.home{
+    color:#FF715B;
+    font-size:20px;
+}
+.back{
+  color:white;
+  padding-right: 24%;
+  padding-bottom: 10px;
+}
+.profile{
+    text-align:center;
+   font-weight: bold;
+   position: relative;
+   display: inline-block;
+   padding-top: 10px;
+   //padding-left:40%;
+   padding-bottom:15px;
+   font-family: 'Source Sans Pro', sans-serif;
+   font-size: 18px;
+   color:white;
+ }
+
+ .login-padding{
+    //padding: 2% 7% 2% 7%;
+    // border: 5px;
+    // background-color: #78B2F71A;
+    // border-color: #2D3047;
+  }
+  .checkbox-pad{
+    // padding: 1% 5% 1% 5%;
+    padding: 0% 2% 0% 2%;
+
+    border: 5px;
+    // background-color: white;
+    border-color: #2D3047;
+  }
+  .logo{
+    padding: 2% 7% 2% 7%;
+    background-color: white;
+  }
+  .signin-input {
+    // --background: var(--ion-color-light-tint);
+    --color: var(--ion-color-light-contrast);
+   // --ion-item-border-color: #2D3047;
+    border-radius: 5px;
+    border-radius: 5px;
+    // color:#2D3047;
+    height: 38px;
+    // border: 1px solid #2d3047;
+    // border-color: #2d3047;
+    // padding: 2% 7% 2% 7%;
+    // border: 5px;
+    // border-color: #2D3047;
+    height: 50px;
+    // background-color: #78B2F71A;
+    ion-input{
+      font-size: 16px;
+    //   bottom: 10%;
+    }
+    
+  }
+  .checkbox-input {
+    // --background: var(--ion-color-light-tint);
+    --color: var(--ion-color-light-contrast);
+    --ion-item-border-color: #2D3047;
+    border-radius: 5px;
+    border-radius: 5px;
+    color:#2D3047;
+    // height: 20px;
+    border: 1px solid #2d3047;
+    border-color: #2d3047;
+    // padding: 2% 7% 2% 7%;
+    // border: 5px;
+    // border-color: #2D3047;
+    // height: 38px;
+    
+    ion-input{
+      font-size: 14px;
+    //   bottom: 10%;
+    }
+    
+  }
+  .error{
+    color:darkred;
+    text-align: start;
+    padding:7%;
+    }
+
+ 
+
+.profile-pic{
+    // padding-top: 5%;
+    height: 20%;
+
+    .img{
+            width:120px;
+            height:120px;
+        }
+
+    ion-fab{
+        size: 39px;
+         position: relative;
+    }
+
+    ion-fab-button{
+        size: 39px;
+        color: light;
+    }
+
+    ion-icon{
+        // size: 300px;
+        width:70px;
+        height:70px;
+    }
+
+    .durityid{
+        padding-bottom: 20px;
+        text-align: center;
+        // bottom: 2px;
+    }
+
+    .ion-avatar {
+      width:100% !important;  
+      height : 100% !important;  
+      max-width: 156px !important;  //any size
+      max-height: 100px !important;
+      .profileImg {
+          width : 162px !important;
+          height : 162px !important
+      }
+      .camaraIcon{
+          margin-top: -42px;
+          margin-left: 104px;
+      }
+  }
+    
+    
+}
+
+.info-section{
+    height: 60%;
+    // background: transparent linear-gradient(180deg, #78B2F7 0%, #4895F1 100%) 0% 0% no-repeat padding-box;
+    
+
+    .enter-form{
+      padding-top: 2%;
+      padding-left: 2%;
+    //   color: white;
+    //   background: #4895F1;
+    }
+
+    .profile-padding{
+        padding-top: 1%;
+        padding-bottom: 0.5%;
+        padding-left: 2%;
+        padding-right: 7%;
+        // padding: 1% 10% 2.5% 10%;
+      }
+    
+    .secondary-profile-padding
+    {
+        padding-bottom: 2.5%;
+        padding-left: 5%;
+        padding-right: 7%;
+    }
+
+    .profile-display{
+        // color:white;
+        height: 41px;
+        font-weight: 600;
+        font-size: 14px;
+
+        .details-padding{
+            padding-left: 2%;
+            position: relative;
+        }
+
+        .type-padding{
+            padding-right: 10%;
+            position: relative;
+        }       
+    }
+}
+
+.ion-avatar {
+    width:100% !important;  
+    height : 100% !important;  
+    max-width: 156px !important;  //any size
+    max-height: 100px !important;
+    .profileImg {
+        width : 120px !important;
+        height : 120px !important
+    }
+    .camaraIcon{
+        margin-top: -42px;
+        margin-left: 104px;
+    }
+}
+
+// .camaraIcon {
+//     color: transparent;
+// }
+// .camaraIcon:hover {
+//     color: #2D3047 !important;
+// }
+  
+
+
+  

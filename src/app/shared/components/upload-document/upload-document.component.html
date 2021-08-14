@@ -1,0 +1,261 @@
+<ion-content>
+
+  <ion-toolbar>
+    <div class="durity-back-btn">
+      <ion-buttons slot="start" *ngIf="this.globalvariablesProvider.addBeneficiaries === false">
+        <ion-button slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+          <ion-icon name="ios-arrow-back"></ion-icon>
+          <small style="font-weight: bold;">Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <div class="durity-back-btn">
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" fill="clear" size="small" (click)="Back()" class="back-btn">
+          <ion-icon name="ios-arrow-back"></ion-icon>
+          <small style="font-weight: bold;">Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <div class="upload-doc" *ngIf="this.globalvariablesProvider.addBeneficiaries === false">
+      <ion-label>Upload Document</ion-label>
+    </div>
+
+  </ion-toolbar>
+
+  <div class="upload-content">
+    <ion-card class="doc-card" *ngIf="this.globalvariablesProvider.addBeneficiaries === false">
+      <!-- <ion-card class="doc-card"> -->
+      <ion-row align-items-center>
+        <ion-col size="4" class="doc">
+          <div class="image-icon">
+            <img src="assets/imgs/normal_doc.svg">
+          </div>
+        </ion-col>
+        <ion-col size="8">
+          <!-- <div class="font-16" padding-start>
+              <img [src]="base64Image">
+            </div> -->
+          <ion-card-header>
+            <!-- <ion-card-title>{{textFileName}}</ion-card-title> -->
+            <ion-item class="signin-input" lines="none" style="--ion-background-color:rgb(217, 235, 255);">
+              <ion-input  placeholder="Name of document  (Ex:Insurance)" [(ngModel)]='editableFileName'></ion-input>
+           <ion-icon name="create"></ion-icon>
+          </ion-item>
+            <!--<ion-label>Uploaded On: {{uploadDate |  date: 'dd MMM yyyy'}}-->
+            <!-- <small>Size:{{bytes}}MB</small><br> -->
+            <ion-label><small>Size:  {{fileSize}}MB</small></ion-label>
+          </ion-card-header>
+
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+
+
+
+    <!-- <ion-progress-bar color="success" value="0.5"></ion-progress-bar> -->
+    <!--<div class="file-name" *ngIf="this.globalvariablesProvider.addBeneficiaries === false">
+      <ion-item lines="none">
+        <ion-label class="name">Name:</ion-label>
+        <ion-input placeholder="Name of document  (Ex:Insurance)" [(ngModel)]='editableFileName'></ion-input>
+      </ion-item>
+
+    </div>-->
+
+    <ion-list>
+      <ion-item lines="none">
+        <ion-col size=4>
+        <p class="name">Category:</p>
+      </ion-col>
+        <ion-col size=8>
+        <ion-select  *ngIf="userRecords.length !=0 " interface = 'popover' [compareWith]="compareFn"  
+              class =  'selector' [(ngModel)] = 'category' (ionChange)="chooseCategory($event)">
+          <!--  <ion-select-option *ngFor="let r of records" value = {{r.category}}>
+            {{r.category}}
+          </ion-select-option> -->
+         <!--  <ion-select-option value = 4>
+           4
+          </ion-select-option> -->
+         <ion-select-option *ngFor="let r of userRecords" value = {{r.category}}>
+            {{r.category}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      </ion-item>
+    </ion-list>
+
+    <div class="selection">
+      <ion-item  *ngIf="isAclient == true && isFinAdv == false"  lines="none">
+        <ion-label style=" font-size: 14px;
+        color:black;
+        font-weight: bold;" >
+            Give Access to Advisor 
+        </ion-label>
+        <ion-toggle  color='primary' [(ngModel)]="advisorAccess" slot="end" (ionChange)="advAccess()">
+        </ion-toggle>
+    </ion-item>
+
+      <ion-row >
+        <ion-col size="6">
+          <p class="name">Add Beneficiary:</p>
+        </ion-col>
+
+        <ion-col size="2">
+          <p class="name">Levels:</p>
+        </ion-col>
+        <ion-col size="4">
+
+          <div class="help-btn">
+            <ion-icon name="help-circle" (click)="AddRec()"></ion-icon>
+            <span class="tooltiptext">Recommendation</span>
+          </div>
+
+        </ion-col>
+
+
+      </ion-row>
+    </div>
+
+    <div class="select-type" [formGroup]="beneficiaryForm">
+      <div formArrayName="Beneficiaries"
+        *ngFor="let beneficiary of beneficiaryForm.controls.Beneficiaries['controls']; let idx = index;">
+        <ion-row align-items-center [formGroupName]="idx" *ngIf="contacts.length + 1 > idx">
+          <ion-col size="4.5" no-padding no-margin>
+            <ion-select *ngIf="contacts.length != 0" interface="popover" placeholder="Select One " formControlName="contact_id"
+              class="selector select-popOver" (ionChange)="checkIfEmailExists($event.target.value)">
+              <ion-select-option [value]="contact._id" *ngFor="let contact of contacts; let i = index" class="option">
+                {{contact.firstName.length > 10? contact.firstName.substring(0,10)+"...": contact.firstName}}
+               
+              </ion-select-option>
+              <!-- <ion-select mode="ios" >
+                <ion-select-option value="add-contact" class="noRadio" >
+                <label style="color: red;">  Add Contact </label>
+                </ion-select-option>
+                </ion-select> -->
+              <!--<div>
+                <ion-label>
+                  Contacts
+                </ion-label>
+                
+              </div>-->
+
+
+            </ion-select>
+            
+            <ion-select *ngIf="contacts.length == 0"  placeholder=" No Contacts Added"
+            class="selector select-popOver">
+           </ion-select>
+          
+          
+            <!-- <ion-item lines="none"> -->
+           
+            
+
+            <!-- </ion-item> -->
+          
+          </ion-col>
+          
+          <ion-col size="1" no-padding no-margin>
+            <ion-button no-padding no-margin class="button-block" (click)="addContact()">
+              <ion-icon name="person-add"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="0.5"></ion-col>
+          <ion-col size="4.5">
+            <!-- <ion-item lines="none"> -->
+            <ion-select interface="popover" formControlName="tier" class="selector">
+              <ion-select-option value="1" class="option">Beneficiary(L1)</ion-select-option>
+              <ion-select-option value="2" class="option">Beneficiary(L2)</ion-select-option>
+              <ion-select-option value="3" class="option">Guardian/Trustee</ion-select-option>
+            </ion-select>
+            <!-- </ion-item> -->
+          </ion-col>
+
+          <ion-col size="1.5">
+            <span class="float-right delete-contact-btn">
+              <ion-icon ios="ios-trash" md="md-trash" (click)="deleteBen(idx)"></ion-icon>
+
+            </span>
+
+          </ion-col>
+
+        </ion-row>
+
+      </div>
+    </div>
+    <div class="add-more">
+      <ion-button type="submit" (click)="addMore()" class="add">
+        <div style="color:white;font-size:20px;padding-right:5px;">
+          <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+        </div>
+        <span class="add_more">Add More</span>
+      </ion-button>
+    </div>
+    
+
+   
+
+  </div>
+
+</ion-content>
+
+<!--Login Footer-->
+<ion-footer class="durity-bg"
+  *ngIf="this.globalvariablesProvider.addBeneficiaries === false && isUserEncryptionEnabled === true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8">
+        <div>
+          <ion-button color="light" (click)="encryptUpload(editableFileName)">
+            <ion-icon slot="start" src="assets/imgs/secure-upload.svg"></ion-icon>
+            <span class="encrypt_btn">Advanced Encryption</span>
+          </ion-button>
+        </div>
+      </ion-col>
+
+      <ion-col size="4">
+        <div>
+          <ion-button color="light" (click)="uploadFile(extraSecurity, '', 'log-in', editableFileName)">
+            <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon>
+            <span class="encrypt_btn">Upload</span>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+
+<!--Normal Upload-->
+<ion-footer class="durity-bg"
+  *ngIf="this.globalvariablesProvider.addBeneficiaries === false && isUserEncryptionEnabled === false">
+ 
+  <ion-row  align-items-end>
+    <ion-col >
+      
+        <ion-button color="light" (click)="uploadFile(extraSecurity, '', 'log-in', editableFileName)" style="float: right; right: 3%; position: relative;">
+          <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon>
+          <span class="encrypt_btn">Upload</span>
+        </ion-button>
+    </ion-col>
+  </ion-row>     
+</ion-footer>
+
+
+<ion-footer class="durity-bg" *ngIf="this.globalvariablesProvider.addBeneficiaries === true">
+  <ion-row  align-items-end>
+    <ion-col >
+      <ion-button color="light" (click)="addMoreBeneficiaries()" style="float: right; right: 3%; position: relative;">
+        <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon>
+        <span class="encrypt_btn">Finish</span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <!-- <div>
+    <ion-button color="light" (click)="addMoreBeneficiaries()" style="float: right; right: 3%; position: relative;">
+      <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon>
+      <span class="encrypt_btn">Finish</span>
+    </ion-button>
+  </div> -->
+</ion-footer>

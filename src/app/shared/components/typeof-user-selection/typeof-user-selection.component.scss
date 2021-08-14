@@ -1,0 +1,56 @@
+.login-padding{
+    padding: 2% 7% 2% 7%;
+    background-color: white;
+  }
+
+  button[fab].fab-map {
+    top: calc(100% - 35px);
+    z-index: 50;
+  }
+
+  .error{
+    color:darkred;
+    // text-align: start;
+    padding:7%;
+  }
+
+  .oneCardData {
+    // --ion-background-color: pink;
+    border-color: red;
+  }
+
+  .zerocard{
+    border-color:blue;
+
+  }
+
+
+  //Hemanth
+  .financeAdviserCard {
+    height: 27px;
+    padding: 0 7px;
+    
+  }
+  .adviserInfo {
+    margin-top: -10px;
+  }
+  .adviserType {
+    height: 143px;
+  }
+  
+  .sc-ion-card-md-h  {
+    margin-top:-14px !important;
+    margin-bottom: 0px !important;
+  }
+  .checkMarkIcon {
+    color: #4895F1;
+    padding: 5px;
+    float: right;
+    font-size: 16px;
+  }
+  .adviserBankType {
+    height: 182px;
+  }
+  .sc-ion-input-md-h {
+    --padding-start: 0px !important;
+  }

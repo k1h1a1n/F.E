@@ -1,0 +1,78 @@
+
+<ion-content  class="no-scroll">
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button slot="icon-only" fill="clear" (click)="close()">
+             <ion-icon src="assets/imgs/baseline-close-24px.svg"></ion-icon>
+            
+            </ion-button>
+          </ion-buttons>
+    </ion-toolbar>
+  <p class="font-16">These are just recommendations for the levels.You may assign levels according to your wish</p>
+  <div class="card">
+  <ion-card>
+   <div class="block">
+    <div class="level">
+      Beneficiary(L1):
+      </div>
+  </div>
+      <ion-row class="greet" align-items-center>
+          
+          <ion-col size="4">
+            <img src="assets/imgs/Group 396.svg" class="welcome-image">
+          </ion-col>
+          <ion-col size="8" >
+              <span>e.g:<span class="level1 font-14">Spouse</span></span><br>
+              <span>Beneficiary(L1) trustee can claim the documents in-case of emergency. If there is no surviving Beneficiary(L1), then Beneficiary(L2) / Guardian/Trustee can claim the document.</span>
+            </ion-col>
+        </ion-row>
+ 
+      </ion-card>
+    </div>
+    <div class="card">
+      <ion-card >
+          <div class="block">
+              <div class="level">
+                Beneficiary(L2):
+                </div>
+            </div>
+          <ion-row class="row" align-items-center>
+              
+              <ion-col size="4">
+                 
+                <img src="assets/imgs/Group 392.svg" class="welcome-image">
+                
+              </ion-col>
+              <ion-col size="8" >
+                  <span>e.g:<span class="level2 font-14">Children</span></span><small class="font-12">(If Major)</small><br>
+                  <span class="relation">Parents (Or) Siblings</span><br><small class="minor font-12">(if your children are minor)</small><br>
+                  <span>Beneficiary(L2) will be the recipient of your document in the absence of Beneficiary(L1).</span>
+             </ion-col>
+            </ion-row>
+     
+          </ion-card>
+        </div>
+        <div class="card">
+          <ion-card>
+              <div class="block">
+                  <div class="level">
+                    Guardian/Trustee:
+                    </div>
+                </div>
+              <ion-row class="row" align-items-center>
+                  
+                  <ion-col size="4">
+                    <img src="assets/imgs/Group 393.svg" class="welcome-image">
+                  </ion-col>
+                  <ion-col size="8" >
+                      <span>e.g:</span><span  class="level2 font-14">Parents, In-laws, Siblings C.A,</span><br><span class="relation">Lawyer</span> <br>
+                      <span>Guardian/Trustee will be the recipient of your document in the absence of Beneficiary(L1) / Beneficiary(L2).</span>
+                    </ion-col>
+                </ion-row>
+         
+              </ion-card>
+            </div>
+            <div class="button">
+            <ion-button (click)="close()">CLose</ion-button>
+          </div>
+</ion-content>

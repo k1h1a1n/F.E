@@ -1,0 +1,70 @@
+<ion-header *ngIf="image.length != 0 ">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Durity Scanner
+    </ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="image !== null || image.length != 0" >
+  <!-- <p class="textCenter" *ngIf="image.length === 0 ">
+    Please Upload Images
+  </p> -->
+  <ion-card  *ngFor="let image of image; let i = index" >
+  <ion-img id="myImage"  [src]="image.image"></ion-img>
+</ion-card>
+</ion-content>
+<!-- <ion-content *ngIf="image === null">
+  <p class="textCenter">Created your images to pdf Successfully</p>
+<ion-button   class="downloadbtn" (click)="printPriview()" expand="full" color="success">
+
+  Print Priview</ion-button>
+</ion-content> -->
+<div style="text-align: right;padding-right: 10px;">
+<ion-row *ngIf="image.length != 0 ">
+<ion-col style="align-content: right;" >
+  <div>
+    <ion-button (click)="captureImage(1)" color="primary" >
+      <ion-icon slot="start" name="camera"></ion-icon>
+      <label  class="encrypt_btn" >Add</label>
+    </ion-button>
+  </div>
+</ion-col>
+<!-- <ion-col size="4">
+  <div>
+    <ion-button (click)="captureImage(1)" color="primary" >
+      <ion-icon slot="start" name="camera"></ion-icon>
+      <span >Upload</span>
+    </ion-button>
+  </div>
+</ion-col> -->
+</ion-row>
+</div>
+
+<div  *ngIf="image.length != 0 "  style="text-align: center;">
+  <ion-button style="text-align: center;" (click)="SavePDF()">
+    <span class="encrypt_btn">Convert to PDF</span>
+  </ion-button>
+</div>
+<!-- <ion-row style="align-content: center;">
+  <ion-col>
+<ion-button  *ngIf="image.length != 0 "  (click)="SavePDF()">
+  <label> Convert to PDF</label>
+</ion-button>
+</ion-col>
+</ion-row> -->
+
+<!-- <ion-footer >
+  <ion-toolbar color="secondary" *ngIf="image !== null">
+    <ion-button style="border-radius: 50%;"> <ion-icon name="camera" ></ion-icon></ion-button>
+    <ion-fab slot="fixed" >
+        <ion-icon style=" color: black;" src="assets\imgs\camicon.svg"></ion-icon>
+    </ion-fab>
+    <ion-button fill="clear"  class="downloadbtn" (click)="SavePDF()" expand="full" color="light" type="submit" value="Submit">
+      Make as PDF</ion-button>
+    <ion-button fill="clear" expand="full" color="light" (click)="captureImage(1)" >
+      <ion-icon slot="start" name="camera" ></ion-icon>
+      Take Picture</ion-button>
+  </ion-toolbar>
+</ion-footer> -->

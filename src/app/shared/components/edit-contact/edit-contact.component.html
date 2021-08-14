@@ -1,0 +1,97 @@
+<ion-content>
+    <ion-toolbar>
+        <div class="durity-back-btn">
+            <ion-buttons slot="start">
+                <ion-button slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+                    <ion-icon name="ios-arrow-back"></ion-icon>
+                    <small style="font-weight: bold;">Back</small>
+                </ion-button>
+            </ion-buttons>
+        </div>
+
+
+    </ion-toolbar>
+
+    <form [formGroup]="editContactForm" (ngSubmit)="submitForm()" #reg="ngForm">
+        <div>
+            <h4 class="mt-2 font-24 create-contact-title" text-center>Edit Contact</h4>
+            <div class="input-section">
+                <div padding-top>
+                    <ion-input type="text" [(ngModel)] = "contactName" formControlName="firstName"></ion-input>
+                </div>
+                <div
+                    *ngIf="editContactForm.get('firstName').invalid  && (editContactForm.get('firstName').touched || editContactForm.get('firstName').dirty)">
+                    <small class="error" *ngIf="editContactForm.get('firstName').errors.required">Name is
+                        required</small>
+
+                </div>
+                <div padding-top>
+                    <ion-input [(ngModel)] = "contactNumber" formControlName="mobilePhone" maxlength="10"></ion-input>
+
+                    <!-- <ion-button class="add-button" (click)="addContact()" color="white"  fill="clear">
+                        <ion-icon name="md-add" class="add-btn-icon"></ion-icon>
+                    </ion-button> -->
+                </div>
+                <div
+                    *ngIf="editContactForm.get('mobilePhone').invalid  && (editContactForm.get('mobilePhone').touched || editContactForm.get('mobilePhone').dirty || reg.submitted)">
+                    <small class="error" *ngIf="editContactForm.get('mobilePhone').errors.required" maxlength="15">Enter a valid mobile number</small>
+                    
+                            <small class="error" *ngIf="editContactForm.get('mobilePhone').errors.pattern">Enter a valid
+                                mobile number</small>
+                            
+                </div>
+                <div padding-top>
+                    <ion-input type="text" [(ngModel)] = "contactEmail" formControlName="primaryEmail"></ion-input>
+
+                    <!-- <ion-button class="add-button" (click)="addEmail ()" color="white"  fill="clear">
+                        <ion-icon name="md-add" class="add-btn-icon"></ion-icon>
+                    </ion-button> -->
+
+
+
+                </div>
+                <!-- <div
+                    *ngIf="editContactForm.get('primaryEmail').invalid  && (editContactForm.get('primaryEmail').touched || editContactForm.get('primaryEmail').dirty || reg.submitted)">
+                    <small class="error" *ngIf="editContactForm.get('primaryEmail').errors.required">Email is
+                        required</small>
+                    <small class="error" *ngIf="editContactForm.get('primaryEmail').errors.pattern">Enter a valid
+                        email address</small>
+                </div> -->
+                <div padding-top>
+
+                    <ion-select [(ngModel)] = "contactRelation" formControlName="relationship">
+                        <ion-select-option value="Family">Family</ion-select-option>
+                        <ion-select-option value="Friends">Friend</ion-select-option>
+                        <ion-select-option value="Other">Others</ion-select-option>
+                    </ion-select>
+                </div>
+                <div
+                    *ngIf="editContactForm.get('relationship').invalid  && (editContactForm.get('relationship').touched || editContactForm.get('relationship').dirty || reg.submitted)">
+                    <small class="error" *ngIf="editContactForm.get('relationship').errors.required">Relation is
+                        required</small>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <ion-row>
+                <ion-col size="6" text-center>
+                    <div>
+                        <ion-button class="cancel-btn" color="medium" expand="full" (click)="cancel()">
+                            Cancel
+                        </ion-button>
+                    </div>
+                </ion-col>
+                <ion-col size="6">
+                    <div>
+                        <ion-button expand="full" color="primary" type="submit">
+                            Save
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+        </div>
+    </form>
+</ion-content>

@@ -1,0 +1,172 @@
+
+
+
+<ion-content padding>
+  <!-- Simple Contact delete-->
+
+  <div class="ion-text-center" *ngIf="deleteType === 'notAddedAsBeneficiary'">
+    <ion-item lines="none">
+       <ion-button color="white" fill="clear">
+      <span class="warning-icon">
+        <ion-icon ios="ios-warning" md="md-warning"></ion-icon>
+      </span>
+    </ion-button>
+    <p  class="delete_text" >Are you sure want to permanently delete this Contact?</p>
+  </ion-item>
+  </div>
+
+  <!--Delete contact when added as a beneficiary-->
+  <div class="ion-text-center" *ngIf="deleteType === 'adddedAsBeneficiary'">
+    <ion-item lines="none">
+    <ion-button color="white" fill="clear">
+      <span class="warning-icon">
+        <ion-icon ios="ios-warning" md="md-warning"></ion-icon>
+      </span>
+
+    </ion-button>
+    <p  class="delete_text"  >Are you sure want to permanently delete this Contact?</p>
+    </ion-item>
+      <p><b>This contact is added as a trustee to {{fileName}}</b></p>
+
+   
+  
+   
+  </div>
+
+  <!--Delete Attachment-->
+  <div class="ion-text-center" *ngIf="deleteType === 'deleteAttachment'">
+    <ion-item lines="none">
+    <ion-button color="white" fill="clear">
+      <span class="warning-icon">
+        <ion-icon ios="ios-warning" md="md-warning"></ion-icon>
+      </span>
+    </ion-button>
+    <p class="delete_text" >Are you sure you want to permanently delete this Document?</p>
+  </ion-item>
+  </div>
+
+  <div class="ion-text-center" *ngIf="deleteType === 'deleteCategory'">
+    <ion-item lines="none">
+    <ion-button color="white" fill="clear">
+      <span class="warning-icon">
+        <ion-icon ios="ios-warning" md="md-warning"></ion-icon>
+      </span>
+    </ion-button>
+    <p class="delete_text" >Are you sure you want to permanently delete this Catgeory?</p>
+  </ion-item>
+  </div>
+
+  <!--Revoke Beneficiary Access-->
+
+  <div class="ion-text-center" *ngIf="deleteType === 'revokeAccess'">
+    <ion-item lines="none">
+    <ion-button color="white" fill="clear">
+      <span class="warning-icon">
+        <ion-icon ios="ios-warning" md="md-warning"></ion-icon>
+      </span>
+    </ion-button>
+   
+    <p class="delete_text">Are you sure you want to permanently revoke the contact access to the document?</p>
+    </ion-item>
+  </div>
+
+<!--Delet User Account-->
+  <div text-center class="ion-text-center" *ngIf="deleteType === 'deleteUserAccount'">
+    <ion-item lines="none">
+      <ion-button color="white" fill="clear">
+        <span class="warning-icon">
+          <ion-icon ios="ios-warning" md="md-warning" color = "danger"></ion-icon>
+        </span>
+      </ion-button>
+      <p class="delete_text">Would you want to delete all your information and account?</p>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button color="white" fill="clear">
+      </ion-button>
+      <p class="delete-smalltext">If yes,all your data and account will be deleted permanently</p>
+    </ion-item>
+    <ion-item lines="none" text-center>
+      <ion-col class="delete-btn">
+        <ion-button class="not_delete_user_accont" (click)="cancel()" size="medium"
+          style="text-transform: none; text-align: center;">
+          <p style="font-size: 12px;">
+            No, I don't want to delete my account
+          </p>
+        </ion-button>
+      </ion-col>
+    </ion-item>
+    <ion-item lines="none" text-center>
+      <ion-col>
+        <div (click)="deleteUserAccount()" text-center style="margin-left: 15px; text-decoration: underline; font-size: 14px;">
+          Yes! delete all my information and account
+      </div>
+      </ion-col>
+      
+    </ion-item>
+  </div>
+
+</ion-content>
+
+<!-- Simple Contact delete-->
+<ion-footer *ngIf="deleteType === 'notAddedAsBeneficiary'" text-center no-border padding-bottom >
+  <ion-row>
+    <ion-col class="delete-btn">
+      <ion-button (click)="deleteContact()" color="--durity-primary-shade" size="medium"> Delete </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="cancel()" class="cancel-btn" color="--ion-color-medium-shade" size="medium"> Cancel
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+
+<!--Delete contact when added as a beneficiary-->
+<ion-footer *ngIf="deleteType === 'adddedAsBeneficiary'" text-center no-border padding-bottom>
+  <ion-row>
+    <ion-col class="delete-btn">
+      <ion-button (click)="deleteContact()" color="--durity-primary-shade" size="medium"> Delete </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="cancel()" class="cancel-btn" color="--ion-color-medium-shade" size="medium"> Cancel
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+
+ <!--Delete Attachment-->
+<ion-footer *ngIf="deleteType === 'deleteAttachment'" text-center no-border padding-bottom>
+  <ion-row>
+    <ion-col class="delete-btn">
+      <ion-button (click)="deleteAttachment()" color="--durity-primary-shade" size="medium"> Delete </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="cancel()" class="cancel-btn" color="--ion-color-medium-shade" size="medium"> Cancel
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+
+<ion-footer *ngIf="deleteType === 'deleteCategory'" text-center no-border padding-bottom>
+  <ion-row>
+    <ion-col class="delete-btn">
+      <ion-button (click)="deleteCategory()" color="--durity-primary-shade" size="medium"> Delete </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="categoryCancel()" class="cancel-btn" color="--ion-color-medium-shade" size="medium"> Cancel
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+
+<!--Revoke access-->
+<ion-footer *ngIf="deleteType === 'revokeAccess'" text-center no-border padding-bottom>
+    <ion-row>
+      <ion-col class="delete-btn">
+        <ion-button (click)="revokeAccess()" color="--durity-primary-shade" size="medium"> Delete </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="cancel()" class="cancel-btn" color="--ion-color-medium-shade" size="medium"> Cancel
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-footer>

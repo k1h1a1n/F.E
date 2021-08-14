@@ -1,0 +1,130 @@
+<div >
+	<ion-toolbar>
+		    
+			<div class="durity-back-btn">
+					<ion-buttons slot="start">
+						<ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+								<ion-icon name="ios-arrow-back"></ion-icon>
+								<small>Back</small>
+						</ion-button>
+					</ion-buttons>
+				</div>
+		
+				
+		<div text-center class="select-doc">
+				<ion-label >Select Document</ion-label>
+		</div>
+
+
+		<ion-buttons slot="end" *ngIf="globalvariablesProvider.signInType === 'login'">
+			<ion-button slot="icon-only" fill="clear" (click)="goto('home')">
+				<span style="color:#FF715B;font-size:25px;">
+					<ion-icon name="home"></ion-icon>
+				</span>
+
+			</ion-button>
+		</ion-buttons>
+
+
+
+	</ion-toolbar>
+	<div class="doc-type-content">
+		<ion-row text-center>
+			<ion-col size="6">
+				<ion-card class="document-type-card" (click)="selectDocType('file')">
+					<div class="ion-text-center">
+						<div class="document-type-card-img-part">
+							<img src="assets/imgs/add-filex.svg" alt="" class="document-type-card-img">
+						</div>
+						<div>
+							<p class="ma-0 font-bold font-16"><span class="text">Select File</span></p>
+							<p class="para">(Select a file from your device)</p>
+						</div>
+					</div>
+				</ion-card>
+			</ion-col>
+			<ion-col size="6">
+				<ion-card class="document-type-card" (click)="selectDocType('photo-camscan')">
+					<div class="ion-text-center">
+						<div class="document-type-card-img-part">
+							<img src="assets/imgs/cam-scanner.svg" alt="" class="document-type-card-img">
+						</div>
+						<div>
+							<p class="ma-0 font-bold font-16"><span class="text">Cam Scanner</span></p>
+							<p class="para"><span>(Scan your documents & </span><br><span>upload them directly)</span></p>
+						</div>
+					</div>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+		<ion-row text-center>
+			<ion-col size="6">
+				<ion-card class="document-type-card" (click)="selectDocType('photo-camera')">
+					<div class="ion-text-center">
+						<div class=" document-type-card-img-part">
+							<img src="assets/imgs/camera-photox.svg" alt="" class="document-type-card-img">
+						</div>
+						<div>
+							<p class="ma-0 font-bold font-16"><span class="text">Capture Photo</span></p>
+							<p class="para">(Capture photos realtime and upload them)</p>
+						</div>
+					</div>
+				</ion-card>
+			</ion-col>
+			<ion-col size="6">
+				<ion-card class="document-type-card" (click)="selectDocType('video')">
+					<div class="ion-text-center">
+						<div class=" document-type-card-img-part">
+							<img src="assets/imgs/record-videox.svg" alt="" class="document-type-card-img">
+						</div>
+						<div>
+							<p class="ma-0 font-bold font-16"><span class="text">Record Video</span></p>
+							<p class="para">(Record a video of you writing your will)</p>
+						</div>
+					</div>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+		<ion-row text-center>
+			<ion-col size="6">
+				<ion-card class="document-type-card" (click)="selectDocType('note')">
+					<div class="ion-text-center">
+						<div class=" document-type-card-img-part">
+							<img src="assets/imgs/wirte-note.svg" alt="" class="document-type-card-img">
+						</div>
+						<div>
+							<p class="ma-0 font-bold font-16"><span class="text">Write a Note</span></p>
+							<p class="para">(Pen down a message for your loved one)</p>
+						</div>
+					</div>
+				</ion-card>
+			</ion-col>
+			<ion-col size="6">
+				<ion-card class="document-type-card" (click)="selectDocType('audio')">
+					<div class="ion-text-center">
+						<div class=" document-type-card-img-part">
+							<img src="assets/imgs/audio-record.svg" alt="" class="document-type-card-img">
+						</div>
+						<div>
+							<p class="ma-0 font-bold font-16"><span class="text">Audio record</span></p>
+							<p class="para">(Record your last wishes for your family)</p>
+						</div>
+					</div>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+
+
+
+	</div>
+</div>
+<label *ngIf = "signInType === 'register'" (click)="skip()" style="text-align: right;padding-right: 5%;" class="skip font-16">skip</label>
+
+<ion-footer  text-center >
+	<div class="doc-type-footer">
+
+		<p *ngIf = "this.user.userCurrentPlanDetails.planName === 'GOLD'" class="ma-0 footer-text"><span class="text"><b>Note:</b></span><span> Max File Size </span><span class="text"><b>10MB</b></span></p>
+		<p *ngIf = "this.user.userCurrentPlanDetails.planName === 'PLATINUM'" class="ma-0 footer-text"><span class="text"><b>Note:</b></span><span> Max File Size </span><span class="text"><b>50MB</b></span></p>
+	</div>
+</ion-footer>
+<!-- <app-document-preview [abcd]="name" [def]="fileDir"></app-document-preview> -->

@@ -1,0 +1,83 @@
+<ion-content>
+  <ion-toolbar>
+      <div class="durity-back-btn">
+              <ion-buttons slot="start">
+                  <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+                          <ion-icon name="ios-arrow-back"></ion-icon>
+                          <small style="font-weight: bold;">Back</small>
+                  </ion-button>
+              </ion-buttons>
+          </div>
+  
+  <div class="select-doc">
+          <ion-label >Select Contacts</ion-label>
+  </div>
+
+  
+</ion-toolbar>
+  <form [formGroup]="chooseContactForm" >
+      <div>
+          <ion-toolbar>
+              <div class="contacts-search">
+                  <ion-row>
+                      <ion-col>
+                          <input type="text" name="search" placeholder="Search.." class="search-input"
+                              showCancelButton="focus" (keyup)="onKeyUp($event)">
+                      </ion-col>
+                      <ion-col>
+                          <ion-icon name="search" class="search-icon"></ion-icon>
+                      </ion-col>
+                  </ion-row>
+        </div> <!--(keyup)="onKeyUp($event)" (ionClear) = "resetContactData()" -->
+<!-- 
+              <ion-searchbar  showCancelButton="always"  (keyup)="onKeyUp($event)" (ionClear) = "resetContactData()"  [(ngModel)]="searchText" class="contacts-search">
+                  </ion-searchbar> -->
+          </ion-toolbar>
+          <div class="contacts-section" padding>
+              <ion-list *ngFor="let contact of myContacts   ">
+                  <div class="contact-icon">
+                      <ion-icon name="contact"></ion-icon>
+                  </div>
+                  <div class="contacts">
+                      <div class="contact-name-num">
+                          <ion-label>{{contact.displayName}}</ion-label>
+                          <div class="contact-number" (click) = "getContact(contact.displayName, contact.phoneNumbers[0].value, contact.emails,false)">
+                              <span>
+                                  {{contact.phoneNumbers[0].value}}
+                              </span>
+                          </div>
+                          <!-- <p>{{contact.phoneNumbers[0].value}}</p> -->
+                          <!-- <div class="contact-name">{{contact.name.givenName}}</div>
+                              <div class="contact-name">{{contact.phoneNumbers[0].value}}</div> -->
+                          <!-- <div *ngFor="let num of contact?.phoneNumbers" class="contact-number">{{c.phoneNumbers[0].value}}
+                              </div> -->
+                      </div>
+                   <!--    <div class="checklist">
+                          <ion-checkbox color="primary" id= "checkBox" [disabled]="contact.disable"  class="checkbox" formControlName="cont" slot="end"
+                          [checked]="contact.checked"
+                          (ionChange)="getContact(contact.displayName, contact.phoneNumbers[0].value, contact.emails, $event.target.checked)">
+                          </ion-checkbox>   
+                     </div> -->
+                  </div>
+                  <!-- </ion-item> -->
+              </ion-list>
+          </div>
+      </div>
+  </form>
+ <!--  <div class="durity-bg">
+      <div class="add-contact-section">
+        <ion-row>
+          <ion-col size="8">
+
+          </ion-col>
+          <ion-col size="4">
+            <ion-button expand="block" class="add-btn" color="light" (click)="gotoContacts()">
+              Add
+            </ion-button>
+          </ion-col>
+          </ion-row>
+         
+      </div>
+      
+  </div> -->
+</ion-content>

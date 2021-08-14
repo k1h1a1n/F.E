@@ -1,0 +1,218 @@
+
+  <ion-toolbar>
+		    
+    <div class="durity-back-btn">
+        <ion-buttons slot="start">
+          <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+              <ion-icon name="ios-arrow-back"></ion-icon>
+              <small style="font-weight: bold;">Back</small>
+          </ion-button>
+        </ion-buttons>
+      </div>
+  
+      
+  <div text-center class="select-doc">
+      <ion-label >Subscription Plan</ion-label>
+      
+  </div>
+
+
+  <ion-buttons slot="end">
+    <ion-button slot="icon-only" fill="clear" (click)="goto('home')">
+      <span style="color:#FF715B;font-size:25px;">
+        <ion-icon name="home"></ion-icon>
+      </span>
+
+    </ion-button>
+  </ion-buttons>
+
+
+
+</ion-toolbar>
+
+<ion-content>
+  <div *ngIf="userData.profile.isFinancialAdvisor == true" text-center class="select-doc">
+  <label  style="font-size: 18px;background-color: #b3bbd6;border-radius: 5%;text-align: center;height: 30px;">
+    <label style="font-size: 18px;padding-left: 10px;padding-right: 10px;text-align: center;">	For: {{userData.profile.name}}</label>
+    </label>  
+  </div>
+  <ion-slides pager>
+    <ion-slide style="height: 80%;" >
+      <ion-card style="width: 70%;">
+        <ion-card-header style="background-color: rgba(120, 178, 247, 0.09);">
+          <ion-card-subtitle style="color: #2D3047;"><h2><b>{{planNameGold | uppercase }}</b></h2></ion-card-subtitle>
+          <ion-card-title style="font-size: 14px;" ><b>Price:</b>
+            <label style="color: #3BAE00;font-size: 16px;text-indent :1em; padding-left: 5px;"> Free</label></ion-card-title>
+        </ion-card-header>
+        <!-- <ion-item-divider></ion-item-divider> -->
+      <br class="row">
+        <ion-card-content style="text-align: start;word-spacing: 5px;">
+          <p><ion-icon class="x-mark" src="assets/imgs/Icon awesome-user-check.svg"></ion-icon><b>{{planUsersGold}} User</b></p>
+          <p><ion-icon class="x-mark" src="assets/imgs/Icon material-sd-storage.svg"></ion-icon><b>{{planNoOfFilesGold}} File Upload</b></p>
+          <p><ion-icon class="x-mark" src="assets/imgs/Icon awesome-file-upload.svg"></ion-icon><b>{{planFileSizeGold}} <span style="font-size: 12px;">MB</span> Total File Size</b></p>
+          <p><ion-icon class="x-mark" src="assets/imgs/X mark.svg"></ion-icon>Buy Additional Space</p>
+          <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Will Template</p>
+          <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>File Encryption</p>
+          <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Fingerprint Encryption</p>
+          <p><ion-icon class="x-mark" src="assets/imgs/X mark.svg"></ion-icon>Share Files Real Time</p>
+          <p><ion-icon class="x-mark" src="assets/imgs/X mark.svg"></ion-icon>Consult Wealth/Will Advisor</p>
+          <p><ion-icon class="x-mark" src="assets/imgs/X mark.svg"></ion-icon>Exclusive Webinars</p>
+          <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon><b>Basic</b> Customer Support</p>
+          <br>
+          <!-- <ion-button>
+            <span style="text-transform: capitalize;" (click)="payWithRazorpay()">Your current plan</span>
+        </ion-button> -->
+        <ion-button *ngIf="userCurrentPlan == planNameGold" style="padding-left: 15%;" color="light" >
+          <span style="text-transform: capitalize">Your current plan</span>
+      </ion-button>
+        </ion-card-content>
+      </ion-card>
+      
+    </ion-slide>
+    <ion-slide style="height: 80%;">
+      <ion-card style="width: 70%;">
+        <ion-card-header style="background-color: rgba(120, 178, 247, 0.09);">
+          <ion-card-subtitle style="color: #2D3047;"><h2><b>{{planNamePlatinum | uppercase }}</b></h2></ion-card-subtitle>
+          <ion-card-title style="font-size: 14px;" ><b>Price:</b>
+            <!-- <label style="text-decoration: line-through;">₹ {{planActualAMountPlatinum}} </label>  -->
+            <label style="color: #3BAE00;font-size: 16px;padding-left: 5px"> ₹ {{planActualAMountPlatinum}}</label>
+            <label style="font-size: 11px;">/Year </label>
+          </ion-card-title>
+        </ion-card-header>
+      <br class="row">
+      <ion-card-content style="text-align: start;word-spacing: 5px;">
+        <p><ion-icon class="x-mark" src="assets/imgs/Icon awesome-user-check.svg"></ion-icon><b>{{planUsersPlatinum}} User</b></p>
+        <p><ion-icon class="x-mark" src="assets/imgs/Icon material-sd-storage.svg"></ion-icon><b>{{planNoOfFilesPlatinum}} File Upload</b></p>
+        <p><ion-icon class="x-mark" src="assets/imgs/Icon awesome-file-upload.svg"></ion-icon><b>{{planFileSizePlatinum}} <span style="font-size: 12px;">MB</span> Total File Size</b></p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Buy Additional Space</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Will Template</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>File Encryption</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Fingerprint Encryption</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Share Files Real Time</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Consult Wealth/Will Advisor</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Exclusive Webinars</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon><b>Priority</b> Customer Support</p>
+        <br>
+        <div *ngIf="userCurrentPlan != planNamePlatinum">
+          <ion-item lines="none">
+            <ion-input class="form-input" id="input1" [readonly]="isPlatinumReadOnly" [(ngModel)]="platinumInputCouponCode" lines="none" placeholder=" Coupon Code" type="text" ></ion-input>
+            <br>
+            <ion-button *ngIf="applyPlatinumEnabled == ''" style="text-align: center;height: 28px;padding-left: 3px;"  (click)="validatePlatinumCoupon(platinumInputCouponCode,defaultPlatinumPlan)">
+              Apply
+            </ion-button>
+            <ion-button *ngIf="applyPlatinumEnabled != ''" style="text-align: center;height: 28px;padding-left: 3px;"  >
+              Applied
+            </ion-button>
+            <ion-icon ios="ios-create" *ngIf="applyPlatinumEnabled != ''" (click) ="editPlatinumCupon()" class="editIcon" md="md-create"></ion-icon>
+          </ion-item> 
+          <div>
+            <small *ngIf="platinumErrMsg == 'true'" class="success" >Congratulations! {{offerPercentPlatinum}}% discount applied</small>
+            <small *ngIf="platinumErrMsg == 'false'" class="error" >Invalid Coupon Code</small>
+
+          </div>  
+        <ion-button  style="text-align: center;padding-left: 15%;" (click)="payWithRazorpay(defaultPlatinumPlan,planNamePlatinum,planNoOfFilesPlatinum,planFileSizePlatinum,planUsersPlatinum,platinumInputCouponCode)">
+          <!-- payWithRazorpay(planAMountPlatinum,planNamePlatinum,planNoOfFilesPlatinum,planFileSizePlatinum,planUsersPlatinum) -->
+          <span style="text-transform: capitalize">Upgrade for ₹ {{defaultPlatinumPlan}} </span>
+      </ion-button>
+    </div>
+    <div *ngIf="userCurrentPlan == planNamePlatinum">
+      <br>
+      <ion-button  style="padding-left: 15%;" color="light" >
+        <span style="text-transform: capitalize">Your current plan</span>
+    </ion-button>
+  </div>
+      </ion-card-content>
+      </ion-card>
+      
+    </ion-slide>
+    <ion-slide style="height: 80%;">
+      <ion-card style="width: 70%;">
+        <ion-card-header style="background-color: rgba(120, 178, 247, 0.09);">
+          <ion-card-subtitle style="color: #2D3047;"><h2><b>{{planNameDiamond | uppercase }}</b></h2></ion-card-subtitle>
+          <ion-card-title style="width: 100%;">
+            <ion-radio-group >
+              <ion-row>            
+                <ion-col>
+                  <ion-item lines="none" style="background-color: rgba(120, 178, 247, 0.09);">
+                    <ion-radio slot="end"  value="true" (click)="selectPlanDiamond(planActualAMountDiamond)" [checked]="true"></ion-radio>
+                    <ion-label style="font-size: 14px;"><b>Price: </b>
+                      <span style="color: #3BAE00;font-size: 16px;padding-left: 5px;">₹{{planActualAMountDiamond}}</span>
+                      <span style="font-size: 11px;">/Year</span></ion-label>
+                    <!-- <ion-label  style="color: #3BAE00;font-size: 25px;padding-left: 5px;"> ₹ {{planActualAMountDiamond}}</ion-label>
+                    <ion-label style="font-size: 12px;">/Year</ion-label> -->
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item lines="none">
+                    <ion-radio slot="end" value="false" (click)="selectPlanDiamond(planActualAmountLTofDiamond)"></ion-radio>
+                    <ion-label><label><span> </span></label>
+                    <span style="color: #3BAE00;font-size: 16px;padding-left: 30%;"> ₹{{planActualAmountLTofDiamond}}</span>
+                    <span style="font-size: 11px;" text-wrap name="beds">/Lifetime</span>
+                    <!-- <ion-label style="font-size: 12px;">/Lifetime</ion-label> -->
+                  </ion-label>
+                  </ion-item>
+                </ion-col>            
+              </ion-row>
+              </ion-radio-group>  
+           
+            <!-- <label style="text-decoration: line-through;"> ₹ {{planActualAMountDiamond}} </label>  -->
+            <!-- <label style="color: #3BAE00;font-size: 25px;padding-left: 5px;"> ₹ {{planActualAMountDiamond}}</label>
+            <label style="font-size: 12px;">/Year </label>
+            <br> -->
+            <!-- <label style="text-decoration: line-through;"> ₹ {{planActualAmountLTofDiamond}} </label>  -->
+            <!-- <label style="color: #3BAE00;font-size: 25px;padding-left: 5px;"> ₹ {{planActualAmountLTofDiamond}}</label>
+            <label style="font-size: 12px;">/Lifetime </label> -->
+            
+          </ion-card-title>
+          
+            </ion-card-header>
+      <br class="row">
+      <ion-card-content style="text-align: start;word-spacing: 5px;">
+        <p><ion-icon class="x-mark" src="assets/imgs/Icon metro-users.svg"></ion-icon><b>{{planUsersDiamond}} Users</b></p>
+        <p><ion-icon class="x-mark" src="assets/imgs/Icon awesome-file-upload.svg"></ion-icon><b>Unlimited File Uploads</b></p>
+        <p><ion-icon class="x-mark" src="assets/imgs/Icon material-sd-storage.svg"></ion-icon><b>{{planFileSizeDiamond}} <span style="font-size: 12px;">MB</span> Total File Size</b></p>
+
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Buy Additional Space</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Will Template</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>File Encryption</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Fingerprint Encryption</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Share Files Real Time</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Consult Wealth/Will Advisor</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>Exclusive Webinars</p>
+        <p><ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon><b>Priority</b> Customer Support</p>
+        
+        <div *ngIf="userCurrentPlan != planNameDiamond">
+          <ion-item lines="none">
+            <ion-input class="form-input" id="input" [readonly]= "isDiamondReadOnly" [(ngModel)]="diamondInputCouponValue" placeholder=" Coupon Code" type="text" ></ion-input>            <br>
+            <ion-button *ngIf="applyEnabled == ''" style="text-align: center;height: 28px;padding-left: 3px;"  (click)="validateDiamondCoupon(diamondInputCouponValue,defaultDiamondPlan)">
+              Apply
+            </ion-button>
+            <ion-button *ngIf="applyEnabled != ''" style="text-align: center;height: 28px;padding-left: 3px;"  >
+              Applied
+            </ion-button>
+            <ion-icon ios="ios-create" *ngIf="applyEnabled != ''" (click) ="editDiamondCupon()" class="editIcon" md="md-create"></ion-icon>
+           
+            <!-- <label style="color:#4895F1;font-size:15px;padding-bottom: 5%;" (click)="Coupon()">APPLY</label> -->
+          </ion-item>    
+          <div>
+            <small *ngIf="errMessage == 'true'" class="success" >Congratulations! {{offerPercent}}% discount applied</small>
+            <small *ngIf="errMessage == 'false'" class="error" >Invalid Coupon Code</small>
+
+          </div>      
+          <ion-button   style="text-align: center;padding-left: 15%;" (click)="payWithRazorpay(defaultDiamondPlan,planNameDiamond,this.planNoOfFilesDiamond,this.planFileSizeDiamond,this.planUsersDiamond,diamondInputCouponValue)">
+            <span style="text-transform: capitalize">Upgrade for ₹{{defaultDiamondPlan}} </span>
+        </ion-button>
+        </div>
+        <div *ngIf="userCurrentPlan == planNameDiamond">
+          <br>
+      <ion-button  style="padding-left: 15%;" color="light" >
+        <span style="text-transform: capitalize">Your current plan</span>
+    </ion-button>
+  </div>
+      </ion-card-content>
+      </ion-card>
+      
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+

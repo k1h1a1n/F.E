@@ -1,0 +1,124 @@
+<ion-content>
+    <ion-toolbar>
+        <div class="durity-back-btn">
+            <ion-buttons slot="start">
+                <ion-button slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+                    <ion-icon name="ios-arrow-back"></ion-icon>
+                    <small style="font-weight: bold;">Back</small>
+                </ion-button>
+            </ion-buttons>
+        </div>
+
+
+    </ion-toolbar>
+   
+    <form [formGroup]="createContactForm" (ngSubmit)="submitForm()" #reg="ngForm">
+        <div>
+            <h4 class="mt-2 font-24 create-contact-title" text-center>Create Contact</h4>
+            <div class="input-section">
+                <div padding-top>
+                    <ion-input type="text" placeholder="Name" formControlName="firstName"></ion-input>
+                </div>
+                <div
+                    *ngIf="createContactForm.get('firstName').invalid  && (createContactForm.get('firstName').touched || createContactForm.get('firstName').dirty)">
+                    <small class="error" *ngIf="createContactForm.get('firstName').errors.required">Name is
+                        required</small>
+
+                </div>
+                <div padding-top>
+                   
+                    <!-- <ion-select  [(ngModel)]="selectedCountry" (ionChange)="onChange(selectedCountry)" [ngModelOptions]="{standalone: true}">
+                     
+                        <ion-select-option *ngFor="let country of  countryCodes" [value]="country">
+                          
+                            {{country.Code }}&nbsp;{{ country.Name}}</ion-select-option>
+                    </ion-select> -->
+                    <ion-input placeholder="" formControlName="mobilePhone" maxlength="15">+91</ion-input>
+
+                    <!-- <ion-button class="add-button" (click)="addContact()" color="white"  fill="clear">
+                        <ion-icon name="md-add" class="add-btn-icon"></ion-icon>
+                    </ion-button> -->
+               
+                </div>
+                <div
+                    *ngIf="createContactForm.get('mobilePhone').invalid  && (createContactForm.get('mobilePhone').touched || createContactForm.get('mobilePhone').dirty || reg.submitted)">
+                    <small class="error" *ngIf="createContactForm.get('mobilePhone').errors.required">Mobile number is
+                        required</small>
+                    <small class="error" *ngIf="createContactForm.get('mobilePhone').errors.maxlength">Enter a valid
+                        mobile number</small>
+                        <small class="error" *ngIf="createContactForm.get('mobilePhone').errors.pattern">Enter a valid
+                            mobile number</small>
+                </div>
+                <div padding-top>
+                    <ion-input type="text" placeholder="Email" formControlName="primaryEmail"></ion-input>
+
+                    <!-- <ion-button class="add-button" (click)="addEmail ()" color="white"  fill="clear">
+                        <ion-icon name="md-add" class="add-btn-icon"></ion-icon>
+                    </ion-button> -->
+
+
+
+                </div>
+                <div
+                    *ngIf="createContactForm.get('primaryEmail').invalid  && (createContactForm.get('primaryEmail').touched || createContactForm.get('primaryEmail').dirty || reg.submitted)">
+                    <small class="error" *ngIf="createContactForm.get('primaryEmail').errors.required">Email is
+                        required</small>
+                    <small class="error" *ngIf="createContactForm.get('primaryEmail').errors.pattern">Enter a valid
+                        email address</small>
+                </div>
+                <div padding-top>
+
+                    <ion-select formControlName="relationship" placeholder="Relation" [(ngModel)]="selectedRelation">
+                        <ion-select-option value="Family">Family</ion-select-option>
+                        <ion-select-option value="Friends">Friend</ion-select-option>
+                        <ion-select-option value="Other">Others</ion-select-option>
+                    </ion-select>
+                </div>
+                <div
+                    *ngIf="createContactForm.get('relationship').invalid  && (createContactForm.get('relationship').touched || createContactForm.get('relationship').dirty || reg.submitted)">
+                    <small class="error" *ngIf="createContactForm.get('relationship').errors.required">Relation is
+                        required</small>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="footer">
+            <ion-row>
+                <ion-col size="6" text-center>
+                    <div>
+                        <ion-button class="cancel-btn" color="medium" expand="full" (click)="cancel()">
+                            Cancel
+                        </ion-button>
+                    </div>
+                </ion-col>
+                <ion-col size="6">
+                    <div>
+                        <ion-button expand="full" color="primary" type="submit">
+                            Save
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+        </div> -->
+        
+    </form>
+</ion-content>
+
+<ion-footer no-border >
+    <ion-toolbar class="durity-bg">
+         
+         <ion-item lines="none" class="durity-bg"> 
+            
+        <p (click)="cancel()" class="skip font-16">CANCEL</p>
+
+        <ion-button type="submit" (click)="submitForm()" color="white"  size="medium"  slot="end" class="next-btn">
+          <span class="next"> Save</span> 
+        </ion-button>
+    </ion-item>   
+   
+
+    </ion-toolbar>
+</ion-footer>
+

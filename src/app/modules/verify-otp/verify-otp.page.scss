@@ -1,0 +1,43 @@
+ion-input{
+    display:inline-block;
+    width:8%;
+    height:8%;
+    margin:10px;
+    text-align: center;
+    border-radius: 50%;
+    --background:#e1e1e1;
+    --padding-start:7px;
+    }
+
+    .div-section{
+        text-align: center;
+        color:white;
+       
+        
+    }
+    .hang-on{
+        font-weight: bold;
+    }
+    .text{
+        color: white;
+        padding:5% 1%;
+    }
+    .signin-input {
+        --background: #86baf9;
+        border-radius: 5px;
+        color: white;
+        height: 40px;
+        
+        ion-input{
+          font-size: 14px;
+          bottom: 10%;
+          }
+      
+         }
+      .signin-padding{
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+    .error{
+      color: darkred;
+    }

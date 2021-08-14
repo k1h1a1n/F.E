@@ -1,0 +1,26 @@
+<ion-content padding>
+  <form [formGroup]="addEmailForm" (ngSubmit)="submitForm()" #reg="ngForm">
+    <div padding>
+      <ion-label class="add-email-title font-18" text-center>Add beneficiary's email ID to make sure we are able to reach them at the right time.
+      </ion-label>
+      <div class="signup-padding" style="padding-top: 15px;">
+        <ion-item class="email-input" lines="none">
+          <ion-input type="text" placeholder="Email" formControlName="primaryEmail"></ion-input>
+        </ion-item>
+      </div>
+      <div
+        *ngIf="addEmailForm.get('primaryEmail').invalid  && (addEmailForm.get('primaryEmail').touched || addEmailForm.get('primaryEmail').dirty || reg.submitted)">
+        <small class="error" *ngIf="addEmailForm.get('primaryEmail').errors.required">Please enter email</small>
+        <small class="error" *ngIf="addEmailForm.get('primaryEmail').errors.pattern">Enter a valid email</small>
+      </div>
+      <div class="btn">
+        <ion-item lines="none">
+          <ion-label (click)="later()" style="color:#000;text-decoration: underline;">Do it later</ion-label>
+          <ion-button type="submit" expand="block" size="medium">
+            <span style="text-transform: capitalize">Done</span>
+          </ion-button>
+        </ion-item>
+      </div>
+    </div>
+  </form>
+</ion-content>

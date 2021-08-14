@@ -1,0 +1,42 @@
+<ion-content>
+	<div padding>
+		<p class="font-14 font-weight disclaimer-title">
+			<img src="assets/imgs/alert.svg" alt="alert">
+			<span class="d-text">Disclaimer</span>
+		</p>
+		<div class="disclaimer-title font-14 mt-1 mb-1">
+			<b>Please read the important information before you proceed:</b>
+		</div>
+		<div class="confirm-section" style="text-align: justify;">
+			<span class="text font-14">I understand,</span>
+			<div class="checkbox">
+				<p class="font-14 accept-quote">That I have to share with my Trustee, password and encryption
+					technology / tool so that they can decrypt my files in future.</p>
+				<div class="accept-box">
+					<ion-checkbox ></ion-checkbox>
+				</div>
+			</div>
+			<div class="checkbox">
+				<p class="font-14 accept-quote">That Durity will not have knowledge of my password or store the password
+					that I use to encrypt and cannot help me recover the password in-case I lose it.</p>
+				<div class="accept-box">
+					<ion-checkbox ></ion-checkbox>
+				</div>
+			</div>
+		</div>
+		<!-- <div padding-top>
+			<ion-button [disabled]="!checkedone || !checkedtwo" (click)="next()" class="next-btn ion-float-right" >Next</ion-button>
+		</div> -->
+	</div>
+	</ion-content> 
+	<ion-footer class="footer-bg" no-border>
+	  <div class="ion-text-center">
+		<hr>
+	  </div>
+			
+		<div>
+			<ion-button  color="white" (click)="next()" class="next-btn ion-float-right" >Next</ion-button>
+		</div>
+			   
+				
+	  </ion-footer>

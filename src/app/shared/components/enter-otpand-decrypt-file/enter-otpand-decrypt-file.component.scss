@@ -1,0 +1,198 @@
+.input{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // border:1px solid #7AB1FF;
+  // border-radius: 5px;
+  // height: 38px;
+  // width:150px;
+   padding-top: 8px;
+}
+ion-input{
+  border:1px solid  #7AB1FF;
+  border-radius: 5px;
+  height: 35px;
+  width:65%;
+  color: black;
+  font-weight: 500;
+  
+}
+
+ion-input-error{
+  border:1px solid  #FF715B;
+  border-radius: 5px;
+  height: 35px;
+  width:65%;
+  color: black;
+  font-weight: 500;
+  
+}
+
+
+.show-password-icon{
+
+font-size: 1.5rem;
+color: black; 
+}
+
+.signup-input {
+  --background: rgb(231, 237, 243) 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  color: black;
+  font-weight: 500;
+  height: 38px;
+
+  ion-input{
+    font-size: 12px;
+    bottom: 10%;
+    color:black;
+  }
+}
+.pwd-input{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15%;
+  // border:1px solid #7AB1FF;
+  // border-radius: 5px;
+  // height: 38px;
+  // width:150px;
+   padding-top: 8px;
+}
+
+.enter-password{
+  border:1px solid #4895F1;
+  border-radius: 5px;
+  text-align:left;
+  font-weight: bold;
+  padding-left:18%;
+  padding-top:5%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12px;
+}
+
+.show-password-icon {
+  position: relative;
+  bottom: 10%;
+  font-size: 1.5rem;
+  color:#4895F1
+}
+
+.select-doc{
+  text-align:center;
+  font-weight: bold;
+  padding-top: 1%;
+   padding-left:40px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+}
+
+.tick-mark{
+  padding-top: 50%;
+  font-size: 20px;
+  padding-bottom: 25%;
+}
+
+.otpverified{
+  text-align:left;
+ font-weight: bold;
+ padding-left:18%;
+ padding-top:7%;
+ font-family: 'Source Sans Pro', sans-serif;
+ font-size: 16px;
+ padding-bottom: 7%;
+}
+
+.upload-doc{
+  text-align:center;
+  font-weight: bold;
+  padding-top: 2px;
+  //  padding-left:40px;
+  // padding-right: -20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+}
+
+.next-btn {
+  margin-top: 3rem !important;
+  margin-right: 1rem;
+}
+
+.heading{
+    padding-bottom: 2%;
+}
+
+.otp{
+ text-align:left;
+ font-weight: bold;
+ padding-left:18%;
+ padding-top:7%;
+ font-family: 'Source Sans Pro', sans-serif;
+ font-size: 16px;
+}
+
+.mobile-number{
+  text-align:left;
+  // font-weight: bold;
+  padding-left:18%;
+  padding-top:7%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 11px;
+ }
+
+ .mobile-number1{
+  text-align:left;
+  font-weight: bold;
+  padding-left:18%;
+  padding-top:5%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12px;
+ }
+
+ .download-btn{
+   padding-top: 10%;
+  padding-left:15%;
+  padding-right: 15%;
+  font-size: 10px;
+  font-family: 'Source Sans Pro', sans-serif;
+  height: 150%;
+ }
+
+ .label-icon{
+  font-size: 100px;
+  // text-align: center;
+  padding-left: 40%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  // padding-right: 15%;
+}
+
+ .help{
+  color:#4895F1;
+  font-size: 16px;
+}
+
+.resend{
+  color:#5F5F5F;
+  text-decoration: underline;
+ padding:1px 5px 10px 5px ;
+ text-align: left;
+}
+
+.btn-section{
+  padding-top:10%;
+}
+
+.timer{
+// color: #FF715B;
+text-align: right;
+padding-right: 20%;
+}
+
+.error{
+  color: #FF715B;
+}

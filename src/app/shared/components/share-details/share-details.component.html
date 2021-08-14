@@ -1,0 +1,47 @@
+<ion-content>
+  <ion-title class="font-14">Share password with Beneficiary</ion-title>
+  <div class="background">
+    <ion-card>
+
+      <span class="To font-14">To:</span>
+      <div  class="share_mails" >
+          <ion-list  *ngFor="let email of emails">
+            <ion-label>{{email.primaryEmail}};</ion-label>
+            </ion-list>
+      
+      </div>
+
+    </ion-card>
+    <div class="info">
+      <ion-label class="font-14">Dear One,</ion-label>
+      <p class="font-14 ion-text-justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is to inform you that I'm storing my confidential information for you in Durity. The information is safely encrypted(locked) using my 'Master password', which will be needed at the time of decryption. My master password is</p>
+       <div style="text-align: center;padding-left: 20px;">
+        <!-- <ion-label class="font-12 pass" style="font-weight: 600;">Please enter your password here.</ion-label> -->
+        <ion-input placeholder="Please enter your password here" type="password" [(ngModel)]="password" class="font-14 pass"></ion-input>
+        <small class="error">{{invalidPassword}}</small>
+    </div>
+      <p class="font-14 ion-text-justify">In case of emergency, please contact <span style="font-weight: bold;color:black"> Durity.life</span> to decrypt(Unlock) & access the information/documents.  
+      </p>
+      <p class="font-14 ion-text-justify">I also recommend you to create an account in Durity and safeguard the future of your family and loved ones.</p>
+      <p class="font-14 ion-text-justify">Please make sure you store my 'Master password' carefully. Since Durity does not store any passwords, they won't be able to help you recover the password in case you lose it.</p>
+      <div class="regards"> 
+      <small>Regards,</small><br>
+      <small>{{userName}}</small><br>
+      <small>Durity ID is: {{durityId}}</small>
+    </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-bg" no-border>
+  <p class="note font-14">Note: Make sure you enter the correct 'Master password' before sharing it with your beneficiaries.</p>
+ 
+
+      <ion-button  color="light" (click)="finish()" fill="clear" ><span class="skip">Skip</span></ion-button>
+      <!-- <ion-label (click)="finish()"  class="skip">Skip</ion-label> -->
+      
+            <ion-button class="ion-float-right" style="padding-right:10px;" slot="end" color="light" (click)="share()"> <span class="share-btn font-14">Share</span>
+              <ion-icon style="padding-left: 0px;" name="share"></ion-icon>
+            </ion-button>
+         
+          
+</ion-footer>

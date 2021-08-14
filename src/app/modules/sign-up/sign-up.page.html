@@ -1,0 +1,285 @@
+
+<ion-card *ngIf="enableOtp == false" class="log-card-top">
+    <ion-row>
+    <ion-col size="5">
+    <h1  class="head">Durity</h1>
+    <p  class="head">Keeping you & your family secure</p>
+    </ion-col>
+    <ion-col size="7">
+    <ion-card class="log-card">
+        <img src="assets/imgs/Family.png" class="log-img">
+    </ion-card>
+    </ion-col>
+    </ion-row>
+</ion-card>
+
+<ion-content *ngIf="enableOtp == false" class="no-scroll">
+    <div class="div-section">
+
+        <h2 style="font-weight: 800;margin-left:10%">Create Account</h2>
+
+        <!-- <div > -->
+            <!-- <div class="img-section" padding text-center>
+                <img src="./assets/imgs/Group 358.svg" class="login-logo" alt="Login Page">
+    
+            </div> -->
+            <!-- <div style="padding-top: 50px;text-align: center;font-weight: bold;color: #ffff;font-size: 24px;">
+                <label>Create Account</label>
+            </div>
+            <div class="img-section" text-center>
+                <img style="height: 100px;" src="./assets/imgs/Icon ionic-contact.png" alt="Sign Up Page">
+            </div> -->
+        <!-- </div> -->
+        <form [formGroup]="signUpForm" (ngSubmit)="register()" #reg="ngForm">
+            <div class="welcome-back">
+                <!-- <h4 class="durity-h4 create-account-title" style="color: white;text-align: center;">Create an Account
+                </h4> -->
+                <div class="signup-padding">
+                    
+
+                    <ion-item class="signup-input" lines="none">
+
+                        <ion-input type="text"  class="custom-input" placeholder="Full Name" formControlName="name">
+                        </ion-input>
+                    </ion-item>
+                </div>
+                <div
+                    *ngIf="signUpForm.get('name').invalid  && (signUpForm.get('name').touched || signUpForm.get('name').dirty || reg.submitted)">
+                    <small class="error" *ngIf="signUpForm.get('name').errors.required">Full name is required</small>
+                    <!-- <small class="error" *ngIf="signUpForm.get('name').errors.pattern">Please enter valid name</small> -->
+                    <small class="error" *ngIf="signUpForm.get('name').errors.pattern">Please enter full name</small>
+                </div>
+                <div class="signup-padding">
+                    <ion-item class="signup-input" lines="none">
+                        <ion-input type="email" placeholder="Email" class="signUpInputs" formControlName="email"></ion-input>
+                    </ion-item>
+                </div>
+                <div
+                    *ngIf="signUpForm.get('email').invalid  && (signUpForm.get('email').touched || signUpForm.get('email').dirty || reg.submitted)">
+                    <small class="error" *ngIf="signUpForm.get('email').errors.required">Email is required</small>
+                    <small class="error" *ngIf="signUpForm.get('email').errors.pattern">Enter a valid email
+                        address</small>
+
+                </div>
+                <div class="signup-padding">
+                    <ion-item class="signup-input" lines="none">
+                            <ion-select style="font-size: 14px;" [(ngModel)]="selectedCountry" class="signUpInputs" (ionChange)="onChange(selectedCountry)" [ngModelOptions]="{standalone: true}">
+                                    <!-- formControlName="countryControl" -->
+                                    <ion-select-option  *ngFor="let country of  countryCodes" [value]="country">   
+                                        {{country.Code }}&nbsp;{{ country.Name}}</ion-select-option>
+                                </ion-select>
+                       <ion-input placeholder="Mobile Number" class="signUpInputs" formControlName="telephoneNumber" class="tele">
+                        </ion-input>
+                    </ion-item>
+                  
+
+                </div>
+                <div
+                    *ngIf="signUpForm.get('telephoneNumber').invalid  && (signUpForm.get('telephoneNumber').touched || signUpForm.get('telephoneNumber').dirty || reg.submitted)">
+                    <small class="error" *ngIf="signUpForm.get('telephoneNumber').errors.required">Mobile number is
+                        required</small>
+                    <small class="error" *ngIf="signUpForm.get('telephoneNumber').errors.pattern">
+                        Enter a valid mobile number</small>
+        
+                        <small class="error" *ngIf="signUpForm.get('telephoneNumber').errors.maxlength">Enter valid mobile number</small>
+ 
+                        <small class="error" *ngIf="signUpForm.get('telephoneNumber').errors.minlength">Enter valid mobile number</small>
+ 
+                </div>
+                <div class="signup-padding">
+                    <ion-item class="signup-input" lines="none">
+                        <ion-input [type]="passwordType" placeholder="Password" class="signUpInputs" formControlName="password"
+                            clearOnEdit="false"></ion-input>
+                        <ion-icon [name]="passwordIcon" item-right (click)="showPassword()" class="show-password-icon">
+                        </ion-icon>
+                    </ion-item>
+
+                </div>
+                <div
+                    *ngIf="signUpForm.get('password').invalid  && (signUpForm.get('password').touched || signUpForm.get('password').dirty || reg.submitted)">
+                    <small class="error" *ngIf="signUpForm.get('password').errors.required">Password is required</small>
+                    <small class="error" *ngIf="signUpForm.get('password').errors.minlength">Password must contain at least 6 characters</small>
+
+                </div>
+            </div>
+                
+            <div *ngIf="isFinancialAdvisor == true"  class="signin-padding" [ngStyle]="{'margin-top': isFinancialAdvisor == true ? '265px' : '' } " >
+                <!-- <ion-button  class="submitBtn ion-no-padding" shape="round" type="submit"> -->
+                    <ion-icon (click)="register()"  style=" background: #163899;margin-bottom: -5px;" class="durity-button" name="arrow-round-forward" type="submit"></ion-icon>
+                <!-- </ion-button> -->
+             </div>
+            
+             <div *ngIf="isHaveCouponCode == true"  class="signin-padding" [ngStyle]="{'margin-top': isHaveCouponCode == true ? '192px' : '' } " >
+                <!-- <ion-button class="butarow" [disabled]="(enteredCode == '' || enteredCode === undefined || IsAdvisorCode == ('' || null || undefined)) "  type="submit">  </ion-button>-->
+                    <ion-icon   (click)="register()" style=" background:#163899;margin-right: 10px;" class="durity-button" name="arrow-round-forward" type="submit"></ion-icon>
+             </div>
+            </form>
+            <div *ngIf="isQuestion == '1'&& signUpForm.valid" [ngStyle]="{'margin-top': isFinancialAdvisor == true ? '-340px' : '' } ">
+                <p class="question" style="padding-left: 10%;padding-right: 10%;">{{Question}} </p>
+                <img *ngIf="isFinancialAdvisor == true" src="./assets/imgs/Arrow Back Icon.svg" (click)="goto('signIn')" class="backBtn" >
+                <div class="QuestionControls">
+                    <ion-button color='{{questionOneBtn}}'   class="yesBtn" (click)="userType('yes', '1')"><label style="font-weight: bold;" [ngStyle]="{'color': labelColor == true ? 'white' : 'black'}">Yes</label></ion-button>
+                    <ion-button  color="#fcfcfc" class="noBtn" (click)="userType('no', '2')"><label style="color: black;font-weight: bold;">No</label></ion-button>
+                </div>
+                <!-- <div>
+                    <ion-col>
+                        <ion-row>
+                            <div class="uploadPic" *ngIf="isFinancialAdvisor == true">
+                                <ion-input class="companyNameInput" [(ngModel)]="companyNameInput"  placeholder="Company Name(Optional)"></ion-input>
+                                 
+                                  </div>
+                        </ion-row>
+                        <ion-row>
+                            <div  *ngIf="isFinancialAdvisor == true">
+                                <button *ngIf="uploadImageName === ''" (click)="changeLogo()">
+                                    <label><ion-icon name="cloud-upload"></ion-icon>&nbsp; Upload Logo</label>
+                                    <p class="span">(Optional)</p>
+                                </button>
+                                
+                                <div class="uploadedImageName" *ngIf="uploadImageName !== ''">
+                                    <div class="text-truncate">{{uploadImageName}}</div>
+                                    &nbsp;
+                                    <span><a (click)="moveToUploadAgain()" class="removeLink">Remove</a></span>
+                                </div>
+                             </div>
+                             
+                        </ion-row>
+                    </ion-col>
+                </div> -->
+
+                <div class="signup-padding" *ngIf="isFinancialAdvisor == true" >
+                    <ion-item class="signup-input" >
+                    <ion-input  *ngIf="isFinancialAdvisor == true" [(ngModel)]="companyNameInput"  placeholder="Company Name(Optional)"></ion-input>
+                </ion-item>
+                </div>
+                <div  class="signup-padding" *ngIf="isFinancialAdvisor == true">
+                    
+                   <!-- <ion-grid>
+                       <ion-row>
+                           <ion-col>
+                               <ion-item *ngIf="uploadImageName === ''"  class="company"  >
+                                <ion-input *ngIf="isFinancialAdvisor == true" placeholder="Upload Company Logo">
+                        
+                                </ion-input>
+                               </ion-item>
+                           </ion-col>
+                           <ion-col  lines="none">
+                               <ion-item style="width: 60%;">
+                                <button color="light" *ngIf="uploadImageName === ''" (click)="changeLogo()" class="column2" >
+                                    <ion-icon size="large" name="cloud-upload"></ion-icon>
+                                </button>
+                               </ion-item>
+                           </ion-col>
+                       </ion-row>
+                   </ion-grid> -->
+            
+                    <ion-item *ngIf="uploadImageName === ''" class="signup-input" lines="none">
+                    <ion-input *ngIf="isFinancialAdvisor == true" placeholder="Upload Company Logo">
+                        
+                    </ion-input>
+                    
+                        <ion-icon *ngIf="uploadImageName === ''" (click)="changeLogo()" size="large" name="cloud-upload"></ion-icon>
+            
+                </ion-item>
+                </div> 
+                <div class="uploadedImageName" *ngIf="uploadImageName !== ''">
+                    <div class="text-truncate">{{uploadImageName}}</div>
+                    &nbsp;
+                    <span><a (click)="moveToUploadAgain()" class="removeLink">Remove</a></span>
+                </div>
+                
+                    
+                     <div *ngIf="isFinancialAdvisor == true" style ="text-align: center; color: rgb(2, 2, 2);
+                     font-size: 12px;margin-top: 12px;">We will contact you for a short verification Process</div>
+                
+               </div>
+   
+               <div *ngIf="isQuestion == '2'&& signUpForm.valid" style="padding: 8px"  [ngStyle]="{'margin-top':isHaveCouponCode == true ? '-280px' : '0px' } ">
+                <p class="question">{{Question}} </p>
+                <img  src="./assets/imgs/Arrow Back Icon.svg" (click)="userType('no', '1')" class="backBtn" >
+                <div class="QuestionControls">
+
+                    <ion-button color="{{btnColor}}" class="yesBtn" (click)="userType('yes', '2')"><label style="font-weight: bold;" [ngStyle]="{'color': labelColor2 == true ? 'white' : 'black'}">Yes</label></ion-button>
+                    <ion-button color="#fcfcfc" class="noBtn" [disabled]="!signUpForm.valid" class="noBtn" (click)="register ()"><label style="color: black;font-weight: bold;">No</label></ion-button>
+                </div>
+                <ion-item style="margin-left: 40px;" *ngIf="isHaveCouponCode == true" lines="none">
+                    <ion-label >Enter Advisor Code  :</ion-label>
+                    <ion-input class="advisorcodeip"  [(ngModel)]="enteredCode" id="input" placeholder=" Eg:A1004" ></ion-input>
+                  
+                </ion-item>
+                <div  class="AdvisorCodeErrors" *ngIf="isHaveCouponCode == true">
+                    <small class="error" style="text-align: center;" *ngIf="(isCorrectAdvisor === false || enteredCode < 5) && isDataNotNull !== true" >{{message}}</small>
+                  <small class="error" *ngIf="(IsAdvisorCode == ('' || null || undefined)  && enteredCode > 4) || isDataNotNull === true">Advisor Id Not found</small>
+               <small style="color: green" *ngIf="IsAdvisorCode !== ('' || null || undefined) && !isCorrectAdvisor === false && isDataNotNull !== true"> The Advisor Name or Bank Name is " {{IsAdvisorCode}} "</small>   
+               </div>
+                   </div>
+   
+       </div>
+   </ion-content>
+   <ion-footer lines='none' style="background-color:#ffffff ;" *ngIf="isQuestion == '1' && enableOtp == false" class=""  no-border> 
+       <div *ngIf="isFinancialAdvisor == false" style="padding-bottom: 30px;" class="ion-text-center mb-0">
+           <span class="already-have-account " padding>Already have an account? <a
+            class="sign-in-show" (click)="goto('signIn')"><label  style="font-weight: bold;">Sign
+                       In</label></a></span>
+       </div>
+   </ion-footer>
+<ion-footer lines='none' style="background-color:#ffffff ;" *ngIf="isQuestion == '2' && signUpForm.invalid && enableOtp == false" class=""  no-border> 
+    <div *ngIf="isFinancialAdvisor == false" style="padding-bottom: 30px;" class="ion-text-center mb-0">
+        <span class="already-have-account " padding>Already have an account...? <a
+                     class="sign-in-show" (click)="goto('signIn')"><label style="font-weight: bold;">Sign
+                    in</label></a></span>
+    </div>
+</ion-footer>
+<ion-content *ngIf="enableOtp == true" style="background-color: #ffffff;" >
+    <ion-toolbar style="margin-top: -5px;">
+        <div class="durity-back-btn">
+            <ion-buttons slot="start">
+              <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+                  <ion-icon size="small" name="ios-arrow-back"></ion-icon>
+                  <label><b style="margin-bottom: 2px;">Back</b></label>
+              </ion-button>
+            </ion-buttons>
+          </div>
+        </ion-toolbar>
+        <div class='otpImage'>
+            <img src="assets/imgs/OTP.png" >
+        </div>
+        <form [formGroup]="otpForm" (ngSubmit)="makeRegistration()" #reg="ngForm" style="margin-top: -4%;">
+
+            <div class="mobile-number">
+                <h2 style="font-weight: 700;margin-left:13%;font-size: 21px;"><b style="color:#5D5D5D;">Verify with OTP</b></h2>
+                <p style="font-size: 12.5px;margin-left: 14%;color: #5D5D5D;margin-top: -7px;">Sent to {{selectedCountry.Code + signUpForm.value.telephoneNumber}}<b style="color:#163899 ;font-size: 14px;margin-left: 8px;font-weight: 700;" (click)="goBack()">Edit</b></p>
+                </div>
+
+        <div class="otp-signup-padding">
+            <ion-row align-items-center>
+                <ion-col size=3>
+                <ion-input type="tel" class="signp-input" required formControlName="otp1" (keyup)="moveFocus(b)" ></ion-input>
+                </ion-col>
+                <ion-col size=3>
+                <ion-input type="tel" class="signp-input" required formControlName="otp2" #b (keyup)="moveFocus(c)" ></ion-input>
+                </ion-col>
+                <ion-col size=3>
+                <ion-input type="tel" class="signp-input" required formControlName="otp3" #c (keyup)="moveFocus(d)" ></ion-input>  
+                </ion-col>
+                <ion-col size=3>
+                <ion-input type="tel" class="signp-input" required formControlName="otp4" #d ></ion-input>
+                </ion-col>
+            </ion-row>
+            <p   style="color: #5D5D5D;font-size: 14px;margin-left: 2%;margin-top:10px;">Resend OTP in : <b class="time">{{ time | async }}</b></p>
+            <p *ngIf="invalidOTP == true" style = 'font-size: 14px;margin-left: 2%;margin-top:2px;color: red;' >{{ errorMsg }}</p>
+
+        </div>
+        <!-- (keydown)="moveFocus(b)" -->
+        <div style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 50%;" *ngIf="!otpForm.valid">
+        <ion-button type='submit' color="mygrey" expand="block" style="height: 40px;" [disabled]="!otpForm.valid" ><label style="text-transform: capitalize;font-weight: bold;color: #fff;">Verify <label style="text-transform: uppercase;font-weight: bold;color: #fff;">OTP</label></label></ion-button>
+      </div>
+      <div class="abc" style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 50%;" *ngIf="otpForm.valid" >
+        <ion-button  color="myblue" (click)="makeRegistration()" expand="block" style="height: 40px;"><label style="text-transform: capitalize;font-weight: bold;color: #fff;">Verify <label style="text-transform: uppercase;font-weight: bold;color:#fff;">OTP</label></label></ion-button>
+      </div>
+      <!-- <div style="text-align: center;padding-left: 10%;padding-right: 10%;padding-top: 15%;" *ngIf="otpForm.valid"> -->
+        <!-- <button (click)="next()" type="button" class="block font-16">Next</button> -->
+    <!-- </div> -->
+
+    </form>
+</ion-content>

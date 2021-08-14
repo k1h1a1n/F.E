@@ -1,0 +1,58 @@
+.no-scroll{
+    --overflow:hidden;
+   
+}
+.border{
+ top:20%;   
+height: 120px;
+border: 1px solid #DCDCDC;
+border-radius:5px;
+}
+
+.level{
+    width: 128px;
+    height: 20px;
+    border: 1px solid #FFBEB4;
+    border-radius: 1px;
+    opacity: 1;
+    text-align: center;
+}
+ion-card{
+    position: relative;
+    overflow: visible;
+}
+.block{
+ 
+  top:-10px;
+  position: absolute;
+  left:5%;
+  background-color: #fff;
+}
+.card{
+    padding-bottom: 1px;
+}
+p{
+    padding:0px 10px 5px 10px;
+}
+.button{
+    text-align: right;
+    padding:2px;
+}
+.relation{
+    font-weight:bold;
+    color:black;
+    padding:5% 5% 5% 13%;
+}
+.level1{
+    font-weight:bold;
+    color:black;
+    padding:3% ;
+}
+.level2{
+    font-weight:bold;
+    color:black;
+    padding: 3%;
+}
+.minor{
+    padding-left: 10%;
+}

@@ -1,0 +1,34 @@
+<ion-content class="login-home-page durity-bg">
+  <ion-toolbar class="login-home-page durity-bg" >
+      <div class="durity-back-btn">
+          <ion-buttons slot="start">
+            <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+                <ion-icon name="ios-arrow-back"></ion-icon>
+                <small style="font-weight: bold;">Back</small>
+            </ion-button>
+          </ion-buttons>
+        </div>
+      </ion-toolbar>
+
+      <div  padding>
+        <div class="div-section" >
+<ion-row text-center>
+  <ion-col>
+   <ion-input #otp1 required maxLength="1" (keyup)="otpController($event,otp2,'')">
+   </ion-input>
+   <ion-input #otp2 required maxLength="1" (keyup)="otpController($event,otp3,otp1)">
+   </ion-input>
+   <ion-input #otp3 required maxLength="1" (keyup)="otpController($event,otp4,otp2)">
+   </ion-input>
+   <ion-input #otp4  required maxLength="1" (keyup)="otpController($event,'',otp3)">
+   </ion-input>
+  </ion-col>
+</ion-row>
+        </div>
+      </div>
+      
+    <div>
+      <ion-button (click)='verify()'>Verify</ion-button>
+    </div>
+
+</ion-content>

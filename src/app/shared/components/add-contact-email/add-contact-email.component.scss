@@ -1,0 +1,27 @@
+.add-email-title {
+  color: black;
+  font-weight: 1000;
+}
+.enter-email {
+color: black;
+font-weight: 1000;
+}
+.btn{
+  // text-align: end;
+  margin-top: 15%;
+}
+.error{
+  color: darkred;
+}
+.email-input {
+  --background: rgb(231, 237, 243) 0% 0% no-repeat padding-box;
+border-radius: 5px;
+color: black;
+font-weight: 500;
+height: 38px;
+ion-input{
+  font-size: 12px;
+  bottom: 10%;
+  color:black;
+}
+}

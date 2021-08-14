@@ -1,0 +1,20 @@
+<ion-content>
+
+<div style="padding-left: 10px;padding-right: 10px;padding-top: 30px;">
+ <label style="text-indent: 0.5em;"> Advanced encryption is an additional layer of encryption using your fingerprint to secure your document.</label>
+<p> <label style="font-weight: bold;"> FingerPrint Encryption: </label></p>
+<p> <label style="text-indent: 0.5em;">  By choosing this option, you can encrypt(lock) and decrypt(unlock) your files with your fingerprint. We use your phone's default lock/fingerprint to encrypt all your files. In an emergency situation, the beneficiaries you assigned for a particular file will be able to decrypt & download it using their fingerprint. We shall give them access to those files only after our verification.</label>
+</p>
+<p> <label style="font-weight: bold;"> Password Encryption:</label></p>
+<p> <label style="text-indent: 0.5em;"> By choosing this option, you agree to encrypt(lock) & decrypt(unlock) your files using a password you create. Please note that the files encrypted using the password can only be downloaded using that password. It is very important that you share this password with your beneficiaries, as, otherwise the file cannot be decrypted. </label>
+</p>
+<p> <label style="font-weight: bold;"> Both (Fingerprint + Password) :</label></p>
+<label style="text-indent: 0.5em;"> By choosing both, your files will be encrypted twice using your fingerprint as well as your password. These files can be decrypted & downloaded in either ways. The beneficiaries as well can decrypt & download these files using any of the above options.</label>
+
+</div>
+<div style="padding-left: 10px;padding-right: 30px;padding-top: 15px;text-align: end;padding-bottom: 15px;">
+    <ion-button (click)="closePopOver()">
+    <label style="text-transform: capitalize;text-align: end;font-weight: bold;">Got It</label>
+</ion-button>
+</div>
+</ion-content>

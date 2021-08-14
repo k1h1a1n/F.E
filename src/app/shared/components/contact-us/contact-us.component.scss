@@ -1,0 +1,36 @@
+.contact-us{
+    text-align:center;
+  font-weight: bold;
+  padding-top: 2px;
+  padding-left:40px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+}
+.title-input {
+     border-radius: 5px;
+     color:black;
+     height: 41px; 
+     border: 1px solid #DEDEDE;
+     ion-input{
+         font-size: 10px;
+         bottom: 10%;
+       }    
+ }
+ .description{
+     border-radius: 5px;
+     border: 1px solid #DEDEDE;
+     ion-textarea{
+         font-size: 10px;
+     }
+ }
+ .input-padding{
+     padding-top: 1%;
+     padding-bottom: 2.5%;
+     padding-left: 10%;
+     padding-right: 10%;
+   }
+   .submit-button{
+     padding-top: 8%;
+     color:#4895F1;
+     padding-right: 5%;
+ }

@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-title>
+  Add Category
+  <ion-icon name="close-circle" (click) = 'closePopOver()' float-right></ion-icon>
+</ion-title>
+
+  
+    <div class = 'input-padding'>
+      <div class = 'title-input'>
+        <ion-input 
+          placeholder="Type category name of your choice" #textValue>
+        </ion-input>
+      </div>
+    </div>
+    <ion-button (click) = 'onDismiss(textValue)' 
+     style = 'padding-right: 6%;' float-right>Done
+    </ion-button>
+  </ion-content>
+
+
+
+  

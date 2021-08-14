@@ -1,0 +1,25 @@
+.settings{
+    text-align:center;
+  font-weight: bold;
+  padding-top: 2px;
+  padding-left:40px;
+  // padding-right -20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+}
+.menu {
+    padding-left: 4%;
+    padding-right: 4%;
+    .list-md {
+      padding: 0;
+    }
+  }
+  .bg {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+  }
+  ion-item {
+    font-size: 16px;
+    font-weight: 600;
+    bottom: 2%;
+    --border-color:  #CFE3FC;
+  }

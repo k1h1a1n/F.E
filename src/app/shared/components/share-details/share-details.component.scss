@@ -1,0 +1,93 @@
+ion-title{
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 10%;
+    font-weight: bold;
+}
+.background{
+width: 98%;
+margin-left: 1%;
+height: 100%;
+background: #E5F0FF 0% 0% no-repeat padding-box;
+border: 1px solid #F2F8FD;
+border-radius: 4px;
+opacity: 1;
+}
+ion-card{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    opacity: 1;
+}
+ion-card{
+    display: flex;
+    flex-direction: row;
+}
+.To{
+    // padding-top:5%;
+    padding-left: 5%;
+    color: #FF715B;
+    // font-size: 18px;
+    width:20%;
+}
+.share_mails{
+    font-size: 16px;
+    color:black;
+    font-weight: 600;
+    // padding-top: 10px;
+    line-height: 3px;
+}
+.info{
+ padding: 2% 3% 5% 3%;
+}
+.footer-bg{
+    background: #4895F1 0% 0% no-repeat padding-box;
+box-shadow: 0px 3px 6px #00000029;
+border-radius: 10px 10px 0px 0px;
+opacity: 1;
+padding:2%;
+}
+.sharing{
+    color:white;
+ padding-right: 10%;
+ text-align: center;
+}
+.finish-btn{
+    padding-right:8%;
+    padding-top: 2%;
+}
+.regards{
+    font-size: 1.2rem;
+}
+.note{
+    color:white;
+    padding-bottom: 2%;
+    padding-right: 2%;
+}
+.share-btn{
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-right: 0px;
+    width: 50px;
+}
+.skip{
+    color:#fff;
+    text-transform: capitalize;
+    text-decoration: underline;
+    padding-left: 50px; 
+    font-weight: bold;
+}
+.pass{
+    text-align: center;
+    border:1px solid #7AB1FF;
+    border-radius: 5px;
+    width: 270px;
+    background: white;
+    height: 35px;
+    padding: 5px;
+    
+}
+.error{
+    color:darkred;
+    text-align: start;
+    padding:7%;
+    }

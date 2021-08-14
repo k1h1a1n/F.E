@@ -1,0 +1,53 @@
+<!-- <ion-backdrop visible="true" tappable="true"></ion-backdrop> -->
+<div class=info-section>
+  <div class=enter-form>
+    <div>
+    <span class="dropdown-icon " (click)="cancel()">
+      <img src="assets/imgs/Drop down arrow.svg">
+    </span>
+    <span style="padding-left: 10px;">
+      <b text> Personal Details: </b>
+    </span>
+   
+   <ion-icon  style="float: right; right: 5%; position: relative; " src="assets\imgs\profile-edit.svg"></ion-icon>
+    <br>
+    <br>
+  </div>
+  <div>
+  <form [formGroup]="profileForm" (ngSubmit)="submitForm()" #reg="ngForm">
+  <div class=profile-padding>
+    <ion-item class=profile-input>
+      <ion-input type="text" placeholder="Name" formControlName="name"></ion-input>
+    </ion-item>
+  </div>
+  <div class=profile-padding>
+    <ion-item class=profile-input>
+      <ion-input type="text" placeholder="Secondary Email (Optional)" formControlName="alternateEmailAddress"></ion-input>
+    </ion-item>
+  </div>
+
+  <div class="profile-padding"
+                    *ngIf="profileForm.get('alternateEmailAddress').invalid  && (profileForm.get('alternateEmailAddress').touched || profileForm.get('alternateEmailAddress').dirty || reg.submitted)">
+                    <small class="error" *ngIf="profileForm.get('alternateEmailAddress').errors.required">Email is
+                        required</small>
+                    <small class="error" *ngIf="profileForm.get('alternateEmailAddress').errors.pattern">Enter a valid
+                        email address</small>
+                </div>
+
+  <div class=profile-padding>
+    <ion-item class=profile-input>
+      <ion-input type="text" placeholder="Primary number" formControlName="telephoneNumber"></ion-input>
+    </ion-item>
+  </div>
+  <div class=profile-padding>
+    <ion-item class=profile-input>
+      <ion-input type="text" placeholder="Secondary number (Optional)" formControlName="alternateTelephoneNumber"></ion-input>
+    </ion-item>
+  </div>
+  <div class= "update-button">
+    <ion-button color="light" type="submit" style="float: right; right: 5%; position: relative; text-transform: none; width:100px" expand="block" ><b>Update</b></ion-button>
+  </div>
+  </form>
+  </div>
+</div>
+</div>

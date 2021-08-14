@@ -1,0 +1,242 @@
+<ion-toolbar style="--background:#4895F1;padding-top:5px;">
+  <div class="durity-back-btn">
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" fill="clear" size= "small" (click)="goto('home')" class="back-btn"> 
+            <ion-icon name="ios-arrow-back"></ion-icon>
+            <small>Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+<div text-center >
+    <ion-label style="color:white"><b>Profile</b></ion-label>
+</div>
+</ion-toolbar>
+
+<ion-content >
+  <div  style="text-align:center;">
+    <div class=profile-pic >
+
+      <div style="background-color:#4895F1;padding: 0px 0px 15px 0px;text-align: center;">
+        
+        <!--<ion-buttons >
+          <ion-button class="back" style="--background:#FF715B;" slot="icon-only" fill="clear" (click)="goto('home')">
+            &lt; Back
+          </ion-button>
+          <div class="profile" >
+            <ion-label>My Profile</ion-label>
+          </div>
+        </ion-buttons>-->
+        <div style="display: inline-block;bottom: -10%;">
+         
+            <ion-avatar class="ion-avatar">
+              <img *ngIf="user.profile.picture.data == null || user.profile.picture.data == ''" src="assets\imgs\ionavatar.jpg"  class="profileImg">
+            <img *ngIf="user.profile.picture.data; else noPic" [src]="profilePic" class="profileImg">
+          </ion-avatar>
+                 
+        <div *ngIf="user.profile.picture.data == null || user.profile.picture.data == ''" style="position: relative; display: inline-block; left: 26%;">
+          <ion-fab slot="fixed" (click)="presentActionSheetforNewProfile()">
+            <!-- <ion-fab-button color="light"> -->
+              <ion-icon style=" color: black;" src="assets\imgs\camicon.svg"></ion-icon>
+            <!-- </ion-fab-button> -->
+          </ion-fab>
+        </div>
+
+        <div *ngIf="user.profile.picture.data; else noPic" style="position: relative; display: inline-block; left: 26%;">
+          <ion-fab slot="fixed" (click)="presentActionSheetforChangeProfile()">
+            <!-- <ion-fab-button color="light"> -->
+              <ion-icon style=" color: black;" src="assets\imgs\camicon.svg"></ion-icon>
+            <!-- </ion-fab-button> -->
+          </ion-fab>
+        </div>
+      </div>
+     <br>
+     <label *ngIf="user.profile.isFinancialAdvisor == false" style="font-size: 16px;font-weight: 1000;color:white;">Durity ID :<label style="color: white;"> {{ user.durity_id}}</label></label>
+
+    <label *ngIf="user.profile.isFinancialAdvisor == true" style="font-size: 16px;font-weight: 1000;color: white;">Financial Advisor ID : {{ user.profile.advisorCode}}</label>
+  </div>
+    </div>
+   
+
+    <form [formGroup]="userForm"  style="padding: 10px" #reg="ngForm"> 
+      <div class="login-padding">
+        <div class="ion-text-start" style="padding-left: 10px;">
+        <ion-label style="font-size: 18px;font-weight: 1000;color: #2D3047;padding-left: 5px;">Personal Information</ion-label>
+        </div>
+        <ion-item class="signin-input" >
+          <ion-input (ionInput)="myChange()"  placeholder="Name" type="text" formControlName="name" required></ion-input>
+        </ion-item>
+        <div *ngIf="userForm.get('name').invalid  && (userForm.get('name').touched || userForm.get('name').dirty || reg.submitted)">
+          <small class="error" *ngIf="userForm.get('name').errors.required"> Name is required</small>
+        </div>
+    </div>
+
+    <div class="login-padding">
+      <ion-item class="signin-input" >
+        <ion-input style="border-color: #2D3047;" [readonly]="isReadonl" placeholder="Primary Email" type="email" formControlName="email" required></ion-input>
+      </ion-item>
+      
+  </div>
+
+ 
+
+  
+
+<div class="login-padding">
+  <ion-item class="signin-input" >
+    <ion-input style="border-color: #2D3047;" placeholder="Secondary Email    (Optional)" type="email" formControlName="alternateEmailAddress" required></ion-input>
+  </ion-item>
+</div>
+
+<div class="login-padding">
+  <ion-item class="signin-input">
+    <ion-input style="border-color: #2D3047;" type="text"  placeholder="Primary Phone no." formControlName="telephoneNumber" required></ion-input>
+  </ion-item>
+  <div *ngIf="userForm.get('telephoneNumber').invalid  && (userForm.get('telephoneNumber').touched || userForm.get('telephoneNumber').dirty || reg.submitted)">
+    <small class="error" *ngIf="userForm.get('telephoneNumber').errors.required"> Phone Number is required</small>
+  </div>
+</div>
+
+<div class="login-padding">
+  <ion-item class="signin-input" >
+    <ion-input style="border-color: #2D3047;" type="number" placeholder="Secondary Phone no.    (Optional)" formControlName="alternateTelephoneNumber" required></ion-input>
+  </ion-item>
+</div>
+
+<div *ngIf="user.profile.isFinancialAdvisor == true" class="login-padding">
+  <ion-item class="signin-input" >
+    <ion-input style="border-color: #2D3047;" type="text" placeholder="Company Name     (Optional)" formControlName="advisorOrgName" required></ion-input>
+  </ion-item>
+
+</div>
+
+<div *ngIf="user.profile.isFinancialAdvisor == true" class="login-padding">
+  <ion-item  lines="none">
+    <label style="text-align: start;">Logo : </label>
+    <span *ngIf="user.profile.advisorUrl == '' " style="padding-left: 10px;">
+      <ion-icon name="cloud-upload" style="height: 20px;"></ion-icon>
+      <b><u (click)="uploadLogo()"> Upload your logo </u></b>
+     
+    <!-- <label *ngIf="user.profile.advisorLogoName == undefined || user.profile.advisorLogoName == '' " style="padding-left: 10px;"> </label>
+    <label *ngIf="user.profile.advisorLogoName == undefined || user.profile.advisorLogoName == '' " style="padding-left: 20px;"><u style="color: #FF715B;">Upload</u></label> -->
+  </span>
+  <span *ngIf="user.profile.advisorUrl != '' " style="padding-left: 10px;">
+
+     <label *ngIf="user.profile.advisorLogoName == undefined || user.profile.advisorLogoName != ''" style="padding-left: 10px;">{{user.profile.advisorLogoName}} </label>
+      <label *ngIf="user.profile.advisorLogoName != ''" style="padding-left: 20px;"><u (click)="rmvAdvLog()" style="color: #FF715B;">Remove</u></label>
+    </span>
+    </ion-item>
+
+</div>
+<div *ngIf="user.profile.isFinancialAdvisor == true" class="login-padding">
+  <ion-item  lines="none">
+    <label  style="font-size: 15px;background-color: #78B2F7;border-radius: 12%;text-align: center;">
+      <button (click)="discontinueFinAdv()" style="background-color: #78B2F7;border-radius: 5px;">
+        <label style="font-size: 15px;padding-left: 10px;padding-right: 10px;text-align: center;font-weight: bold;"> Discontinue as Financial Advisor</label>
+      </button>
+      </label> 
+    </ion-item>
+</div>
+    </form>
+
+    <div class="ion-text-start" style="padding-left: 10px;">
+      <ion-label *ngIf="user.profile.isFinancialAdvisor == false" style="font-size: 18px;font-weight: 1000;color: #2D3047;padding-left: 15px;">Account Details</ion-label>
+      </div>
+
+    <div *ngIf="user.profile.isFinancialAdvisor == false && user.profile.advisorCode == '' " class="checkbox-pad">
+      <ion-item style="background-color: #CFE4F7" lines="none">
+        <ion-label style="font-size: 14px;font-weight: 400;">Connect with your Financial Advisor</ion-label>
+        <ion-toggle color='primary'  [(ngModel)]="checkboxForFinAdvLink" (ionChange)="togEvent(checkboxForFinAdvLink,checkboxForChangeToFinAdv)"  slot="end"></ion-toggle >
+        
+      </ion-item>
+      <ion-item style="background-color: #CFE4F7" lines="none" *ngIf="checkboxForFinAdvLink == true">
+        <ion-row style="text-align: center;background-color: #CFE4F7">
+          <ion-col style="text-align: center;padding-top: 17px;" >
+            <label >Enter Code :</label>
+          </ion-col>
+          <ion-col  >
+            <ion-item class="signin-input" lines='none'>
+            <ion-input [(ngModel)]="enteredAdvCode"  placeholder="Eg: AXXXX"></ion-input>   
+          </ion-item>
+          <div *ngIf="invalidAdvCode != '' ">
+            <small style="color: darkred;" >{{invalidAdvCode}}</small>
+          </div>
+               </ion-col>
+         
+        
+          
+        </ion-row>
+
+      </ion-item>
+      <ion-item lines="none">
+        <ion-toggle color='primary' [(ngModel)]="checkboxForChangeToFinAdv" (ionChange)="togEvent1(checkboxForFinAdvLink,checkboxForChangeToFinAdv)" slot="end"></ion-toggle >
+        <ion-label style="font-size: 14px;font-weight: 400;">I am a Financial Advisor
+           <!-- <label style="font-size: 11px;font-weight: 100;"> (verification required)</label> -->
+          </ion-label>
+      </ion-item>
+      
+
+      
+
+      <div  class="login-padding" *ngIf="checkboxForChangeToFinAdv == true" >
+        <ion-item  class="signin-input"  >
+        <ion-input [(ngModel)]="advOrgName" placeholder="Company Name (optional)">
+            
+        </ion-input>
+    </ion-item>
+    </div>
+
+     
+
+    <div  class="login-padding" *ngIf="checkboxForChangeToFinAdv == true" >
+      <ion-item  class="signin-input"  lines="none">
+      <ion-input [(ngModel)]="logoname" placeholder="Upload Company Logo (optional)">
+          
+      </ion-input>
+      <button *ngIf="logoname == '' " (click)="changeLogo()" style="height: 38px;">
+          <label><ion-icon name="cloud-upload"></ion-icon>&nbsp; Browse</label>
+      </button>
+      <button *ngIf="logoname != '' " (click)="removeAdvLogo()" style="height: 38px;padding: 2% 2% 2% 2%;">
+        <label><ion-icon name="cloud-upload"></ion-icon>&nbsp; Change</label>
+    </button>
+  </ion-item>
+  <div >
+    </div>
+    <div>
+      <ion-label style="font-size: 11px;font-weight: bold;">
+        We will contact you for a short verification process.
+      </ion-label>
+    </div>
+  </div>
+  
+    </div>
+
+
+    <div *ngIf="user.profile.isFinancialAdvisor == false && user.profile.advisorCode != '' " class="checkbox-pad">
+      <ion-item lines="none">
+        <div style="width: 45%;float: left;font-size: 14px;font-weight: bold;">
+          <p>Financial Advisor ID : </p>
+          <p style="visibility: hidden;opacity: 0;">Financial Advisor ID : </p>
+          <p style="visibility: hidden;opacity: 0;">Financial Advisor ID : </p>
+         
+
+        </div>
+        <div style="width: 45%;float: left;font-size: 14px;font-weight: bold;">
+          
+          <p>{{user.profile.advisorName}} </p>
+          <p>{{user.profile.advisorCode}}</p>
+          <p>{{user.profile.advisorCode}} <label (click)="unlinkAdvisor()" style="color: #FF715B;">Unlink</label></p>
+          
+          </div>
+      </ion-item>
+    </div>
+
+    <div class="ion-text-end" style="padding-bottom: 30px;padding-top: 10px;padding-right: 20px;">
+      <ion-button slot="end" (click)="updateProfileDetails()">
+        <label >UPDATE</label>
+      </ion-button>
+    </div>
+
+  </div>
+
+
+</ion-content>

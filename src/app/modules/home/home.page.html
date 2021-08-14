@@ -1,0 +1,591 @@
+
+	<ion-card *ngIf="isFincAdvisor == false && advisorUrl =='' " class="welcome-card">
+		<ion-toolbar class="durity-header">
+			<ion-buttons slot="start" class="hamberger-btn">
+				<ion-menu-button class="hamberger-icon"></ion-menu-button>
+			</ion-buttons>
+			<!-- <ion-buttons slot="end">
+				<ion-button slot="icon-only" fill="clear" (click)="addDeviceToBiometric()" class="notifications">
+					<ion-icon src="assets/imgs/notification.svg"></ion-icon>
+				</ion-button>
+			</ion-buttons> -->
+		</ion-toolbar>
+
+		<ion-row *ngIf="isFincAdvisor == false" class="greet">
+			<ion-col size="6" class="greet-user">
+				<ion-row>
+					<span style="font-size: 20px;padding-left: 18px">Hello, {{userName || '...'}}</span>
+				</ion-row>
+				<br/>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">Advisor</span>
+				</ion-row>
+				<ion-row>
+					<img *ngIf="advisorName !== '' && (advisorUrl!=='' || advisorUrl != null)" style="height: 40%; width: 70%;" src={{advisorUrl}}>			    
+				</ion-row>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">{{advisorName}}</span>
+			    </ion-row>
+			</ion-col>
+			<ion-col>
+				<img src="assets/imgs/family_1.svg" class="welcome-image">
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="isFincAdvisor == true" class="greet">
+			
+			<ion-col  class="greet-user" >
+				
+				<br/>
+				<ion-row  class="abc" style="height: 45%; padding-left: 3%;">
+					<!-- <ion-item style="background-color:#88b5ec ;width: 60%; color: white;"> -->
+					<ion-select [(ngModel)]="selectClient" class="selectDropDown"  (ionChange)="chooseClient(selectClient)" placeholder="{{ userName }} " >
+						<ion-select-option *ngFor="let lst of listOfClientsForAdvisor" value="{{lst | json}}" style="font-size: 16px;">
+						<label  *ngIf="lst.profile.isFinancialAdvisor == false">{{lst.profile.name}}</label>
+							<label *ngIf="lst.profile.isFinancialAdvisor == true">{{lst.profile.name}} (self)</label>
+						</ion-select-option>			  
+					  </ion-select>
+					<!-- </ion-item> -->
+					<!-- <div > -->
+						
+						<ion-avatar class="durity-img1" style="margin-left: 5%">
+							<img src="assets\imgs\ionavatar.jpg" >
+						</ion-avatar>
+					<!-- </div> -->
+				</ion-row>
+				<ion-row *ngIf="showViewProfile == false" style="padding-left: 3%;height: 5%;padding-top: 30px;">
+					<label (click)="navigateToProfile()" style="font-size: 14px;background-color: #4895F1;border-style: solid;border-color: white;color: white;">
+					<label style="padding-left: 3px;padding-right: 3px;">	View Profile </label>
+					</label>
+				</ion-row>
+				<!-- <ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">Advisor</span>
+				</ion-row>
+				<ion-row>
+					<img *ngIf="advisorName !== ''" style="height: 40%; width: 70%;" src={{advisorUrl}}>
+			    </ion-row>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">{{advisorName}}</span>
+			    </ion-row> -->
+			</ion-col>
+			<!-- <ion-col>
+				<img src="assets/imgs/family_1.svg" class="welcome-image">
+			</ion-col> -->
+		</ion-row>
+	</ion-card>
+
+	<ion-card *ngIf="isFincAdvisor == true" class="welcome-card-adv">
+		<ion-toolbar class="durity-header">
+			<ion-buttons slot="start">
+				<ion-menu-button class="hamberger-icon"></ion-menu-button>
+			</ion-buttons>
+			<!-- <ion-buttons slot="end">
+				<ion-button slot="icon-only" fill="clear" (click)="addDeviceToBiometric()" class="notifications">
+					<ion-icon src="assets/imgs/notification.svg"></ion-icon>
+				</ion-button>
+			</ion-buttons> -->
+		</ion-toolbar>
+
+		<ion-row *ngIf="isFincAdvisor == false" class="greet">
+			<ion-col size="6" class="greet-user">
+				<ion-row>
+					<span style="font-size: 20px;">Hello, {{userName || '...'}}</span>
+				</ion-row>
+				<br/>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">Advisor</span>
+				</ion-row>
+				<ion-row>
+					<img *ngIf="advisorName !== '' && (advisorUrl!=='' || advisorUrl != null)" style="height: 10%; width: 30%;" src={{advisorUrl}}>			    
+				</ion-row>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">{{advisorName}}</span>
+			    </ion-row>
+			</ion-col>
+			<ion-col>
+				<img src="assets/imgs/family_1.svg" class="welcome-image">
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="isFincAdvisor == true" class="greet">
+			
+			<ion-col  class="greet-user" >
+				<!-- <label></label> -->
+				<br/>
+				<ion-row  class="abc" style="height: 45%; padding-left: 3%;">
+					<!-- <ion-item style="background-color:#88b5ec ;width: 60%; color: white;"> -->
+					<ion-select [(ngModel)]="selectClient" class="selector" (ionChange)="chooseClient(selectClient)" placeholder="{{ userName }} " >
+						<ion-select-option *ngFor="let lst of listOfClientsForAdvisor" value="{{lst | json}}" style="font-size: 16px;">
+						<label  *ngIf="lst.profile.isFinancialAdvisor == false">{{lst.profile.name}}</label>
+							<label *ngIf="lst.profile.isFinancialAdvisor == true">{{lst.profile.name}} (self)</label>
+						</ion-select-option>			  
+					  </ion-select>
+					<!-- </ion-item> -->
+					<!-- <div > -->
+						
+						<ion-avatar class="durity-img1" style="margin-left: 5%;">
+							<img src="assets\imgs\ionavatar.jpg" >
+						</ion-avatar>
+					<!-- </div> -->
+				</ion-row>
+				<ion-row *ngIf="showViewProfile == false" style="padding-left: 3%;height: 5%;padding-top: 10px;">
+					<label (click)="navigateToProfile()" style="font-size: 14px;background-color: #4895F1;border-style: solid;border-color: white;color: white;">
+					<label style="padding-left: 3px;padding-right: 3px;">	View Profile </label>
+					</label>
+				</ion-row>
+				<!-- <ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">Advisor</span>
+				</ion-row>
+				<ion-row>
+					<img *ngIf="advisorName !== ''" style="height: 40%; width: 70%;" src={{advisorUrl}}>
+			    </ion-row>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">{{advisorName}}</span>
+			    </ion-row> -->
+			</ion-col>
+			<!-- <ion-col>
+				<img src="assets/imgs/family_1.svg" class="welcome-image">
+			</ion-col> -->
+		</ion-row>
+	</ion-card>
+
+	<ion-card *ngIf="isFincAdvisor == false && advisorUrl!=='' " class="welcome-card-logo">
+		<ion-toolbar class="durity-header">
+			<ion-buttons slot="start">
+				<ion-menu-button class="hamberger-icon"></ion-menu-button>
+			</ion-buttons>
+			<!-- <ion-buttons slot="end">
+				<ion-button slot="icon-only" fill="clear" (click)="addDeviceToBiometric()" class="notifications">
+					<ion-icon src="assets/imgs/notification.svg"></ion-icon>
+				</ion-button>
+			</ion-buttons> -->
+		</ion-toolbar>
+
+		<ion-row *ngIf="isFincAdvisor == false" class="greet">
+			<ion-col size="6" class="greet-user">
+				<ion-row>
+					<span style="font-size: 20px;">Hello, {{userName || '...'}}</span>
+				</ion-row>
+				<br/>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">Advisor</span>
+				</ion-row>
+				<ion-row>
+					<img *ngIf="advisorName !== '' && (advisorUrl!=='' || advisorUrl != null)" style="height: 15%; width: 35%;" src={{advisorUrl}}>			    
+				</ion-row>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">{{advisorName}}</span>
+			    </ion-row>
+			</ion-col>
+			<ion-col>
+				<img src="assets/imgs/family_1.svg" class="welcome-image">
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="isFincAdvisor == true" class="greet">
+			
+			<ion-col  class="greet-user" >
+				
+				<br/>
+				<ion-row  class="abc" style="height: 45%; padding-left: 3%;">
+					<!-- <ion-item style="background-color:#88b5ec ;width: 60%; color: white;"> -->
+					<ion-select [(ngModel)]="selectClient" class="selectDropDown"  (ionChange)="chooseClient(selectClient)" placeholder="{{ userName }} " >
+						<ion-select-option *ngFor="let lst of listOfClientsForAdvisor" value="{{lst | json}}" style="font-size: 16px;">
+						<label  *ngIf="lst.profile.isFinancialAdvisor == false">{{lst.profile.name}}</label>
+							<label *ngIf="lst.profile.isFinancialAdvisor == true">{{lst.profile.name}} (self)</label>
+						</ion-select-option>			  
+					  </ion-select>
+					<!-- </ion-item> -->
+					<!-- <div > -->
+						
+						<ion-avatar class="durity-img1" >
+							<img src="assets\imgs\ionavatar.jpg" >
+						</ion-avatar>
+					<!-- </div> -->
+				</ion-row>
+				<ion-row *ngIf="showViewProfile == false"class="viewProfileBtn">
+					<label (click)="navigateToProfile()" style="font-size: 14px;background-color: #4895F1;border-style: solid;border-color: white;color: white;">
+					<label style="padding-left: 3px;padding-right: 3px;">	View Profile </label>
+					</label>
+				</ion-row>
+				<!-- <ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">Advisor</span>
+				</ion-row>
+				<ion-row>
+					<img *ngIf="advisorName !== ''" style="height: 40%; width: 70%;" src={{advisorUrl}}>
+			    </ion-row>
+				<ion-row>
+					<span *ngIf="advisorName !== ''" style="font-size: 13px;">{{advisorName}}</span>
+			    </ion-row> -->
+			</ion-col>
+			<!-- <ion-col>
+				<img src="assets/imgs/family_1.svg" class="welcome-image">
+			</ion-col> -->
+		</ion-row>
+	</ion-card>
+	<ion-content scroll = true>
+	<div class = 'angle'>
+		<ion-card class = 'start' lines = 'none'>
+			<ion-card class = 'first'>
+				<h6 style = 'text-align: center;font-weight:bold' >
+					Your family is {{percentage}}% secured
+				</h6>
+				<div class = 'progress' >
+					<ion-progress-bar *ngIf = 'progress == (0 || undefined)' style = "padding-bottom:3%;border-radius:5px;"
+					 [value] = '0'>
+				</ion-progress-bar>
+					<ion-progress-bar *ngIf = 'progress != (0 || undefined)' style = "padding-bottom:3%;border-radius:5px;"
+					 [value] = 'progress'>
+				</ion-progress-bar>
+				</div>
+			<!-- <small float-right 
+	   			[ngStyle] = "{'padding-right:15px;padding-bottom:15px':progress > 90? '2px solid #008000':'none'}">
+					Superstar
+			</small> -->
+			<ng-container *ngIf = 'percentage >= 90'>
+				<small float-right style = "padding-right:15px;padding-bottom:15px;color:rgb(13, 172, 39)"><b>Superstar</b></small>
+			</ng-container>
+			<ng-container *ngIf = 'percentage < 90'>
+				<small float-right style = "padding-right:15px;padding-bottom:15px">Superstar</small>
+			</ng-container>
+			
+			</ion-card>
+			<ion-row>
+				<ion-col style = color:#0a0b0c;padding-left:5%;font-size:17px;>
+					<b>Checklist:</b>
+				</ion-col>
+			</ion-row>
+		
+			<ion-list>
+				<ion-item>
+					<ng-container *ngIf="newUser === true">
+						<ion-label>
+							Create Your Will <span style = 'color:rgb(13, 172, 39)'><b>(FREE)</b></span>
+						</ion-label>
+						<ion-icon src = "assets/imgs/iconfinder_plus.svg" (click) = 'goToWillForm()' ></ion-icon>
+					</ng-container>
+					<ng-container *ngIf="newUser === false">
+						<ion-label>
+							Edit Your Will <span style = 'color:rgb(13, 172, 39)'><b>(FREE)</b></span>
+						</ion-label>
+						<ion-icon src = "assets/imgs/iconfinder_plus.svg" 
+						(click) = 'goToWillForm()' ></ion-icon>
+					</ng-container>
+				</ion-item>
+				
+			<!-- 	<ion-item *ngFor = "let r of records">
+					<ion-label>
+						{{r.category}}
+						<ion-icon  *ngIf = 'r.property == true' style="height:30px;width: 30px;" src = "assets/imgs/Tick mark S.svg">
+						</ion-icon>
+					</ion-label>
+					 <ion-label *ngIf = 'r.property == true'>
+						<ion-icon style="height:30px;width: 30px;" src = "assets/imgs/Tick mark S.svg">
+						</ion-icon>
+					</ion-label>
+					<ion-icon src = "assets/imgs/iconfinder_plus.svg" 
+						(click) = 'addDocument(r.category)'>
+					</ion-icon>
+				</ion-item> -->
+				<ng-container>
+
+				
+				<ion-item *ngFor = "let r of userRecords">
+					<ion-label >
+						
+							 {{r.category}}
+							 <span class = svgimg>
+								<ion-icon  *ngIf = 'r.property == true' style="height:30px;width: 30px;" 
+							src = "assets/imgs/Tick mark S.svg">
+						</ion-icon>
+							</span>
+							</ion-label>
+							
+							
+					<ion-icon src = "assets/imgs/iconfinder_plus.svg" 
+					 (click) = "goto('select-doc',r.category)" >
+					</ion-icon>
+				</ion-item>
+				<ion-item>
+					<ion-button type = 'button' (click) = 'popOver()' class = 'add' >
+						Add Category
+					</ion-button>
+				</ion-item>
+			</ng-container>
+				
+						
+			</ion-list>
+				
+				
+		</ion-card>
+	</div>
+</ion-content>
+		 
+		<!-- <app-upload-document></app-upload-document> -->
+		
+	
+		<!--<div class="generate-will-link">
+			<ion-card (click)="goToWillForm()">
+				<div class="row" style="padding: 5px;">
+					<div style="float: left; padding-left: 6%;">
+						<img src="/assets/imgs/note_taking (1).svg" alt="" />
+					</div>
+					 <div style="float: left; padding: 15px; justify-content: center;">
+						<p style="padding-top: 5px;" class="ma-0 font-16 font-bold">Create Or Edit Will (In 2 Mins)</p>
+						<p class="ma-0 font-16">
+							<span>Create your own will in just 2 mins</span><br>
+						</p> 
+					</div>
+					<div *ngIf="newUser === true" style="float: left; padding: 15px; justify-content: center;">
+						<p style="padding-top: 5px;" class="ma-0 font-16 font-bold">Create Will (In 2 Mins)</p>
+	
+					</div>
+					<div *ngIf="newUser === false" style="float: left; padding: 15px; justify-content: center;">
+						<p style="padding-top: 5px;" class="ma-0 font-16 font-bold">Edit your Will </p>
+	
+					</div>
+				</div>
+			</ion-card>
+		</div>-->
+		
+	
+		<!-- Uploaded Documents Section
+		<div class="documents-section" >
+				<p>
+					<ion-label class="homescreen-headings">Uploaded Documents</ion-label>
+					 <button (click)="addDocument()" class="add-new-btn">Add New</button>
+				</p>
+				 <div *ngIf="isFincAdvisor == true" class="uploaded-documents">
+					<ion-grid >
+						<ion-row class="document-list">
+							<ion-col size = "4" *ngFor="let attachment of attachmentsPreview; let i = index" >
+								<ion-card *ngIf= "attachment.advisorAccess == true || attachment.advisorAccess == (undefined || null)" class="document-card"
+									(click)="viewDocument(i)">
+									<div>
+										<div *ngIf= "attachment.isBiometricEnabled == true || attachment.isUserEncrypted == true" class="img-container" text-center>
+											<img src="/assets/imgs/Doc_icon_with_lock.svg" alt="" />
+										</div>
+	
+										<div *ngIf= "attachment.isUserEncrypted == false && attachment.isBiometricEnabled == false" class="img-container" text-center>
+											<img src="/assets/imgs/Doc_icon_without_lock.svg" alt="" />
+										</div>
+										<div class="doc-detail">
+											<p class="ma-0 font-12 font-bold">{{ attachment.filename.length >10? attachment.filename.substring(0,10)+"..." : attachment.filename }}</p>
+											<p class="ma-0 font-12">
+												<span>Uploaded on: {{attachment.uploaded_user_date |  date: 'dd MMM yyyy H:mm'}}</span><br>
+											</p>
+										</div>
+									</div>
+								</ion-card>
+							</ion-col>
+		
+							<ion-col size="4">
+									<ion-card class="document-card" (click)="addDocument()">
+											<div>
+												<div class="img-details"> 
+													<img src="/assets/imgs/file_add_icon.svg" alt="" />
+												</div>
+												<div class="doc-detail" style="margin-top: 0px">
+													<h1 class="ma-0 font-12 font-bold" style="text-align: center">Add New</h1>
+												</div>
+											</div>  
+									</ion-card>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</div> 
+				<div  class="uploaded-documents">
+					<ion-grid >
+						<ion-row class="document-list">
+							<ion-col size = "4" *ngFor="let attachment of attachmentsPreview; let i = index">
+								<ion-card class="document-card"
+									(click)="viewDocument(i)">
+									<div>
+										<div *ngIf= "attachment.isBiometricEnabled == true || attachment.isUserEncrypted == true" class="img-container" text-center>
+											<img src="/assets/imgs/Doc_icon_with_lock.svg" alt="" />
+										</div>
+	
+										<div *ngIf= "attachment.isUserEncrypted == false && attachment.isBiometricEnabled == false" class="img-container" text-center>
+											<img src="/assets/imgs/Doc_icon_without_lock.svg" alt="" />
+										</div>
+										<div class="doc-detail">
+											<p class="ma-0 font-12 font-bold">{{ attachment.filename.length >10? attachment.filename.substring(0,10)+"..." : attachment.filename }}</p>
+											<p class="ma-0 font-12">
+												<span>Uploaded on: {{attachment.uploaded_user_date |  date: 'dd MMM yyyy H:mm'}}</span><br>
+											</p>
+										</div>
+									</div>
+								</ion-card>
+							</ion-col>
+		
+							<ion-col size="4">
+									<ion-card class="document-card" (click)="addDocument()">
+											<div>
+												<div class="img-details"> 
+													<img src="/assets/imgs/file_add_icon.svg" alt="" />
+												</div>
+												<div class="doc-detail" style="margin-top: 0px">
+													<h1 class="ma-0 font-12 font-bold" style="text-align: center">Add New</h1>
+												</div>
+											</div>  
+									</ion-card>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</div>
+				<div *ngIf="attachmentsPreview.length !=0">
+					<p class="ma-0 mr-1">
+						<span class="float-right durity-links font-bold font-18" (click)='viewAllDocuments()'><small>View
+								All</small></span>
+					</p>
+				</div>
+			</div>
+	
+		
+			<p class="pl-1 pr-1 mt-2 ma-0">
+				<ion-label class="durity-headings">YOUR DOCUMENTS</ion-label>
+				<button (click)="addDocument()" class="durity-add-new-button">Add New</button>
+			</p>
+		-->
+	
+		<!-- Members Section (Uncomment when required) -->
+		<!-- <div>
+		</ion-card>
+		
+		<p class="pl-1 mt-2 ma-0">
+			<ion-label class="durity-headings">DETIALS YOU HAVE RECEIVED</ion-label>
+		</p>
+		<div class="member-list-section">
+			<div class="member-list">
+				<ion-card class="member-card" *ngFor="let member of members">
+					<div text-center>
+						<div class="member-card-img-part">
+							<img src="assets/imgs/face.png" alt="" class="member-card-img">
+						</div>
+						<div>
+							<p class="ma-0">{{member.name}}</p>
+							<p class="ma-0"><small>{{member.detail}}</small></p>
+						</div>
+					</div>
+				</ion-card>
+			</div>
+		</div>
+		<div>
+			<p class="ma-0 mr-1">
+				<span class="float-right durity-links font-bold font-18"><small>View All</small></span>
+			</p>
+		</div>
+ 
+		comment This <div text-center>
+			<button (click)="goto('test')">Test Button</button>
+		</div> 
+	</div> 
+
+	<div>
+		<p>
+			<ion-label class="homescreen-headings">Contacts</ion-label>
+		</p>
+
+
+		<ion-card class="group-card" (click)="familyContactsTab()" value="1">
+			<div class="group-card-div">
+				<div class="group-card-img-part">
+					<img src='assets/imgs/group_1.svg'>
+				</div>
+				<div class="group-card-detail-part
+				">
+					<p class="ma-0 mt-2 font-bold">Family</p>
+					<p class="ma-0 mb-2">
+
+						<ion-row>
+							<ion-col size="1">
+								<ion-icon src="assets/imgs/baseline-group-24px.svg" class="members-icon"></ion-icon>
+							</ion-col>
+							 <ion-col>
+								<small class="members-added"> Total Members Added</small>
+							</ion-col>
+						</ion-row>
+					</p>
+				</div>
+			</div>
+		</ion-card>
+
+		<ion-card class="group-card durity-bg" (click)="friendsContactsTab()" value="2">
+			<div class="group-card-div">
+				<div class="group-card-img-part">
+					<img src='assets/imgs/group_2.svg'>
+				</div>
+				<div class="group-card-detail-part">
+					<p class="ma-0 mt-2 font-bold">Friends</p>
+					<p class="ma-0 mb-2">
+
+						<ion-row>
+							<ion-col size="1">
+								<ion-icon src="assets/imgs/baseline-group-24px.svg" class="members-icon"></ion-icon>
+							</ion-col>
+							<ion-col>
+								<small class="members-added"> Total Members Added</small>
+							</ion-col>
+						</ion-row>
+
+					</p>
+				</div>
+			</div>
+		</ion-card>
+
+		<ion-card class="group-card durity-bg" (click)="othersContactsTab()" value="3">
+			<div class="group-card-div">
+				<div class="group-card-img-part">
+					<img src='assets/imgs/group_3.svg'>
+				</div>
+				<div class="group-card-detail-part">
+					<p class="ma-0 mt-2 font-bold">Others</p>
+					<p class="ma-0 mb-2">
+
+						<ion-row>
+							<ion-col size="1">
+								<ion-icon src="assets/imgs/baseline-group-24px.svg" class="members-icon"></ion-icon>
+							</ion-col>
+							<!-- <ion-col>
+								<small class="members-added"> Total Members Added</small>
+							</ion-col>
+						</ion-row>
+					</p>
+				</div>
+			</div>
+		</ion-card>
+
+
+
+	</div>-->
+	
+
+
+
+<ion-footer class="footer">
+	<ion-toolbar>
+		<ion-row text-center >
+			<ion-col size="2.5">
+				<div (click)="goto('home')">
+					<img src="assets/imgs/home-blue.png"  alt="home">
+
+					<p class="ma-0 font-12" style="color: #222428">Home</p>
+				</div>
+			</ion-col>
+			<ion-col size="7">
+				<div (click)="goto('document-list')" >
+					<img src="assets/imgs/document-plain.png" alt="documents" >
+					<p class=" ma-0 font-12">Documents</p>
+				</div>
+			</ion-col>
+			
+
+			<ion-col size="2.5">
+				<div (click)="goto('contact-list')">
+					<img src="assets/imgs/member-plain.png" alt="contacts">
+					<p class="ma-0 font-12">People</p>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+</ion-footer>

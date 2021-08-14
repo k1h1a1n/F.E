@@ -1,0 +1,33 @@
+<div class=info-section>
+  <div class=enter-form>
+    <div>
+    <span class="dropdown-icon " (click)="cancel()">
+      <img src="assets/imgs/Drop down arrow.svg">
+    </span>
+    <span style="padding-left: 10px;">
+      <b text> Financial Advisor Code: </b>
+    </span>
+   
+   <ion-icon  style="float: right; right: 5%; position: relative; " src="assets\imgs\profile-edit.svg"></ion-icon>
+    <br>
+    <br>
+  </div>
+  <div>
+  <form [formGroup]="advisorForm" (ngSubmit)="submitForm()" #reg="ngForm">
+
+  <div class=profile-padding>
+    <ion-item class=profile-input lines="none">
+      <ion-input type="text" placeholder="Advisor Code" formControlName="advisorCode"></ion-input>
+    </ion-item>
+  </div>
+  <div class=profile-padding
+                    *ngIf="reg.submitted">
+                    <small class="error" *ngIf="isVerified==false">Incorrect Code! </small>
+  </div>
+  <div class= "update-button">
+    <ion-button color="light" type="submit" style="float: right; right: 5%; position: relative; text-transform: none; width:100px" expand="block" ><b>Update</b></ion-button>
+  </div>
+  </form>
+  </div>
+</div>
+</div>

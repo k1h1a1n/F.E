@@ -1,0 +1,85 @@
+.input-padding{
+  padding-top: 1.5%;
+  padding-bottom: 2.5%;
+  padding-left: 8%;
+  padding-right: 14%;
+}
+.input-padding1{
+padding-top: 1.5%;
+padding-bottom: 4%;
+padding-left: 7%;
+padding-right: 6.5%;
+}
+.title-input {
+// --background: #77B2F6 0% 0% no-repeat padding-box;
+// --background: var(--ion-color-light-tint) 0% 0% no-repeat padding-box;
+--background:  #78B2F726;
+border-radius: 5px;
+color:black;
+height: 35px;
+font-size: 12px;
+
+
+ion-input{
+  font-size: 12px;
+  bottom: 10%;
+}
+}
+.disablecolor{
+--background:  #686a6b32;
+border-radius: 5px;
+color:black;
+height: 35px;
+font-size: 12px;
+ion-input{
+  font-size: 12px;
+  bottom: 10%;
+}
+}
+.row {
+display: flex;
+padding-bottom: 3%;
+}
+
+.column {
+flex: 60%;
+}
+.nextBtn{
+background: white;
+color: black;
+border-radius: 5px;
+width: 33%;
+padding: 10px;
+margin-left: auto;
+font-weight: bold;
+}
+input[type = file]{
+ width:0;
+ height:0;
+ z-index:-1;
+ position: absolute;
+}
+.profile-padding{
+//padding-top: 1%;
+//padding-bottom: 2.5%;
+padding-left: 8%;
+padding-right: 10%;
+}
+.error{
+color:darkred;
+text-align:start;
+//padding-left:7%;
+}
+.file{
+padding-left: 5%;
+color: green;
+}
+.error1{
+color:darkred;
+text-align: start;
+}
+
+#copyright {
+position: relative;
+bottom: 0px;
+}

@@ -1,0 +1,1468 @@
+<ion-content [scrollEvents]="true">
+  <ion-toolbar text-center>
+    <div class="durity-back-btn security-back">
+      <ion-buttons slot="start" style="margin-top: 2%; ">
+        <ion-button slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+          <ion-icon name="ios-arrow-back"></ion-icon>
+          <small style="font-weight: bold;">Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <span style="text-align: center;"><span class=" font-bold" style="font-size: 18px;">{{formHeader}}</span> </span>
+  </ion-toolbar>
+
+
+  <div>
+
+    <!-- Start of Form One-->
+    <!-- Own Details -->
+
+    <div *ngIf="formScreen==1">
+      <form [formGroup]="willGenerateForm1" (ngSubmit)="submitForm1()" #reg="ngForm">
+        <!-- <ion-card> -->
+        <!-- <ion-item lines="none">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="auto"><img src="/assets/imgs/Group 1430.svg" alt="" /></ion-col>
+                <ion-col>
+                  <p class="ma-0 font-16 ">Fill in the details below and create</p>
+                  <p class="ma-0 font-16 ">your Will</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item> -->
+
+        <div style="background-color: #78B2F71A ;">
+          <div style="padding: 1% 10% 5% 5%;background-color: #78B2F71A ;">
+            <!-- <ion-item lines="none" > -->
+            <span class="font-14">
+              <p> <input type="checkbox" (change)="selectChange()" [checked]='saveFormData'
+                  style="height: 16px;width: 16px;"> <label style="color: #2D3047;font-size: 15px;"> Save data for
+                  future edits.</label></p>
+              <label style="color: #2D3047;padding-left: 15px;font-size: 14px;"> All your data is encrypted using
+                AES-256 algorithm.<br>
+                <a (click)=" aboutEncryption()" style="padding-left: 15px;font-size: 12px;"><u>Know more about our
+                    security.</u></a></label>
+            </span>
+            <!-- </ion-item> -->
+          </div>
+        </div>
+        <!-- <ion-item *ngIf="saveFormData == false" lines="none" style="padding-bottom: 15px;">
+            <ion-input type="button" style=" margin-right: 10%;" class="form-input"
+             float-left (click)="Clicked = !Clicked; saveFormDataFunc('yes')"><b style="width: 100%;text-align: center;">
+              {{Clicked ? 'Yes   ✓' : 'Yes'}}</b></ion-input>
+            <ion-input type="button" class="form-input" float-right (click)="Clicked = !Clicked; saveFormDataFunc('no')">
+              <b style="width: 100%;text-align: center;">{{Clicked ? 'No' : 'No   ✓'}}</b></ion-input>
+          </ion-item>
+          <ion-item *ngIf="saveFormData == true" lines="none" style="padding-bottom: 15px;">
+            <ion-input type="button" style=" margin-right: 10%;" class="form-input"
+             float-left (click)="Clicked = !Clicked; saveFormDataFunc('yes')"><b style="width: 100%;text-align: center;">
+              {{Clicked ? 'Yes' : 'Yes   ✓'}}</b></ion-input>
+            <ion-input type="button" class="form-input" float-right (click)="Clicked = !Clicked; saveFormDataFunc('no')">
+              <b style="width: 100%;text-align: center;">{{Clicked ? 'No   ✓' : 'No'}}</b></ion-input>
+          </ion-item> -->
+        <!-- </ion-card> -->
+
+        <div style="padding: 1% 5% 0% 5%;">
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Full Name</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input placeholder="Full Name" type="text" formControlName="fullName"></ion-input>
+          </ion-item>
+          <div
+            *ngIf="willGenerateForm1.get('fullName').invalid  && (willGenerateForm1.get('fullName').touched || willGenerateForm1.get('fullName').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm1.get('fullName').errors.required">Full Name is required</small>
+            <!-- <small class="error" *ngIf="willGenerateForm1.get('fullName').errors.pattern">Please enter valid name</small> -->
+          </div>
+
+          <ion-item lines="none">
+            <span style="font-size: 16px;">Parent Details</span>
+          </ion-item>
+          <ion-item lines="none">
+
+            <!-- <ion-input> -->
+
+            <ion-select placeholder="" class="select" value="S/o" formControlName="parentDetailRel">
+              <ion-select-option style="font-size: 12px;" value="S/o">S/o</ion-select-option>
+              <ion-select-option style="font-size: 12px;" value="D/o">D/o</ion-select-option>
+            </ion-select>
+            <span style="visibility: hidden;">.</span>
+            <!-- </ion-input> -->
+            <!-- <ion-select placeholder="" class="select" style="padding: 2px;" value="empty" formControlName="parentDetailIfLate">
+              <ion-select-option value="empty"></ion-select-option>
+              <ion-select-option value="Late">Late</ion-select-option>
+            </ion-select> -->
+
+            <ion-select placeholder="" class="select" value="Mr" formControlName="parentDetailPrefix">
+              <ion-select-option style="font-size: 12px;" value="Mr">Mr</ion-select-option>
+              <ion-select-option style="font-size: 12px;" value="Mrs">Mrs</ion-select-option>
+              <ion-select-option style="font-size: 12px;" value="Miss">Miss</ion-select-option>
+            </ion-select>
+            <span style="visibility: hidden;">.</span>
+            <ion-item class="form-input" lines="none">
+              <ion-input type="text" style="padding-left: 10%" placeholder="  Full Name"
+                formControlName="parentDetailName"></ion-input>
+            </ion-item>
+          </ion-item>
+          <div
+            *ngIf="willGenerateForm1.get('parentDetailName').invalid  && (willGenerateForm1.get('parentDetailName').touched || willGenerateForm1.get('parentDetailName').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm1.get('parentDetailName').errors.required">Parent Name is
+              required</small>
+            <!-- <small class="error" *ngIf="willGenerateForm1.get('parentDetailName').errors.pattern">Please enter valid name</small> -->
+          </div>
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Your Date Of Birth</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+              <!-- <ion-datetime (ionChange)="date($event.target.value)" displayFormat="D MMM YYYY " picker-format="D MMM YYYY"  min="1920-01-01" max="2080-12-31" max-format = "YYYY-MM-DD" placeholder="DD/MM/YYYY"></ion-datetime> -->
+            <!-- <ion-datetime  placeholder="DD/MM/YYYY" displayFormat="DD/MM/YYYY" formControlName="dateOfBirth"  
+             type="date"></ion-datetime> -->
+            <ion-input type="text" placeholder="DD/MM/YYYY" class="dateField" formControlName="dateOfBirth"></ion-input>
+          </ion-item>
+          <div
+            *ngIf="willGenerateForm1.get('dateOfBirth').invalid  && (willGenerateForm1.get('dateOfBirth').touched || willGenerateForm1.get('dateOfBirth').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm1.get('dateOfBirth').errors.required">Date Of Birth is
+              required</small>
+            <small class="error" *ngIf="willGenerateForm1.get('dateOfBirth').errors.pattern">Please enter DOB in the
+              format DD/MM/YYYY.</small>
+          </div>
+          <div>
+            <p>{{setItem}}</p>
+          </div>
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Residing City</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input placeholder=" City Name" type="text" formControlName="familyDetailCity"></ion-input>
+          </ion-item>
+          <div
+            *ngIf="willGenerateForm1.get('familyDetailCity').invalid  && (willGenerateForm1.get('familyDetailCity').touched || willGenerateForm1.get('familyDetailCity').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm1.get('familyDetailCity').errors.required">Residing city is
+              required</small>
+            <!-- <small class="error" *ngIf="willGenerateForm2.get('familyDetailCity').errors.pattern">Please enter valid city name</small> -->
+          </div>
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Your ID Type (Optional)</span>
+          </ion-item>
+          <ion-input type="hidden" formControlName="idType"></ion-input>
+          <ion-item *ngIf="userAadharId == '' " lines="none">
+            <ion-input type="button" style="margin-right: 10%;" class="form-input" float-left
+              (click)="idTypeClicked = !idTypeClicked; setIdType('Pan Card')"><b
+                style="width: 100%;text-align: center;font-size: 14px;">{{idTypeClicked ? 'Pan Card ✓' : 'Pan
+                Card'}}</b></ion-input>
+            <ion-input type="button" class="form-input" float-right
+              (click)="idTypeClicked = !idTypeClicked; setIdType('Aadhar ID')"><b
+                style="width: 100%;text-align: center;font-size: 14px">{{idTypeClicked ? 'Aadhar Card' : 'Aadhar Card
+                ✓'}}</b></ion-input>
+          </ion-item>
+          <ion-item *ngIf="userAadharId != '' " lines="none">
+            <ion-input type="button" style="margin-right: 10%;" class="form-input" float-left
+              (click)="idTypeClicked = !idTypeClicked; setIdType('Pan Card')"><b
+                style="width: 100%;text-align: center;font-size: 14px">{{idTypeClicked ? 'Pan Card' : 'Pan Card ✓'}}</b>
+            </ion-input>
+            <ion-input type="button" class="form-input" float-right
+              (click)="idTypeClicked = !idTypeClicked; setIdType('Aadhar ID')"><b
+                style="width: 100%;text-align: center;font-size: 14px">{{idTypeClicked ? 'Aadhar Card ✓' : 'Aadhar
+                Card'}}</b></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;"> Enter ID Card No. (Optional)</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input placeholder="Eg: BJKPM5856M" type="text" formControlName="idNumber"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+
+          </ion-item>
+        </div>
+        <!-- <ion-button type="submit" class="next" [disabled]="!willGenerateForm1.valid" float-right>Next</ion-button> -->
+        <ion-footer no-border>
+          <ion-toolbar class="durity-bg">
+
+            <ion-item lines="none" class="durity-bg">
+              <!-- <button class=" skipbtn" (click)="skip()" >Skip</button> -->
+
+              <button type="submit" style="font-size:16px ;font-weight: bold;text-align: center;"
+                class="nextBtn">Next</button>
+            </ion-item>
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+
+    </div>
+    <ng-container *ngIf="formScreen==2">
+      <form [formGroup]="willGenerateForm2" (ngSubmit)="submitForm2()" #reg="ngForm">
+        <div style="padding: 1% 5% 0% 5%;">
+
+          <!-- <ion-item lines="none">
+            <span  class="font-14">Residing city</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input placeholder=" City Name" type="text" formControlName="familyDetailCity"></ion-input>
+          </ion-item>
+          <div *ngIf="willGenerateForm2.get('familyDetailCity').invalid  && (willGenerateForm2.get('familyDetailCity').touched || willGenerateForm2.get('familyDetailCity').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm2.get('familyDetailCity').errors.required">Residing city is required</small> -->
+          <!-- </div>
+          <ion-item lines="none">
+            <span  class="font-14">Choose Your ID Type (Optional)</span>
+          </ion-item>
+          <ion-input type="hidden" formControlName="idType"></ion-input>
+          <ion-item *ngIf="userAadharId == '' " lines="none">
+            <ion-input type="button" style="margin-right: 10%;" class="form-input" float-left (click)="idTypeClicked = !idTypeClicked; setIdType('Pan Card')"><b style="width: 100%;text-align: center;">{{idTypeClicked ? 'Pan Card   ✓' : 'Pan Card'}}</b></ion-input>
+            <ion-input type="button" class="form-input" float-right (click)="idTypeClicked = !idTypeClicked; setIdType('Aadhar ID')"><b style="width: 100%;text-align: center;">{{idTypeClicked ? 'Aadhar Card' : 'Aadhar Card   ✓'}}</b></ion-input>
+          </ion-item>
+          <ion-item *ngIf="userAadharId != '' " lines="none">
+            <ion-input type="button" style="margin-right: 10%;" class="form-input" float-left (click)="idTypeClicked = !idTypeClicked; setIdType('Pan Card')"><b style="width: 100%;text-align: center;">{{idTypeClicked ? 'Pan Card' : 'Pan Card   ✓'}}</b></ion-input>
+            <ion-input type="button" class="form-input" float-right (click)="idTypeClicked = !idTypeClicked; setIdType('Aadhar ID')"><b style="width: 100%;text-align: center;">{{idTypeClicked ? 'Aadhar Card   ✓' : 'Aadhar Card'}}</b></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <span  class="font-14"> ID Card No. (Optional)</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input placeholder="Eg: BJKPM5856M" type="text" formControlName="idNumber"></ion-input>
+          </ion-item> -->
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Spouse Name</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input (keyup)="addAsSpouse()" [(ngModel)]="equateToSpouse" placeholder="Full Name" type="text"
+              formControlName="familyDetailSpouseName">
+
+            </ion-input>
+
+          </ion-item>
+          <ng-container
+            *ngIf="willGenerateForm2.get('familyDetailSpouseName').invalid  && (willGenerateForm2.get('familyDetailSpouseName').touched || willGenerateForm2.get('familyDetailSpouseName').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm2.get('familyDetailSpouseName').errors.required">Spouse Name is
+              required</small>
+            <!-- <small class="error" *ngIf="willGenerateForm2.get('familyDetailSpouseName').errors.pattern">Please enter valid name</small> -->
+          </ng-container>
+          <ion-item lines='none'>
+            <span class="font-14" style="font-size: 16px;">Do You Have Kids?</span>
+          </ion-item>
+
+          <ion-item lines="none">
+
+            <ion-radio-group formControlName="familyDetailHaveKids">
+              <ion-row>
+                <ion-col>
+                  <ion-item lines="none">
+                    <ion-radio value="true"></ion-radio>
+                    <ion-label style="font-size: 16px;padding-left:5px;">Yes</ion-label>
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item lines="none">
+                    <ion-radio value="false"></ion-radio>
+                    <ion-label style="font-size: 16px;padding-left:5px;">No</ion-label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-radio-group>
+          </ion-item>
+          <!-- <div *ngIf="willGenerateForm2.get('familyDetailHaveKids').invalid  && (willGenerateForm2.get('familyDetailHaveKids').touched || willGenerateForm2.get('familyDetailHaveKids').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm2.get('familyDetailHaveKids').errors.required">Please select a option</small>
+          </div> -->
+          <ng-container *ngIf="willGenerateForm2.value.familyDetailHaveKids == 'true'">
+            <ion-item lines="none">
+              <span class="font-14" style="font-size: 16px;">Child Name & DOB</span>
+            </ion-item>
+            <!--Dynamically add Childrens--->
+            <div formArrayName="Childrens"
+              *ngFor="let item of willGenerateForm2.controls.Childrens['controls']; let idx = index;">
+              <ion-row align-items-center [formGroupName]="idx">
+                <ion-col size="6">
+                  <ion-input class="form-input" type="text" formControlName="ChildName" placeholder="Child Name">
+                  </ion-input>
+                </ion-col>
+                <ion-col size="4.5">
+                  <ion-input type="text" placeholder="DD/MM/YYYY" class="dateField form-input" formControlName="DoB"
+                    pattern="[0-9]{2}/[0-9]{2}/[1-2]{1}[0-9]{3}"></ion-input>
+                  <!-- <ion-input class="form-input" type="date" formControlName="DoB" placeholder="DD/MM/YYYY" ></ion-input> -->
+                </ion-col>
+                <ion-col size="1">
+                  <span class="float-right delete-contact-btn">
+                    <ion-icon ios="ios-trash" md="md-trash" (click)="deleteChild(idx)"></ion-icon>
+                  </span>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div>
+              <p>{{setItem}}</p>
+            </div>
+            <ion-item lines='none' no-padding>
+              <ion-button (click)="addMore()" class="add">
+                <ion-icon name="person-add"></ion-icon>
+                <span style="padding: 5px;text-transform: capitalize;">Add More</span>
+              </ion-button>
+            </ion-item>
+          </ng-container>
+          <div class='ion-text-center' style='padding-top:5px'>
+            <span class=" font-bold" style="font-size: 18px;">{{ value }}</span>
+          </div>
+          <!-- <div class = 'ion-text-center>
+            <span  class=" font-bold" style="font-size: 18px;">Asset Distribution</span>
+        <div/>  -->
+
+          <ion-row no-padding>
+            <ion-col>
+              <ion-item lines="none" no-padding>
+                <ion-label>
+                  How do you want your assets to be
+                  <br>distributed?
+                </ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+
+
+
+
+
+          <ion-item lines="none" no-padding>
+            <ion-radio-group formControlName="assets_dist">
+              <ion-row no-padding>
+                <ion-col no-padding>
+                  <ion-item lines='none' no-padding>
+                    <ion-radio value="true"></ion-radio>
+                    <ion-label style="font-size: 16px;padding-left:10px;">
+                      Transfer all my assets to one<br>
+                      beneficiary
+                    </ion-label>
+                  </ion-item>
+                </ion-col>
+
+
+
+
+                <ion-col no-padding>
+                  <ion-item lines='none' no-padding>
+                    <ion-radio value="false" (click)="popOver()"></ion-radio>
+                    <ion-label style="font-size: 16px;padding-left:10px;">
+                      Distribute each asset to one/multiple<br>
+                      beneficiaries<span style='color:rgb(13, 172, 39)'><b> (Upgrade)</b></span>
+                    </ion-label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-radio-group>
+
+
+          </ion-item>
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Beneficiary Name</span>
+          </ion-item>
+          <ion-item *ngIf='willGenerateForm2.value.beneficiaryRel != "spouse"' class="form-input" lines="none">
+            <ion-input type="text" placeholder="Full Name" formControlName="beneficiaryName"></ion-input>
+          </ion-item>
+          <ion-item *ngIf='willGenerateForm2.value.beneficiaryRel == "spouse"' class="form-input" lines="none">
+            <ion-input type="text" placeholder="Full Name" [(ngModel)]="equateToSpouse"
+              formControlName="beneficiaryName"></ion-input>
+          </ion-item>
+          <ng-container
+            *ngIf="willGenerateForm2.get('beneficiaryName').invalid  && (willGenerateForm2.get('beneficiaryName').touched || willGenerateForm2.get('beneficiaryName').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm2.get('beneficiaryName').errors.required">Beneficiary Name is
+              required.</small>
+            <!-- <small class="error" *ngIf="willGenerateForm3.get('beneficiaryName').errors.pattern">Please enter valid name.</small> -->
+          </ng-container>
+
+
+          <!-- <ion-item lines="none">
+          <span  class="font-14">Beneficiary Date of Birth (Optional)</span>
+        </ion-item>
+        <ion-item class="form-input" lines="none">
+          <ion-input type="text" placeholder="DD/MM/YYYY" class="dateField " formControlName="beneficiaryDateOfBirth"></ion-input>
+     </ion-item> -->
+          <!-- <div *ngIf="willGenerateForm3.get('beneficiaryDateOfBirth').invalid  && (willGenerateForm3.get('beneficiaryDateOfBirth').touched || willGenerateForm3.get('beneficiaryDateOfBirth').dirty || reg.submitted)">
+          <small class="error" *ngIf="willGenerateForm3.get('beneficiaryDateOfBirth').errors.required">Beneficiary Date Of Birth is required.</small>
+          <small class="error" *ngIf="willGenerateForm3.get('beneficiaryDateOfBirth').errors.pattern">Please enter valid Date Of Birth.</small>
+        </div> -->
+
+
+          <ion-item lines="none">
+            <span class="font-14 " style="font-size: 16px;">Relation</span>
+          </ion-item>
+          <!-- <ion-item class="form-input" lines="none"> -->
+          <ion-select class="selector" placeholder="Spouse" formControlName="beneficiaryRel">
+            <ion-select-option value="spouse">Spouse</ion-select-option>
+            <ion-select-option value="parent">Parent</ion-select-option>
+            <ion-select-option value="sister">Sister</ion-select-option>
+            <ion-select-option value="brother">Brother</ion-select-option>
+            <ion-select-option value="niece">Niece</ion-select-option>
+            <ion-select-option value="nephew">Nephew</ion-select-option>
+            <ion-select-option value="son">Son</ion-select-option>
+            <ion-select-option value="daughter">Daughter</ion-select-option>
+            <ion-select-option value="aunt">Aunt</ion-select-option>
+            <ion-select-option value="uncle">Uncle</ion-select-option>
+            <ion-select-option value="brother-in-law">Brother-in-law</ion-select-option>
+            <ion-select-option value="sister-in-law">Sister-in-law</ion-select-option>
+            <ion-select-option value="cousin">Cousin</ion-select-option>
+            <ion-select-option value="grand parent">Grand Parent</ion-select-option>
+
+          </ion-select>
+
+
+          <!-- </ion-item> -->
+          <div
+            *ngIf="willGenerateForm2.get('beneficiaryRel').invalid  && (willGenerateForm2.get('beneficiaryRel').touched || willGenerateForm2.get('beneficiaryRel').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm2.get('beneficiaryRel').errors.required">Relation is
+              required.</small>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col size="2">
+                <span class="font-14 font-bold">Note:</span>
+              </ion-col>
+              <ion-col>
+                <span class="font-12">You are declaring this person as the sole beneficiary to all your assets. We
+                  recommend you to choose your spouse.</span>
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Beneficiary ID Type (Optional)</span>
+          </ion-item>
+          <ion-input type="hidden" formControlName="beneficiaryIdType"></ion-input>
+          <ion-item *ngIf="benefAadharId == '' " lines="none">
+            <ion-input type="button" style="margin-right: 10%;" class="form-input" float-left
+              (click)="benIdTypeClicked = !benIdTypeClicked; setBeneficiaryIdType('Pan Card')"><b
+                style="width: 100%;text-align: center;font-size: 14px">{{benIdTypeClicked ? 'Pan Card ✓' : 'Pan
+                Card'}}</b></ion-input>
+            <ion-input type="button" class="form-input" float-right
+              (click)="benIdTypeClicked = !benIdTypeClicked; setBeneficiaryIdType('Aadhar ID')"><b
+                style="width: 100%;text-align: center;font-size: 14px">{{benIdTypeClicked ? 'Aadhar Card' : 'Aadhar Card
+                ✓'}}</b></ion-input>
+          </ion-item>
+          <ion-item *ngIf="benefAadharId != '' " lines="none">
+            <ion-input type="button" style="margin-right: 10%;" class="form-input" float-left
+              (click)="benIdTypeClicked = !benIdTypeClicked; setBeneficiaryIdType('Pan Card')"><b
+                style="width: 100%;text-align: center;font-size: 14px">{{benIdTypeClicked ? 'Pan Card' : 'Pan Card
+                ✓'}}</b></ion-input>
+            <ion-input type="button" class="form-input" float-right
+              (click)="benIdTypeClicked = !benIdTypeClicked; setBeneficiaryIdType('Aadhar ID')"><b
+                style="width: 100%;text-align: center;font-size: 14px">{{benIdTypeClicked ? 'Aadhar Card ✓' : 'Aadhar
+                Card'}}</b></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Beneficiary ID Card No. (Optional)</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input placeholder="Eg: BJKPM5856M" type="text" formControlName="beneficiaryIdNumber" name="idNumber">
+            </ion-input>
+          </ion-item>
+          <div>
+            <p>{{setItem}}</p>
+          </div>
+        </div>
+        <ion-footer no-border>
+          <ion-toolbar class="durity-bg">
+
+            <ion-item lines="none" class="durity-bg">
+              <!-- <button class=" skipbtn" (click)="skip()" >Skip</button> -->
+
+              <button type="submit" style="font-size:16px ;font-weight: bold;text-align: center;"
+                class="nextBtn">Next</button>
+            </ion-item>
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+    </ng-container>
+
+    <div *ngIf="formScreen==3 && planName != 'GOLD'">
+      <form [formGroup]="willGenerateForm3" (ngSubmit)="submitForm3()" #reg="ngForm">
+
+        <div formArrayName='willGenerateFormArray' *ngFor="let item of willGenerateForm3.controls.willGenerateFormArray['controls'];
+           let idx = index;" style="padding: 1% 5% 0% 5%;">
+          <div [formGroupName]="idx">
+
+            <div style="text-align:center" class=" font-bold">
+              Asset {{idx + 1}}
+            </div>
+
+
+
+            <ion-row>
+              <ion-col>Type of Asset</ion-col>
+            </ion-row>
+
+
+            <ion-grid class='form-input'>
+              <ion-row class='form-input'>
+                <ion-col style='background-color: #78B2F726'>
+                  <ion-select placeholder="Art work" formControlName='typeOfAsset'>
+                    <ion-select-option class='custom-options' *ngFor='let item of assets'>{{item}}</ion-select-option>
+                  </ion-select>
+                </ion-col>
+                <ion-col size = '3.5'>
+                  <div
+                  *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].typeOfAsset.invalid && (willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].typeOfAsset.touched || willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].typeOfAsset.dirty || isSubmitted)">
+                  <span style="color: red;font-size: 13px;"
+                    *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].typeOfAsset.errors.required">Required<b style="color: red;font-size: large;margin-left: 2px;">*</b> </span>
+                </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+
+            <ion-item lines="none" no-padding>
+              <span class="font-14" style="font-size: 16px;">Details of the Asset</span>
+            </ion-item>
+            <ion-item class="form-input1" lines="none">
+              <ion-textarea rows="5" cols="20" placeholder="Describe the location and details of the asset"
+                formControlName='assetDetails'></ion-textarea>
+                <div
+                  *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].assetDetails.invalid && (willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].assetDetails.touched || willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].assetDetails.dirty || isSubmitted)">
+                  <span style="color:red;font-size: 13px;"
+                    *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].assetDetails.errors.required">Required <b style="color: red;font-size: large;margin-left: 2px;">*</b></span>
+                </div>
+            </ion-item>
+
+            <ion-item lines="none" no-padding>
+              <span class="font-14" style="font-size: 16px;">Choose:</span>
+              <ion-radio-group formControlName="rupees_percent">
+                <ion-row>
+                  <ion-col style='padding-left:30px'>
+                    <ion-radio value='true'></ion-radio>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label style='padding-top:12px;'>
+                      <img style="height: 15px;width: 30px" src="./assets/imgs/indian.png" alt="Sign Up Page">
+                    </ion-label>
+                  </ion-col>
+                  <ion-col style='padding-left:10px'>
+                    <ion-radio value='false'></ion-radio>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label style='padding-top:10px;'>
+
+                      <img style="height: 10px;" src="./assets/imgs/per.png" alt="Sign Up Page">
+                    </ion-label>
+                  </ion-col>
+                </ion-row>
+              </ion-radio-group>
+            </ion-item>
+
+            <ion-item lines="none" no-padding>
+              <span class="font-14" style="font-size: 16px;">Beneficiaries:</span>
+            </ion-item>
+            <div formArrayName='Beneficiary'>
+              <div [formGroupName]="idx1" *ngFor="let item1 of getBene(item);
+                             
+                          let idx1 = index">
+                <ion-row>
+                  <ion-col size="4.5" style="padding: 0% 1% 0% 0%;">
+                    <ion-input class="form-input" type="text" formControlName="name" placeholder="Name"></ion-input>
+                    <div
+                      *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.name.invalid && (willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.name.touched || willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.name.dirty || isSubmitted)">
+                      <span style="color: red;font-size: 13px;"
+                        *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.name.errors.required">Required<b style="color: red;font-size: large;margin-left: 2px;">*</b></span>
+                    </div>
+                  </ion-col>
+                  <ion-col size="4" style="background-color: #78B2F726;padding:0% 0% 0% 0%" class="form-input2">
+                    <ion-select placeholder="Relation" formControlName='relation'>
+                      <ion-select-option *ngFor='let item of relations'>{{item}}</ion-select-option>
+                    </ion-select>
+                    <div
+                      *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.relation.invalid && (willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.relation.touched || willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.relation.dirty || isSubmitted)">
+                      <span style="color: red;font-size: 13px;"
+                        *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.relation.errors.required">Required<b style="color: red;font-size: large;margin-left: 2px;">*</b></span>
+                    </div>
+                  </ion-col>
+                  <ng-container *ngIf="item.value.rupees_percent == 'true'">
+                    <ion-col size="2.5" style="padding:0% 1% 1% 1%">
+                      <ion-input class="form-input" type="text" placeholder="₹0.00" formControlName="percentage">
+                      </ion-input>
+                      <div
+                        *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.percentage.invalid && (willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.percentage.touched || willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.percentage.dirty || isSubmitted)">
+                        <span style="color: red;font-size: 13px;"
+                          *ngIf="willGenerateForm3.controls.willGenerateFormArray['controls'][idx]['controls'].Beneficiary.controls[idx1].controls.percentage.errors.required">Required<b style="color: red;font-size: large;margin-left: 2px;">*</b></span>
+                      </div>
+                    </ion-col>
+                  </ng-container>
+                  <ng-container *ngIf="item.value.rupees_percent == 'false'">
+                    <ion-col size="2.5" style="padding:0% 1% 1% 1%">
+                      <ion-input class="form-input" type="text" placeholder="0.00%" formControlName="percentage">
+                      </ion-input>
+                    </ion-col>
+                  </ng-container>
+                  <ion-col size="1">
+                    <span class="float-right delete-contact-btn">
+                      <ion-icon ios="ios-trash" md="md-trash" (click)="deleteForm3Child(idx,idx1)"></ion-icon>
+
+                    </span>
+                  </ion-col>
+                </ion-row>
+
+
+              </div>
+              <ion-item no-padding lines='none'>
+                <ion-button (click)="addForm3More(idx)" style='border-radius:1px' class='add'>
+                  <ion-icon name="person-add"></ion-icon>
+                  <span style="padding: 5px;text-transform: capitalize;">Add More</span>
+                </ion-button>
+              </ion-item>
+
+
+              <ion-item-divider>
+              </ion-item-divider>
+
+              <br>
+            </div>
+          </div>
+        </div>
+        <ion-button (click)="addAsset()" class="add" float-right style='padding-right:5%'>
+          <ion-icon name="add-circle-outline"></ion-icon>
+          <span style="padding: 5px;text-transform: capitalize;">Add Asset</span>
+        </ion-button><br><br>
+        <div style="bottom: 0px; left: 0px; width: 100%" id=copyright>
+
+
+
+          <ion-toolbar class="durity-bg">
+            <ion-item lines='none' class='durity-bg'>
+              <button type='submit' class="nextBtn"><b>Next</b></button>
+            </ion-item>
+          </ion-toolbar>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="formScreen==4">
+      <form [formGroup]="willGenerateForm4" (ngSubmit)="submitForm4()" #reg="ngForm">
+        <div style="padding: 1% 5% 5% 5%;">
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Name of Executor</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input type="text" placeholder="Full Name" formControlName="executorName"></ion-input>
+          </ion-item>
+          <div
+            *ngIf="willGenerateForm4.get('executorName').invalid  && (willGenerateForm4.get('executorName').touched || willGenerateForm4.get('executorName').dirty || reg.submitted)">
+            <small class="error" *ngIf="willGenerateForm4.get('executorName').errors.required">Executor Name is
+              required.</small>
+          </div>
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Relation with Executor (Optional)</span>
+          </ion-item>
+          <ion-select placeholder="Choose a Relation" class="selector" value="" formControlName="executorRel">
+            <ion-select-option value="spouse">Spouse</ion-select-option>
+            <ion-select-option value="parent">Parent</ion-select-option>
+            <ion-select-option value="sister">Sister</ion-select-option>
+            <ion-select-option value="brother">Brother</ion-select-option>
+            <ion-select-option value="niece">Niece</ion-select-option>
+            <ion-select-option value="nephew">Nephew</ion-select-option>
+            <ion-select-option value="son">Son</ion-select-option>
+            <ion-select-option value="daughter">Daughter</ion-select-option>
+            <ion-select-option value="aunt">Aunt</ion-select-option>
+            <ion-select-option value="uncle">Uncle</ion-select-option>
+            <ion-select-option value="brother-in-law">Brother-in-law</ion-select-option>
+            <ion-select-option value="sister-in-law">Sister-in-law</ion-select-option>
+            <ion-select-option value="cousin">Cousin</ion-select-option>
+            <ion-select-option value="grand parent">Grand Parent</ion-select-option>
+            <ion-select-option value="other">Other</ion-select-option>
+          </ion-select>
+
+          <ion-item *ngIf="willGenerateForm4.value.executorRel=='other' " class="form-input" lines="none">
+            <ion-input type="text" placeholder="Enter Relation" formControlName="executorRelOther"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Residing City of Executor (Optional)</span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input type="text" placeholder=" City Name" formControlName="executorCity"></ion-input>
+          </ion-item>
+          <div style="padding-top: 20px;">
+            <div style="padding: 20px;align-content: center;">
+              <span style="text-align: center;padding-left: 25px;"><span class="font-16 font-bold">Alternate Executor
+                  Details (Optional)</span> </span>
+            </div>
+            <ion-item lines="none">
+              <span class="font-14" style="font-size: 16px;">Name of Executor </span>
+            </ion-item>
+            <ion-item class="form-input" lines="none">
+              <ion-input type="text" placeholder="Full Name" formControlName="altExecutorName"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <span class="font-14" style="font-size: 16px;">Relation with Executor </span>
+            </ion-item>
+            <ion-select placeholder="Choose a Relation" class="selector" value="" formControlName="altExecutorRel">
+              <ion-select-option value="spouse">Spouse</ion-select-option>
+              <ion-select-option value="parent">Parent</ion-select-option>
+              <ion-select-option value="sister">Sister</ion-select-option>
+              <ion-select-option value="brother">Brother</ion-select-option>
+              <ion-select-option value="niece">Niece</ion-select-option>
+              <ion-select-option value="nephew">Nephew</ion-select-option>
+              <ion-select-option value="son">Son</ion-select-option>
+              <ion-select-option value="daughter">Daughter</ion-select-option>
+              <ion-select-option value="aunt">Aunt</ion-select-option>
+              <ion-select-option value="uncle">Uncle</ion-select-option>
+              <ion-select-option value="brother-in-law">Brother-in-law</ion-select-option>
+              <ion-select-option value="sister-in-law">Sister-in-law</ion-select-option>
+              <ion-select-option value="cousin">Cousin</ion-select-option>
+              <ion-select-option value="grand parent">Grand Parent</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+
+            <ion-item *ngIf="willGenerateForm4.value.altExecutorRel=='other' " class="form-input" lines="none">
+              <ion-input type="text" placeholder="Enter Relation" formControlName="altExecutorRelOther"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <span class="font-14" style="font-size: 16px;">Residing City of Executor </span>
+            </ion-item>
+            <ion-item class="form-input" lines="none">
+              <ion-input type="text" placeholder=" City Name" formControlName="altExecutorCity"></ion-input>
+            </ion-item>
+          </div>
+          <div>
+            <p>{{setItem}}</p>
+          </div>
+        </div>
+        <!-- <ion-button type="submit" class="next" [disabled]="!willGenerateForm4.valid" float-right>Next</ion-button> -->
+        <ion-footer no-border>
+          <ion-toolbar class="durity-bg">
+
+            <ion-item lines="none" class="durity-bg">
+              <!-- <button class=" skipbtn" (click)="skip()" >Skip</button> -->
+
+              <button type="submit" style="font-size:16px ;font-weight: bold;text-align: center;"
+                class="nextBtn">Next</button>
+            </ion-item>
+          </ion-toolbar>
+        </ion-footer>
+
+      </form>
+    </div>
+    <!-- End of Form Four-->
+
+    <!-- Start of Form Five-->
+    <!-- Guardian Details-->
+    <div *ngIf="formScreen==5">
+      <form [formGroup]="willGenerateForm5" (ngSubmit)="submitForm5()" #reg="ngForm">
+        <div style="padding: 1% 5% 5% 5%;">
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Name of Guardian </span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input type="text" placeholder="Full Name" formControlName="guardianName"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Relation with Guardian </span>
+          </ion-item>
+          <ion-select placeholder="Choose a Relation" class="selector" value="" formControlName="guardianRel">
+            <ion-select-option value="parent">Parent</ion-select-option>
+            <ion-select-option value="sister">Sister</ion-select-option>
+            <ion-select-option value="brother">Brother</ion-select-option>
+            <ion-select-option value="niece">Niece</ion-select-option>
+            <ion-select-option value="nephew">Nephew</ion-select-option>
+            <ion-select-option value="aunt">Aunt</ion-select-option>
+            <ion-select-option value="uncle">Uncle</ion-select-option>
+            <ion-select-option value="brother-in-law">Brother-in-law</ion-select-option>
+            <ion-select-option value="sister-in-law">Sister-in-law</ion-select-option>
+            <ion-select-option value="cousin">Cousin</ion-select-option>
+            <ion-select-option value="grand parent">Grand Parent</ion-select-option>
+            <ion-select-option value="other">Other</ion-select-option>
+          </ion-select>
+          <ion-item *ngIf="willGenerateForm5.value.guardianRel=='other' " class="form-input" lines="none">
+            <ion-input type="text" placeholder="Enter Relation" formControlName="guardianRelOther"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <span class="font-14" style="font-size: 16px;">Residing City of Guardian </span>
+          </ion-item>
+          <ion-item class="form-input" lines="none">
+            <ion-input type="text" placeholder=" City Name" formControlName="guardianCity"></ion-input>
+          </ion-item>
+          <div style="padding-top: 20px;">
+            <div style="padding: 20px;align-content: center;">
+              <span style="text-align: center;padding-left: 25px;"><span class="font-16 font-bold">Alternate Guardian
+                  Details (Optional)</span> </span>
+            </div>
+            <ion-item lines="none">
+              <span class="font-14" style="font-size: 16px;">Name of Guardian</span>
+            </ion-item>
+            <ion-item class="form-input" lines="none">
+              <ion-input type="text" placeholder="Full Name" formControlName="altGuardianName"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <span class="font-14" style="font-size: 16px;">Relation with Guardian </span>
+            </ion-item>
+            <ion-select placeholder="Choose a Relation" class="selector" value="" formControlName="altGuardianRel">
+              <ion-select-option value="parent">Parent</ion-select-option>
+              <ion-select-option value="aunt">Aunt</ion-select-option>
+              <ion-select-option value="uncle">Uncle</ion-select-option>
+              <ion-select-option value="sister">Sister</ion-select-option>
+              <ion-select-option value="brother">Brother</ion-select-option>
+              <ion-select-option value="niece">Niece</ion-select-option>
+              <ion-select-option value="nephew">Nephew</ion-select-option>
+              <ion-select-option value="brother-in-law">Brother-in-law</ion-select-option>
+              <ion-select-option value="sister-in-law">Sister-in-law</ion-select-option>
+              <ion-select-option value="cousin">Cousin</ion-select-option>
+              <ion-select-option value="grand parent">Grand Parent</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+            <ion-item *ngIf="willGenerateForm5.value.altGuardianRel=='other' " class="form-input" lines="none">
+              <ion-input type="text" placeholder="Enter Relation" formControlName="altGuardianRelOther"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+              <span class="font-14" style="font-size: 16px;">Residing City of Guardian </span>
+            </ion-item>
+            <ion-item class="form-input" lines="none">
+              <ion-input type="text" placeholder=" City Name" formControlName="altGuardianCity"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+        <!-- <ion-button type="submit" class="next" float-right>Generate will</ion-button> -->
+        <ion-footer no-border>
+          <ion-toolbar class="durity-bg">
+
+            <ion-item lines="none" class="durity-bg">
+              <!-- <button class=" skipbtn" (click)="skip()" >Skip</button> -->
+
+              <button type="submit" style="font-size:16px ;font-weight: bold;text-align: center;"
+                class="genWill">Generate Will</button>
+            </ion-item>
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+    </div>
+    <!-- End of Form Five-->
+
+    <!-- Start of Form Six-->
+    <!-- Will Preview Screen-->
+
+    <div *ngIf="formScreen==6">
+      <form #reg="ngForm">
+
+        <!-- Will dynamic content should be shown here-->
+        <div style="padding: 1% 5% 5% 5%;">
+          <p>I, <b>{{Data.FullName}}</b>(also referred to as the "Testator"), {{Data.ParentDetails.Relation}}
+            {{Data.ParentDetails.LiveStatus}} {{Data.ParentDetails.Prefix}}. {{Data.ParentDetails.FullName}}, residing
+            at {{Data.FamilyDetails.City}}; born on {{Data.DateOfBirth}};
+            <label *ngIf="Data.IdNumber != '' "> having {{Data.IdType}} {{Data.IdNumber}}.</label>
+          </p>
+          <p style="text-indent :0.5em;">I hereby declare that I revoke all my former Wills, Codicils, and Testamentary
+            dispositions made by me. I declare this to be my last Will and Testament.</p>
+          <p style="text-indent :0.5em;">I am executing this Will in complete possession of my mental faculties,
+            physical health and in a composed state of mind, out of my own accord without any coercion, compulsion or
+            misrepresentation.</p>
+          <p style="text-indent :0.5em;">I have the following surviving legal heirs:</p>
+          <p style="text-indent :0.5em;">I am married to <b> {{Data.FamilyDetails.SpouseName}}</b> also referred to as
+            my spouse.
+            <!-- <label *ngIf="Data.BeneficiaryDetails.DateOfBirth != '' || Data.BeneficiaryDetails.DateOfBirth.includes('undefined') != true ">, born on {{Data.BeneficiaryDetails.DateOfBirth}};</label>
+          <label *ngIf="Data.BeneficiaryDetails.idNumber != '' "> having {{Data.BeneficiaryDetails.IdType}} {{Data.BeneficiaryDetails.idNumber}}. </label>
+          <label *ngIf="Data.BeneficiaryDetails.DateOfBirth == '' || Data.BeneficiaryDetails.DateOfBirth.includes('undefined') == true ">.</label> -->
+          </p>
+
+
+          <div *ngIf="Data.FamilyDetails.HaveKids=='true'">
+            <p>I have the following living children:</p>
+            <p *ngFor="let child of Data.FamilyDetails.Childrens">
+              <label *ngIf="child.ChildName != ''"> {{child.ChildName}}</label>
+              <label
+                *ngIf="child.DateOfBirth != '' || child.DateOfBirth.includes('undefined') != true ">{{child.DateOfBirth}}</label>.
+            </p>
+          </div>
+          <div style="text-indent :0.5em;">I appoint the following: <b>{{Data.Executor.Name}}</b>,
+            <label *ngIf="Data.Executor.Relation !='' ">my {{Data.Executor.Relation}},</label>
+            <label *ngIf="Data.Executor.City !='' ">residing in {{Data.Executor.City}}</label>
+            to be the sole executor of my Will.
+
+
+            <label *ngIf="Data.AlternateExecutor.Name !='' ">If {{Data.Executor.Name}} should
+
+              predecease me or is unable or unwilling to act as my Executor, then I
+
+              appoint the following: <b>{{Data.AlternateExecutor.Name}}</b>,
+              <label *ngIf="Data.AlternateExecutor.Relation !='' ">
+                {{Data.AlternateExecutor.Relation}},
+              </label>
+
+              <label *ngIf="Data.AlternateExecutor.City !='' ">
+                residing in {{Data.AlternateExecutor.City}}
+              </label>
+              to be Executor of my Will in the place and stead of
+
+              {{Data.Executor.Name}}.
+
+            </label>
+
+          </div>
+          <div *ngIf="planName == 'GOLD'">
+
+            <p style="text-indent :0.5em;">I also declare that I have acquired some movable and immovable assets
+
+              during my lifetime.</p>
+
+            <p style="text-indent :0.5em;">I am the sole owner of all the assets. I have absolute and complete rights
+
+              over these properties and authority and power to dispose them in
+
+              whatsoever manner I want. Nobody other than me has any right, title,
+
+              interest, claim, or demand on these assets.</p>
+
+            <p *ngIf="planName == 'GOLD'" style="font-weight: bold;font-size: 13px;">
+              DEBTS,OBLIGATIONS AND AMOUNTS DUE FROM OTHERS
+            </p>
+            <p *ngIf="planName == 'GOLD'">
+              I direct that post my demise,
+              the Executor named in this Will to review all my debts and obligations.
+              The Executor has to pay these debts only after a creditor provides timely and
+              sufficient evidence to support its claim.
+            </p>
+            <p *ngIf="planName == 'GOLD'">
+              The Executor can undertake measures to recover my dues,
+              with interest as decided between me and the borrower.
+            </p>
+            <p *ngIf="planName == 'GOLD'">
+              If during the process of repayment / recovery the Executor
+              incurs any legal expenses then he / she is entitled to recover the same from my estate / assets.
+            </p>
+
+            <p style="text-indent :0.5em;">I bequeath <b>all my immovable and movable properties</b> located in India to
+
+              <b>{{Data.BeneficiaryDetails.Name}}</b>
+              <label style="text-indent :0.5em;">, my {{Data.BeneficiaryDetails.Relation}}
+                <label
+                  *ngIf="Data.BeneficiaryDetails.DateOfBirth == '' || Data.BeneficiaryDetails.DateOfBirth.includes('undefined') == true ">.</label>
+                <label
+                  *ngIf="Data.BeneficiaryDetails.DateOfBirth != '' || Data.BeneficiaryDetails.DateOfBirth.includes('undefined') != true ">,
+                  born on {{Data.BeneficiaryDetails.DateOfBirth}};</label>
+                <label *ngIf="Data.BeneficiaryDetails.idNumber != '' "> having {{Data.BeneficiaryDetails.IdType}}
+                  {{Data.BeneficiaryDetails.idNumber}}. </label>
+
+              </label>
+
+            </p>
+
+            <p style="text-indent :0.5em;">In case, I acquire any other property or properties or rights in any property
+
+              or properties in India before my demise, all such properties and rights in
+
+              properties will also pass on to {{Data.BeneficiaryDetails.Name}} after my demise.</p>
+
+            <p style="text-indent :0.5em;">All movable assets including jewelry, household goods, furniture, fixtures,
+
+              vehicles, shares (in listed and unlisted Indian companies), investments in
+
+              mutual funds, deposits in banks (including balances in current accounts,
+
+              saving accounts, fixed deposit accounts, and any other accounts), contents
+
+              of bank lockers, deposits with financial companies, money receivable from
+
+              other parties, dues or claims from insurance companies and cash will pass on
+
+              {{Data.BeneficiaryDetails.Name}} after my demise.</p>
+
+            <p style="text-indent :0.5em;">All rights that vest with me due to membership of societies, clubs,
+
+              associations, online accounts, and such other bodies will also pass on
+
+              {{Data.BeneficiaryDetails.Name}} after my demise.</p>
+
+            <p style="text-indent :0.5em;">All rights that vest with me due to contracts and agreements will also pass
+
+              on {{Data.BeneficiaryDetails.Name}} after my demise.</p>
+
+
+
+            <div *ngIf="Data.FamilyDetails.HaveKids=='true'">
+
+
+              <p style="text-indent :0.5em;">If {{Data.BeneficiaryDetails.Name}} dies before becoming entitled in
+                accordance with the terms of
+
+                this Will, I direct that all my immovable and movable properties be divided
+
+                and transferred in equal shares to each of my surviving children.</p>
+              <div *ngIf="Data.Guardian.Name !='' ">
+                <p style="text-indent :0.5em;">Also, If my spouse does not survive me and should my minor or dependent
+
+                  children require a guardian to take care of them, I appoint the following
+
+                  individual to be their guardian:</p>
+
+                <p style="text-indent :0.5em;">I appoint <b>{{Data.Guardian.Name}}</b>,
+                  <label *ngIf="Data.Guardian.Relation !='' ">
+                    my {{Data.Guardian.Relation}},
+                  </label>
+                  <label *ngIf="Data.Guardian.City !='' ">
+                    residing in {{Data.Guardian.City}},
+                  </label>
+
+                  to be the sole guardian of all my minor children until they are at least 18
+
+                  years of age.
+
+                  <label *ngIf="Data.AlternateGuardian.Name !='' "> If {{Data.Guardian.Name}} should predecease me or is
+                    unable or
+
+                    unwilling to act as the guardian, then I appoint the following:
+
+                    <b>{{Data.AlternateGuardian.Name}}</b>,
+                    <label>
+                      my {{Data.AlternateGuardian.Relation}},
+
+                    </label>
+                    <label *ngIf="Data.AlternateGuardian.City !='' ">
+                      residing in {{Data.AlternateGuardian.City}},
+
+                    </label>
+                    to be the sole guardian of all my minor children until they are at least 18 in
+                    place and stead of {{Data.Guardian.Name}}.</label>
+
+
+
+                <p style="text-indent :0.5em;">As a Guardian and Caretaker, {{Data.Guardian.Name}} will have all the
+                  rights and
+
+                  privileges to sell or transfer or give on lease or mortgage or otherwise
+
+                  dispose of (excluding by gift and by Will) any of the assets and properties
+
+                  bequeathed to the beneficiaries in any manner that she/he considers in the
+
+                  best interests of my surviving children subject to the condition that all
+
+                  proceeds from the sale or transfer or lease or mortgage or disposal are
+
+                  strictly either used for the benefit of my surviving children or are invested in
+
+                  a prudent manner for the future benefit of my surviving children.</p>
+
+              </div>
+            </div>
+
+            <p style="text-indent :0.5em;">This Will relates only to my assets and properties in India and does not
+
+              affect any assets and properties outside India that I might have at the time
+
+              of my demise.</p>
+          </div>
+          <div *ngIf="planName != 'GOLD'">
+            <p style="text-indent :0.5em;">
+              I also declare that I have acquired some movable and immovable assets during my lifetime
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+            <p *ngIf="planName != 'GOLD' && annexure == false" style="text-indent :0.5em;">I am the sole owner of all
+              the assets. I have absolute and complete rights
+
+              over these properties and authority and power to dispose them in
+
+              whatsoever manner I want. Nobody other than me has any right, title,
+
+              interest, claim, or demand on these assets.</p>
+
+
+            <p *ngIf="planName != 'GOLD' && annexure == false" style="font-weight: bold;font-size: 13px;">
+              DEBTS,OBLIGATIONS AND AMOUNTS DUE FROM OTHERS
+            </p>
+            <p *ngIf="planName != 'GOLD' && annexure == false">
+              I direct that post my demise,
+              the Executor named in this Will to review all my debts and obligations.
+              The Executor has to pay these debts only after a creditor provides timely and
+              sufficient evidence to support its claim.
+            </p>
+            <p *ngIf="planName != 'GOLD' && annexure == false">
+              The Executor can undertake measures to recover my dues,
+              with interest as decided between me and the borrower.
+            </p>
+            <p *ngIf="planName != 'GOLD' && annexure == false">
+              If during the process of repayment / recovery the Executor
+              incurs any legal expenses then he / she is entitled to recover the same from my estate / assets.
+            </p>
+
+            <p *ngIf="planName != 'GOLD' && annexure == false" style="text-indent :0.5em;">I bequeath <b>all my
+                immovable and movable properties</b> located in India to
+
+              <b>{{Data.BeneficiaryDetails.Name}}</b>
+              <label style="text-indent :0.5em;">, my {{Data.BeneficiaryDetails.Relation}}
+                <label
+                  *ngIf="Data.BeneficiaryDetails.DateOfBirth == '' || Data.BeneficiaryDetails.DateOfBirth.includes('undefined') == true ">.</label>
+                <label
+                  *ngIf="Data.BeneficiaryDetails.DateOfBirth != '' || Data.BeneficiaryDetails.DateOfBirth.includes('undefined') != true ">,
+                  born on {{Data.BeneficiaryDetails.DateOfBirth}};</label>
+                <label *ngIf="Data.BeneficiaryDetails.idNumber != '' "> having {{Data.BeneficiaryDetails.IdType}}
+                  {{Data.BeneficiaryDetails.idNumber}}. </label>
+
+              </label>
+
+            </p>
+
+            <p *ngIf="planName != 'GOLD' && annexure == false" style="text-indent :0.5em;">In case, I acquire any other
+              property or properties or rights in any property
+
+              or properties in India before my demise, all such properties and rights in
+
+              properties will also pass on to {{Data.BeneficiaryDetails.Name}} after my demise.</p>
+
+            <p *ngIf="planName != 'GOLD' && annexure == false" style="text-indent :0.5em;">All movable assets including
+              jewelry, household goods, furniture, fixtures,
+
+              vehicles, shares (in listed and unlisted Indian companies), investments in
+
+              mutual funds, deposits in banks (including balances in current accounts,
+
+              saving accounts, fixed deposit accounts, and any other accounts), contents
+
+              of bank lockers, deposits with financial companies, money receivable from
+
+              other parties, dues or claims from insurance companies and cash will pass on
+
+              {{Data.BeneficiaryDetails.Name}} after my demise.</p>
+
+            <p *ngIf="planName != 'GOLD' && annexure == false" style="text-indent :0.5em;">All rights that vest with me
+              due to membership of societies, clubs,
+
+              associations, online accounts, and such other bodies will also pass on
+
+              {{Data.BeneficiaryDetails.Name}} after my demise.</p>
+
+            <p *ngIf="planName != 'GOLD' && annexure == false" style="text-indent :0.5em;">All rights that vest with me
+              due to contracts and agreements will also pass
+
+              on {{Data.BeneficiaryDetails.Name}} after my demise.</p>
+
+
+
+
+
+
+
+            <div *ngIf="planName != 'GOLD' && annexure == false">
+              <div *ngIf="Data.FamilyDetails.HaveKids=='true'">
+
+
+                <p style="text-indent :0.5em;">If {{Data.BeneficiaryDetails.Name}} dies before becoming entitled in
+                  accordance with the terms of
+
+                  this Will, I direct that all my immovable and movable properties be divided
+
+                  and transferred in equal shares to each of my surviving children.</p>
+                <div *ngIf="Data.Guardian.Name !='' ">
+                  <p style="text-indent :0.5em;">Also, If my spouse does not survive me and should my minor or dependent
+
+                    children require a guardian to take care of them, I appoint the following
+
+                    individual to be their guardian:</p>
+
+                  <p style="text-indent :0.5em;">I appoint <b>{{Data.Guardian.Name}}</b>,
+                    <label *ngIf="Data.Guardian.Relation !='' ">
+                      my {{Data.Guardian.Relation}},
+                    </label>
+                    <label *ngIf="Data.Guardian.City !='' ">
+                      residing in {{Data.Guardian.City}},
+                    </label>
+
+                    to be the sole guardian of all my minor children until they are at least 18
+
+                    years of age.
+
+                    <label *ngIf="Data.AlternateGuardian.Name !='' "> If {{Data.Guardian.Name}} should predecease me or
+                      is unable or
+
+                      unwilling to act as the guardian, then I appoint the following:
+
+                      <b>{{Data.AlternateGuardian.Name}}</b>,
+                      <label>
+                        my {{Data.AlternateGuardian.Relation}},
+
+                      </label>
+                      <label *ngIf="Data.AlternateGuardian.City !='' ">
+                        residing in {{Data.AlternateGuardian.City}},
+
+                      </label>
+                      to be the sole guardian of all my minor children until they are at least 18 in
+                      place and stead of {{Data.Guardian.Name}}.</label>
+
+
+
+                  <p style="text-indent :0.5em;">As a Guardian and Caretaker, {{Data.Guardian.Name}} will have all the
+                    rights and
+
+                    privileges to sell or transfer or give on lease or mortgage or otherwise
+
+                    dispose of (excluding by gift and by Will) any of the assets and properties
+
+                    bequeathed to the beneficiaries in any manner that she/he considers in the
+
+                    best interests of my surviving children subject to the condition that all
+
+                    proceeds from the sale or transfer or lease or mortgage or disposal are
+
+                    strictly either used for the benefit of my surviving children or are invested in
+
+                    a prudent manner for the future benefit of my surviving children.</p>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <p *ngIf="planName != 'GOLD' && annexure == false" style="text-indent :0.5em;">This Will relates only to my
+              assets and properties in India and does not
+
+              affect any assets and properties outside India that I might have at the time
+
+              of my demise.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <p *ngIf="planName != 'GOLD' && annexure == true" style="text-indent :0.5em;">
+              I am the sole owner of all the assets,
+              which are categorically mentioned in Annexure 1 (“ASSETS DISTRIBUTION & BENEFICIARIES”)
+              to be bequeathed. I have absolute and complete rights over these properties and authority
+              and power to dispose of them in whatsoever manner I want. Nobody other than me has any right,
+              title, interest, claim, or demand on these assets. These assets are to be distributed as mentioned
+              in Annexure 1
+            </p>
+
+
+
+
+
+
+            <p *ngIf="planName != 'GOLD' && annexure == true" style="font-weight: bold;font-size: 13px;">
+              DEBTS,OBLIGATIONS AND AMOUNTS DUE FROM OTHERS
+            </p>
+            <p *ngIf="planName != 'GOLD' && annexure == true">
+              I direct that post my demise,
+              the Executor named in this Will to review all my debts and obligations.
+              The Executor has to pay these debts only after a creditor provides timely and
+              sufficient evidence to support its claim.
+            </p>
+            <p *ngIf="planName != 'GOLD' && annexure == true">
+              The Executor can undertake measures to recover my dues,
+              with interest as decided between me and the borrower.
+            </p>
+            <p *ngIf="planName != 'GOLD' && annexure == true">
+              If during the process of repayment / recovery the Executor
+              incurs any legal expenses then he / she is entitled to recover the same from my estate / assets.
+            </p>
+            <div *ngIf="Data.FamilyDetails.HaveKids=='true'">
+              <p *ngIf="planName != 'GOLD' && annexure == true">
+                If my spouse does not survive me and should my minor or dependent children require a
+                guardian to care for them, I appoint the following individual to be their guardian:
+              </p>
+              <p *ngIf="planName != 'GOLD' && annexure == true">
+                <label *ngIf="Data.Guardian.Name != ''">
+                  I appoint {{Data.Guardian.Name}} of {{Data.Guardian.City}}, my {{Data.Guardian.Relation}},
+                  to be the sole guardian of all my minor children until they are at least 18 years of age
+                  but if {{Data.Guardian.Name}} should predecease me or is unable or unwilling to act as the guardian,
+                  then I appoint the following: {{Data.AlternateGuardian.Name}} of {{Data.AlternateGuardian.City}} ,
+                  my {{Data.AlternateGuardian.Relation}} , to be the sole guardian of all my minor children until they
+                  are at least 18 in the place and stead of {{Data.Guardian.Name}}.
+                </label>
+              </p>
+              <p *ngIf="planName != 'GOLD' && annexure == true">
+                <label *ngIf="Data.Guardian.Name != ''">
+                  As Guardian and Caretaker, {{Data.Guardian.Name}}
+                  will have all rights and privileges to sell or transfer or give on lease or mortgage or
+                  otherwise dispose of (excluding by gift and by Will) any of the assets and properties
+                  bequeathed to the beneficiaries in any manner that she/he considers in the best interests
+                  of my surviving children subject to the condition that all proceeds from the sale or transfer
+                  or lease or mortgage or disposal are strictly either used for the benefit of my surviving children
+                  or are invested in a prudent manner for the future benefit of my surviving children.
+                </label>
+              </p>
+            </div>
+            <p *ngIf="planName != 'GOLD' && annexure == true">
+              This Will relates only to my assets and properties in India and does not affect any assets and properties
+              outside India that
+              I might have at the time of my demise.
+            </p>
+
+
+
+
+      
+            <div *ngIf='distribute == "true"'>
+              <p style="font-weight: bold;font-size: 14px;">
+                ANNEXURE 1 - ASSETS DISTRIBUTION & BENEFICIARIES
+              </p>
+
+              <table style="width:100%">
+                <tr>
+                  <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <th>PROPERTY/ASSET<br>DESCRIPTION</th>
+                  <th>
+                    BENEFICIARY DETAILS
+                  </th>
+                </tr>
+              </table>
+              <table style="width:100%">
+                <tr>
+                  <td>S.No</td>
+                  <td>Type of Asset</td>
+                  <td>Details of the Asset</td>
+                  <td>Beneficiary</td>
+                  <td>Relation</td>
+                  <td>Share</td>
+                </tr>
+                <ng-container *ngFor='let asset of Data.Asset;let i = index'>
+                  <tr>
+                    <td [attr.rowspan]=asset.Benelength>{{i+1}}</td>
+                    <td [attr.rowspan]=asset.Benelength>{{asset.typeOfAsset}}</td>
+                    <td [attr.rowspan]=asset.Benelength>{{asset.assetDetails}}</td>
+                  </tr>
+                  <tr *ngFor='let bene of asset.Beneficiary'>
+                    <td>{{bene.name}}</td>
+                    <td>{{bene.relation}}</td>
+                    <td><b *ngIf="asset.rupees_percent == 'true'">₹</b>{{bene.percentage}} <b
+                        *ngIf="asset.rupees_percent !== 'true'">%</b></td>
+                    <!-- <td>{{bene.percentage}}</td> -->
+                  </tr>
+                </ng-container>
+              </table>
+              <p><b>Note:</b> All my properties and assets other than the ones mentioned above (if any),
+                where the beneficiary has expired before me,
+                then their share in my estate shall devolve upon.</p>
+            </div>
+          </div>
+
+          <p style="text-indent :0.5em;">I have made this Will out of my own free will. I am in good health at the
+
+            time of making this Will. I have understood the contents of this Will in full.
+
+            There was no force or coercion by anyone on me to execute this Will or to
+
+            add any part to this Will.</p>
+
+          <!-- <div style="padding-left: 10%;text-align:justify; padding-right: 10%;line-height:1.5;word-spacing:5px;font-size: 16px;font-family:Verdana, sans-serif"> -->
+
+          <p style="text-indent :0.5em;">IN WITNESS WHEREOF, I <b> {{Data.FullName}} </b>have executed this Will by
+            signing on
+
+            each page of this Will in front of the two below named witnesses who have
+
+            both signed in front of me.</p>
+          <br>
+          <p>Signature of Testator</p>
+          <br>
+
+          <p><u>Witnesses:</u> We hereby attest that this Will has been signed by <b> {{Data.FullName}} </b>as
+            {{userGenderForm}} last
+
+            Will at {{Data.FamilyDetails.City}} in the joint presence of {{userGenderTerm}} and us. The
+
+            testator is in sound mind and made this Will without any coercion.</p>
+          <br>
+
+          <div>
+            <div style="width: 45%;float: left;">
+              <p>Signature of Witness(1): </p>
+              <p>Name </p>
+              <p>Occupation:</p>
+              <p>ID Type:</p>
+              <p>ID number:</p>
+              <p>Telephone No:</p>
+              <br>
+              <p>Date:</p>
+            </div>
+            <div style="width: 45%;float: left;">
+              <p>Signature of Witness(2): </p>
+              <p>Name </p>
+              <p>Occupation:</p>
+              <p>ID Type:</p>
+              <p>ID number:</p>
+              <p>Telephone No:</p>
+              <br>
+              <p class="pb-2"></p>
+            </div>
+          </div>
+
+
+
+          <!-- </div> -->
+
+
+        </div>
+        <!-- <br> -->
+        <!-- <div>
+        <ion-button (click)="goBack()" class="next" float-left>Edit</ion-button>
+        <ion-button (click)=downloadWill() type="submit" class="next" float-right>Download</ion-button>
+      </div> -->
+        <ion-footer no-border>
+          <ion-toolbar class="durity-bg">
+
+            <ion-item lines="none" class="durity-bg">
+              <!-- <button class=" skipbtn" (click)="skip()" >Skip</button> -->
+              <!-- <button  class="saveBtn" style="border-style: solid;border-color: white;">Save</button> -->
+              <label (click)="saveDetails()" *ngIf="saveFormData == true"
+                style="font-size: 14px;width: 33%;padding-top: 4px;color: white;">
+                <label style="padding-top: 17px;font-weight: bold;padding-left: 20px;"><a
+                    style="color: white;font-size:16px"><u> Save </u></a></label>
+              </label>
+              <button type="submit" (click)=downloadWill() style="font-size:16px ;font-weight: bold;text-align: center;"
+                class="nextBtn">Download</button>
+            </ion-item>
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+    </div>
+
+    <!-- End of Form Six-->
+  </div>
+</ion-content>

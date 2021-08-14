@@ -1,0 +1,203 @@
+<ion-content >
+  
+  <ion-toolbar>
+      
+    <div class="durity-back-btn">
+      <ion-buttons slot="start" *ngIf  = "globalvariablesProvider.addBeneficiaries === false">
+          <ion-button slot="icon-only" fill="clear" size= "small" (click)="goBack()" class="back-btn"> 
+                  <ion-icon name="ios-arrow-back"></ion-icon>
+                  <small style="font-weight: bold;">Back</small>
+          </ion-button>
+      </ion-buttons>
+  </div>
+    
+    <div class="durity-back-btn">
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" fill="clear" size="small" (click)="Back()" class="back-btn">
+          <ion-icon name="ios-arrow-back"></ion-icon>
+          <small style="font-weight: bold;">Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <div class="upload-doc"  *ngIf  = "globalvariablesProvider.addBeneficiaries === false">
+      <ion-label>Upload Document</ion-label>
+    </div>
+ 
+</ion-toolbar>
+
+<div class="upload-content">
+  <ion-card class="doc-card" *ngIf  = "globalvariablesProvider.addBeneficiaries === false"> 
+   <!-- <ion-card class="doc-card"> -->
+   <ion-row align-items-center>
+     <ion-col size="4" class="doc">
+       <div class="image-icon">
+         <img src="assets/imgs/normal_doc.svg">
+       </div>
+     </ion-col>
+     <ion-col size="8">
+       <!-- <div class="font-16" padding-start>
+           <img [src]="base64Image">
+         </div> -->
+       <ion-card-header >
+         
+         <ion-card-title>{{editableFileName}}</ion-card-title>
+         <small>Upload On: {{uploadDate |  date: 'dd MMM yyyy'}}
+         </small><br>
+         <!-- <small>Size:{{bytes}}MB</small> -->
+       </ion-card-header>
+      
+     </ion-col>
+   </ion-row>
+ </ion-card>
+
+
+   
+
+ <!-- <ion-progress-bar color="success" value="0.5"></ion-progress-bar> -->
+ <div class="file-name" *ngIf= "globalvariablesProvider.addBeneficiaries === false">
+   <ion-item lines="none" >
+     <ion-label class="name">Title:</ion-label>
+     <ion-input placeholder="Name of document  (Ex:Insurance)" [(ngModel)]='editableFileName'></ion-input>
+   </ion-item>
+  
+ </div>
+
+
+ <div class="selection">
+  <ion-item *ngIf="isAclient == true && userDetails.profile.isFinancialAdvisor == false" style="padding-top: 30px;" lines="none">
+    <ion-label style=" font-size: 14px;padding-left: 6%;
+    color:black;
+    font-weight: bold;" >
+        Give Access to Advisor 
+    </ion-label>
+    <ion-toggle  color='primary' [(ngModel)]="advisorAccess" slot="end" (ionChange)="advAccess()">
+    </ion-toggle>
+</ion-item>
+
+   <ion-row padding-top>
+     <ion-col size="6">
+       <p>Share this Information with:</p>
+     </ion-col>
+    
+     <ion-col size="2">
+       <p>Levels:</p>
+     </ion-col>
+     <ion-col size="4">
+     
+       <div class="help-btn">
+         <ion-icon name="help-circle" (click)="AddRec()"></ion-icon>
+         <span class="tooltiptext">Recommendation</span>
+       </div>
+
+     </ion-col>
+    
+     
+   </ion-row>
+ </div>
+ 
+ <div class="select-type" [formGroup]="beneficiaryForm" >
+   <div formArrayName="Beneficiaries" *ngFor="let beneficiary of beneficiaryForm.controls.Beneficiaries['controls']; let idx = index;">
+     <ion-row align-items-center [formGroupName]="idx" *ngIf = "contacts.length > idx">
+       <ion-col size="6.5">
+        
+        <ion-item lines="none">
+         <ion-select   interface="popover" placeholder="Select One" formControlName="contact_id" class="selector select-popOver" (ionChange)="checkIfEmailExists($event.target.value)">
+           <ion-select-option [value]="contact._id" *ngFor="let contact of contacts; let i = index" class="option" >{{contact.firstName.length > 10? contact.firstName.substring(0,10)+"...": contact.firstName}}
+           </ion-select-option>
+
+          <ion-select-option>
+           Add Contact
+         </ion-select-option> 
+       
+         </ion-select>
+       
+
+       </ion-item>
+       <!-- <ion-button (click) = "addContact()">Add Contact</ion-button> -->
+        
+       </ion-col>
+       <ion-col size="4.5">
+         <ion-item lines="none">
+           <ion-select interface="popover" placeholder="Level-1" formControlName="tier" class="selector">
+               <ion-select-option value="1" class="option">Level-1</ion-select-option>
+               <ion-select-option value="2" class="option">Level-2</ion-select-option>
+               <ion-select-option value="3" class="option">Level-3</ion-select-option>
+           </ion-select>
+         </ion-item>
+       </ion-col>
+       
+       <ion-col size="1">
+         <span class="float-right delete-contact-btn">
+           <ion-icon ios="ios-trash" md="md-trash" (click)="deleteBen(idx)"></ion-icon>
+
+       </span>
+
+       </ion-col> 
+     
+     </ion-row>
+
+   </div>
+ </div>
+ <div class="add-more">
+   <ion-button type = "submit" (click)="addMore()" class="add">
+     <div style="color:white;font-size:20px;padding-right:5px;">
+       <ion-icon name="person-add"></ion-icon>
+     </div>
+     <span class="add_more">Add More</span>
+   </ion-button>
+ </div>
+
+</div>
+
+
+</ion-content>
+
+<ion-footer class="durity-bg"
+  *ngIf="globalvariablesProvider.addBeneficiaries === false && isUserEncryptionEnabled === true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8">
+        <div>
+          <ion-button color="light" (click)="encryptUpload(editableFileName)">
+            <ion-icon slot="start" src="assets/imgs/secure-upload.svg"></ion-icon>
+            <span class="encrypt_btn">Advanced Encryption</span>
+          </ion-button>
+        </div>
+      </ion-col>
+
+      <ion-col size="4">
+        <div>
+          <ion-button color="light" (click)="encryptAndUploadFileForBothIosAndAndroid(extraSecurity, '', 'log-in', editableFileName)">
+            <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon>
+            <span class="encrypt_btn">Upload</span>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+
+<!--Normal Upload-->
+<ion-footer class="durity-bg"
+  *ngIf="globalvariablesProvider.addBeneficiaries === false && isUserEncryptionEnabled === false">
+  <ion-row  align-items-end>
+    <ion-col >
+      
+        <ion-button color="light" (click)="encryptAndUploadFileForBothIosAndAndroid(extraSecurity, '', 'log-in', editableFileName)" style="float: right; right: 3%; position: relative;">
+          <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon>
+          <span class="encrypt_btn">Upload</span>
+        </ion-button>
+
+    </ion-col>
+  </ion-row>
+</ion-footer>
+
+
+<ion-footer class="durity-bg" *ngIf = "globalvariablesProvider.addBeneficiaries === true">
+    <div >
+        <ion-button color="light" (click)="addMoreBeneficiaries()" style="float: right; right: 3%; position: relative;">
+          <ion-icon slot="start" src="assets/imgs/normal-upload.svg"></ion-icon>
+          <span class="encrypt_btn">Finish</span>
+        </ion-button>
+      </div>
+  </ion-footer>

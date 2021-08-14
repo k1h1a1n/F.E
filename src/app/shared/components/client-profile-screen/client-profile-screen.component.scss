@@ -1,0 +1,35 @@
+.select-doc{
+  text-align:center;
+  font-weight: bold;
+  padding-top: 1%;
+   padding-left:40px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+}
+
+.error{
+  color:darkred;
+  text-align: start;
+  padding:7%;
+  }
+
+.login-padding{
+  padding: 2% 7% 2% 7%;
+  background-color: white;
+}
+.signin-input {
+  --background: var(--ion-color-light-tint);
+  --color: var(--ion-color-light-contrast);
+  border-radius: 5px;
+  height: 60px;
+  
+  ion-input{
+    font-size: 14px;
+    bottom: 10%;
+  }
+  
+}
+.signin-padding{
+  padding-left: 10%;
+  padding-right: 10%;
+}

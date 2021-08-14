@@ -1,0 +1,44 @@
+<!-- <ion-header no-border>
+  <ion-toolbar>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+          <ion-button slot="icon-only" fill="clear" (click)="close()">
+           <ion-icon src="assets/imgs/baseline-close-24px.svg"></ion-icon>
+          
+          </ion-button>
+        </ion-buttons>
+  </ion-toolbar>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content class="content">
+  <div text-center padding-bottom class="text font-24">
+ <b>More about encryption...</b>
+</div>
+ <div class="security-info">
+<p>
+  <b>End-to-End Encryption:</b><br>
+  Durity uses end-to-end encryption to guarantee the security of your files in the cloud.<br>
+  Using this technology, Durity encrypts every file and relevant file metadata on your devices with the unique,  encryption key. These keys are never sent to our servers in an unencrypted format.
+</p>
+<p>
+  Unlike other services, Durity never transmits or stores files, encryption keys and user passwords in unencrypted or unhashed form. Due to the strength of Durity’s end-to-end encryption and security, breaking this protection would take several human lifetimes. This is why we can never recover forgotten passwords
+</p>
+<p>
+ <b> Client-side integrity protection:</b><br>
+  We guarantee that your files' content cannot be modified without your knowledge.
+</p>
+<p>
+ <b> Cryptographic key sharing:</b><br>
+  Durity is based on industry-standard public-key cryptography that has been thoroughly analyzed by experts and declared secure. We are using a high form of encryption similar to the one used by the US defense department. We keep your information private, secure, and hidden (even from us).
+</p>
+    </div>
+    
+</ion-content>
+<ion-footer>
+  <div class="next-btn">
+    <ion-button (click)="someEvent.emit(false)" float-right>
+     close
+    </ion-button>
+
+  </div>
+</ion-footer>

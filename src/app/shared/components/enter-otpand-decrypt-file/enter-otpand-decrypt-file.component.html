@@ -1,0 +1,163 @@
+<ion-content>
+  <ion-toolbar>
+
+    <div class="durity-back-btn">
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+          <ion-icon name="ios-arrow-back"></ion-icon>
+          <small style="font-weight: bold;">Back</small>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <div class="upload-doc">
+      <ion-label>Verification</ion-label>
+    </div>
+
+  </ion-toolbar>
+<ion-card *ngIf="isOTPverified!=true">
+<div class="otp">
+<ion-label >Enter OTP:</ion-label>
+</div>
+
+
+<form [formGroup]="otpForm" (ngSubmit)="verify()" #reset="ngForm">
+<div class="ion-text-center">
+<div class="input">
+  <ion-input [(ngModel)]="otp" type="number" formControlName="otp" autofocus="true"></ion-input>
+</div>
+<small class="timer" float-right padding-right>{{ time | async }}</small>
+<div
+            *ngIf="otpForm.get('otp').invalid  && (otpForm.get('otp').touched || otpForm.get('otp').dirty || reset.submitted)">
+            
+            <small class="error" *ngIf="isOTPverified==false">Incorrect OTP! </small>
+</div>
+<div class="mobile-number">
+<p style="font-weight: bold;">OTP has been sent to {{telephoneNumber}}</p>
+<ion-label >(If the above number is incorrect, you can update it in your Profile.)</ion-label>
+</div>
+
+<div class="btn-section">
+<ion-row text-center>
+    <ion-col size="6">
+        <div>
+            <ion-button fill="clear" (click)="resendOtp()">
+                <span style="text-transform: none; text-decoration:underline; color:#5F5F5F"></span>
+            </ion-button>
+        </div>
+    </ion-col>
+    <ion-col size="6">
+        <div>
+            <ion-button  color="primary" (click)="verify() " class="pass-file">
+                <span style="text-transform: none">Verify</span>
+            </ion-button>
+        </div>
+    </ion-col>
+</ion-row>
+</div>
+</div>
+</form>
+</ion-card>
+
+<ion-card *ngIf="isOTPverified==true">
+ <ion-row>
+  <ion-col size="10">
+    <div class="otpverified">
+      <ion-label >OTP  Verified</ion-label>
+    </div>
+</ion-col>
+<ion-col size="2">
+    <div>
+        <ion-icon class="tick-mark" src="assets/imgs/greenColorTickIcon.svg"></ion-icon>
+    </div>
+</ion-col>
+ </ion-row>
+ <ion-row>
+
+ </ion-row>
+</ion-card>
+
+
+<ion-card *ngIf="isBiometricEnabled == true || isUserEncWithPassword == true">
+<div style="text-align: center;" *ngIf="isOTPverified!=true">
+  <p > Decrypt Document</p>
+</div>
+<div *ngIf="isOTPverified==true">
+  <div *ngIf="isBiometricEnabled == true && isUserEncWithPassword == true">
+  <div class="otp">
+    <ion-label >Decrypt Document</ion-label>
+  </div>
+  <div class="mobile-number1">
+    <ion-label >Scan Your Fingerprint.</ion-label>
+  </div>
+  <div>
+    <ion-icon slot="center" class="label-icon" src="assets/imgs/dialpad-24px.svg" ></ion-icon>
+  </div>
+  <div>
+    <p style="text-align: center;font-weight: bold;">(Or)</p>
+  </div>
+  <div class="mobile-number1">
+    <ion-label >Enter Security Key:</ion-label>
+  </div>  
+  <div class="pwd-input">
+    <ion-input type="password" style="color: black;"  [(ngModel)]="passwordKey"  ></ion-input>
+       
+              <small class="error" *ngIf="incorrectKey == true">Incorrect Key! </small>
+  
+  </div>
+<div
+              *ngIf="userpwdForDec.get('userpwd').invalid  && (userpwdForDec.get('userpwd').touched || userpwdForDec.get('userpwd').dirty || reset.submitted)">
+              <small class="error" *ngIf="userpwdForDec.get('userpwd').errors.required">Please enter Password</small>
+</div>
+</div>
+<div *ngIf="isBiometricEnabled==true && isUserEncWithPassword==false">
+<div class="otp">
+  <ion-label >Decrypt Document</ion-label>
+</div>
+<div class="mobile-number1">
+  <ion-label >Scan Your Fingerprint.</ion-label>
+</div>
+<div>
+  <ion-icon slot="center" class="label-icon" src="assets/imgs/dialpad-24px.svg" ></ion-icon>
+  <p class="ion-text-center" style="color: red;">{{anotherAttempt}}</p>
+
+</div>
+<!-- <div>
+</div> -->
+</div>
+<div *ngIf="isBiometricEnabled==false && isUserEncWithPassword==true">
+<div class="otp">
+  <ion-label >Decrypt Document</ion-label>
+</div>
+<!-- <form [formGroup]="userpwdForDec" (ngSubmit)="download()" #reset="ngForm"> -->
+<div class="mobile-number1">
+  <ion-label >Enter Security Key:</ion-label>
+</div>  
+<div class="pwd-input">
+  <ion-input type="password" style="color: black;"  [(ngModel)]="passwordKey"  ></ion-input>
+     
+            <small class="error" *ngIf="incorrectKey == true">Incorrect Key! </small>
+
+</div>
+<!-- <div class="pwd-input">
+  <ion-input type="password" [(ngModel)]="userpwd" formControlName="userpwdForDec"></ion-input>
+  <ion-icon [name]="passwordIcon" item-right (click)="showPassword()" class="show-password-icon"></ion-icon>
+
+</div>
+<div
+            *ngIf="userpwdForDec.get('userpwd').invalid  && (userpwdForDec.get('userpwd').touched || userpwdForDec.get('userpwd').dirty || reset.submitted)">
+            <small class="error" *ngIf="userpwdForDec.get('userpwd').errors.required">Please enter Password</small>
+</div>
+
+</form> -->
+
+</div>
+</div>
+</ion-card>
+
+<div class="download-btn">
+<!-- <header>Block Width</header> -->
+<ion-button expand="block" size="large" [disabled]="disableDownloadBtn" (click)="download()" >
+  <label style="text-transform: capitalize;">Download</label></ion-button>
+</div>
+
+</ion-content>

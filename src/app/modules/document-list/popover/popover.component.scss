@@ -1,0 +1,30 @@
+title-input {
+    // --background: #77B2F6 0% 0% no-repeat padding-box;
+    // --background: var(--ion-color-light-tint) 0% 0% no-repeat padding-box;
+    --background:  #1878eee8;
+    border-radius: 6px;
+    color:black;
+    height: 35px;
+    font-size: 12px;
+    
+    
+    ion-input{
+      font-size: 12px;
+      --background:  #78B2F726;
+      // bottom: 10%;
+    }
+  }
+  .input-padding{
+    padding-top: 1.5%;
+    padding-bottom: 2.5%;
+    padding-left: 6%;
+    padding-right:6% ;
+}
+ion-title{
+  padding-top: 5%;
+  padding-bottom: 2.5%;
+}
+ion-button{
+  text-transform: capitalize;
+ }
+

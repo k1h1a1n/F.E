@@ -1,0 +1,49 @@
+<div padding>
+
+  <div class="ion-text-center" (click)="dropdown()">
+      <span style="font-size:20px;">
+              <ion-icon slot="icon-only" name="arrow-dropdown"></ion-icon>
+           </span>
+  </div>
+  <ion-grid>
+
+    <ion-row class="ion-align-items-center">
+      <ion-col size="6" class="ion-padding">
+        
+         <div (click)="emailShare()" class="ion-text-center">
+                   <span style="color:darkred;font-size:35px;">
+                <ion-icon slot="icon-only" name="mail"></ion-icon>
+                
+              </span><br>
+           
+          <div style="margin-top:-15px;">
+              <p  class="font-14">Email</p>
+            </div>
+        </div>
+        
+        </ion-col>
+        <ion-col size="6" class="ion-padding">
+            <div class="ion-text-center" (click)="whatsappShare()">
+        
+              <span style="color:green;font-size:35px;">
+                  <ion-icon slot="icon-only" name="logo-whatsapp"></ion-icon>
+                </span>
+              
+            <div style="margin-top:-15px;">
+                <p  class="font-14">Whatsapp</p>
+              </div>
+          </div>
+        </ion-col>
+        <!-- <ion-col size="4" class="ion-padding">
+            <div class="ion-text-center" (click)="clipboardshare()">
+                       <span style="color:black;font-size:35px;">
+                  <ion-icon slot="icon-only" name="clipboard"></ion-icon>
+                </span>
+            <div style="margin-top:-15px;">
+            <p  class="font-14">clipboard</p>
+          </div>
+            </div>
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+</div>

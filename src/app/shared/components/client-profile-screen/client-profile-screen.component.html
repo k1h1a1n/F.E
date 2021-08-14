@@ -1,0 +1,71 @@
+<ion-content class="client-bg">
+
+  <ion-toolbar text-center class="client-bg" style="padding-top: 10px;">
+    <div class="durity-back-btn security-back">
+        <ion-buttons slot="start" style="margin-top: 2%; ">
+            <ion-button  slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+                <ion-icon name="ios-arrow-back"></ion-icon>
+                <small style="font-weight: bold;">Back</small>
+            </ion-button>
+        </ion-buttons>
+      </div>
+      <span style="text-align: center;"><span  class="font-16 font-bold">Client Profile </span> </span>
+  </ion-toolbar>
+  
+    <div style="text-align:center;padding-top: 20px;">
+      <ion-icon style="height: 129px;width: 129px;" src="assets/imgs/account_circle-24px.svg"></ion-icon>
+  
+    <!-- </div> -->
+  
+    <!-- <div style="height: 60%;"> -->
+      <!-- <ion-icon src="assets/imgs/account_circle-24px.svg"></ion-icon> -->
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" style="padding: 10px;" #reg="ngForm">
+        <div class="login-padding">
+          <ion-item class="signin-input" lines="none">
+            <!-- <ion-label style="border-radius: 10px;border-color:#4895F1 ;color: #707070;"  >Name</ion-label> -->
+            <ion-input type="text" placeholder="Name" formControlName="name" required></ion-input>
+          </ion-item>
+          <div *ngIf="userForm.get('name').invalid  && (userForm.get('name').touched || userForm.get('name').dirty || reg.submitted)">
+            <small class="error" *ngIf="userForm.get('name').errors.required"> Name is required</small>
+            <!-- <small class="error" *ngIf="willGenerateForm1.get('fullName').errors.pattern">Please enter valid name</small> -->
+          </div>
+      </div>
+      <div class="login-padding">
+        <ion-item class="signin-input" lines="none">
+          <!-- <ion-label   ></ion-label> -->
+            <ion-input type="email" placeholder="Email address"  formControlName="alternateEmailAddress"></ion-input>
+        </ion-item>
+        <div *ngIf="userForm.get('alternateEmailAddress').invalid  && (userForm.get('alternateEmailAddress').touched || userForm.get('alternateEmailAddress').dirty || reg.submitted)">
+          <small class="error" *ngIf="userForm.get('alternateEmailAddress').errors.required"> Email is required</small>
+          <small class="error" *ngIf="userForm.get('alternateEmailAddress').errors.pattern">Please enter valid email</small>
+        </div>
+    </div>
+    <div class="login-padding">
+      <ion-item class="signin-input" lines="none">
+        <!-- <ion-label style="border-radius: 10px;border-color:#4895F1 ;color: #707070;"  >Phone number</ion-label> -->
+        <ion-input type="text" placeholder="Phone number" formControlName="telephoneNumber" required></ion-input>
+      </ion-item>
+      <div *ngIf="userForm.get('telephoneNumber').invalid  && (userForm.get('telephoneNumber').touched || userForm.get('telephoneNumber').dirty || reg.submitted)">
+        <small class="error" style="text-align: start;" *ngIf="userForm.get('telephoneNumber').errors.required"> Phone Number is required</small>
+        <!-- <small class="error" style="text-align: start;" *ngIf="userForm.get('phoneNumber').errors.pattern">Enter a valid Phone number</small> -->
+        
+          <small class="error" style="text-align: start;" *ngIf="userForm.get('telephoneNumber').errors.minlength">Enter valid Phone number</small>
+  
+          <small class="error" style="text-align: start;" *ngIf="userForm.get('telephoneNumber').errors.maxlength">Enter valid Phone number</small>
+      
+      </div>
+  </div>
+        
+        <div class="login-padding">
+            <ion-button style="background-color : #4895F1;" type="submit" expand="block"><label>Update</label></ion-button>
+  
+      </div>
+      
+    </form>
+    <div class="login-padding">
+      <!-- <ion-button type="submit" color="primary" expand="block">Update</ion-button> -->
+      <label (click)="removeClient()" style="color: #FF715B;"><u>Remove Client</u></label>
+</div>
+    </div>
+  </ion-content>
+  

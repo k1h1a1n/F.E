@@ -1,0 +1,220 @@
+<ion-header >
+    <ion-toolbar>
+        <ion-title text-center class="font-16 contacts-title">Add members you trust the most</ion-title>
+
+
+    </ion-toolbar>
+
+    <!--Tab Headings-->
+    <div>
+        <div class="durity-tabs" (click)="getContacts()">
+            <div class="durity-tab tab1" (click)="selectTab(1)" [class.active]="activeContactGroup == 'group1'"
+                value="0">
+                <span>Family</span>
+            </div>
+            <div class="durity-tab tab2" (click)="selectTab(2)" [class.active]="activeContactGroup == 'group2'"
+                tab="tab2">
+                <span>Friends</span>
+            </div>
+            <div class="durity-tab tab3" (click)="selectTab(3)" [class.active]="activeContactGroup == 'group3'"
+                tab="tab3">
+                <span>Others</span>
+            </div>
+        </div>
+        <div class="inkbar" [class.group1]="activeContactGroup == 'group1'"
+            [class.group2]="activeContactGroup == 'group2'" [class.group3]="activeContactGroup == 'group3'"></div>
+    </div>
+
+    <!--Adding and creating contacts Blocks-->
+
+    <ion-toolbar class="contact-toolbar durity-bg no-border" >
+        <ion-row text-center>
+            <ion-col size="6">
+                <ion-button size="small" class="contact-btn" (click)="selectContact()"  color="white">
+                    <ion-icon slot="start" size="medium" src="assets/imgs/add-from-contact.svg"></ion-icon>
+                    <small>Import Phone Contacts</small>
+                </ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button  size="small" class="contact-btn" (click)="addContact()" color="white">
+                    <ion-icon slot="start" size="medium" src="assets/imgs/create-contact.svg"></ion-icon>
+                    <small>Create New Contacts</small>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<!--Header section ends-->
+
+
+<!-- Conacts display Section -->
+<ion-content class="contacts-added durity-bg">
+    <ion-label class="font-12 total_contacts">Total Contacts : {{contacts.length}}</ion-label>
+    <div class="contacts-bg">
+        <img src="assets/imgs/durity-logo-bg.svg">
+        <div class="durity-tabs-content" [ngSwitch]="activeContactGroup">
+            <!--First Tab(Tab1)-->
+            <div class="group-1" *ngSwitchCase="'group1'">
+
+                <!--For Contacts Selected from mobile for Tab1-->
+                <div class="contact-card-list" *ngFor="let contact of contacts; let i= index; let f=first; let l=last">
+                    <div *ngIf = " this.contact.relationship !== 'Friends' && this.contact.relationship !== 'Other'">
+
+                        <ion-card class="contact-card">
+                            <p class="ma-0">
+                                <span>{{contact.firstName}}</span>
+                                <span class="float-right delete-contact-btn">
+                                    <span class="edit-btn">
+                                        <ion-icon src="assets/imgs/edit-24px.svg" (click) ="editContact(contact._id)"></ion-icon>
+
+                                    </span>
+
+                                    <ion-icon ios="ios-trash" md="md-trash" (click)="deleteContact(contact._id)">
+                                    </ion-icon>
+
+                                </span>
+                            </p>
+                            <div *ngIf=" this.contact.primaryEmail !== ' '">
+                                <p class="ma-0">
+                                    <span><small>Email: {{contact.primaryEmail}}</small></span>
+                                </p>
+
+                            </div>
+                            
+
+                            <p class="ma-0">
+                                <span><small>{{contact.mobilePhone}}</small></span><span>
+                                    <!-- <ion-icon src="assets/imgs/arrow-down.svg"></ion-icon> -->
+                                </span>
+                            </p>
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--For contacts under Friends Tab-->
+            <div class="group-2" *ngSwitchCase="'group2'">
+
+                <!--For Contacts Selected from mobile for Tab1-->
+                <div class="contact-card-list" *ngFor="let contact of contacts; let i= index; let f=first; let l=last">
+                    <div *ngIf="this.contact.relationship == 'Friends'">
+
+                        <ion-card class="contact-card">
+                            <p class="ma-0">
+                                <span>{{contact.firstName}}</span>
+                                <span class="float-right delete-contact-btn">
+                                        <span class="edit-btn">
+                                                <ion-icon src="assets/imgs/edit-24px.svg" (click) ="editContact(contact._id)"></ion-icon>
+        
+                                            </span>
+                                    <ion-icon ios="ios-trash" md="md-trash" (click)="deleteContact(contact._id)">
+                                    </ion-icon>
+                                </span>
+                            </p>
+                            <div *ngIf=" this.contact.primaryEmail !== ' '">
+                                <p class="ma-0">
+                                    <span><small>Email: {{contact.primaryEmail}}</small></span>
+                                </p>
+
+                            </div>
+                           
+
+                            <p class="ma-0">
+                                <span><small>Ph: {{contact.mobilePhone}}</small></span><span>
+                                    <!-- <ion-icon src="assets/imgs/arrow-down.svg"></ion-icon> -->
+                                </span>
+                            </p>
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-3" *ngSwitchCase="'group3'">
+
+                <!--For Contacts Selected from mobile for Tab1-->
+                <div class="contact-card-list" *ngFor="let contact of contacts; let i= index; let f=first; let l=last">
+                    <div *ngIf="this.contact.relationship == 'Other'">
+
+                        <ion-card class="contact-card">
+                            <p class="ma-0">
+                                <span>{{contact.firstName}}</span>
+                                <span class="float-right delete-contact-btn">
+                                        <span class="edit-btn">
+                                                <ion-icon src="assets/imgs/edit-24px.svg" (click) = "editContact(contact._id)" ></ion-icon>
+        
+                                            </span>
+                                   <span class="del-btn"><ion-icon ios="ios-trash" md="md-trash" (click)="deleteContact(contact._id)">
+                                    </ion-icon>
+                                </span> 
+                                </span>
+                            </p>
+                            <div *ngIf=" this.contact.primaryEmail !== ' '">
+                                <p class="ma-0">
+                                    <span><small>Email: {{contact.primaryEmail}}</small></span>
+                                </p>
+
+                            </div>
+                            
+
+                            <p class="ma-0">
+                                <span><small>Ph: {{contact.mobilePhone}}</small></span><span>
+                                    <!-- <ion-icon src="assets/imgs/arrow-down.svg"></ion-icon> -->
+                                </span>
+                            </p>
+                        </ion-card>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</ion-content>
+<ion-footer class="footer" *ngIf = "globalVariablesProvider.addMoreContacts === false">
+    <ion-toolbar>
+        <ion-row text-center >
+            <ion-col size="2.5">
+                <div (click)="goto('home')">
+                    <img src="assets/imgs/home-plain.png" alt="documents">
+
+                    <p class="ma-0 font-12">Home</p>
+                </div>
+            </ion-col>
+            <ion-col size="7">
+                <div (click)="goto('document-list')" >
+                    <img src="assets/imgs/document-plain.png" alt="documents">
+                    <p class=" ma-0 font-12">Documents</p>
+                </div>
+            </ion-col>
+         
+
+            <ion-col size="2.5">
+                <div (click)="goto('contact-list')">
+                    <img src="assets/imgs/member-blue.png"  alt="contacts">
+                    <p class="ma-0 font-12" style="color: #222428">People</p>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>
+
+<ion-footer no-border *ngIf = "globalVariablesProvider.addMoreContacts === true">
+    <ion-toolbar class="durity-bg">
+         
+         <ion-item lines="none" class="durity-bg"> 
+            
+        <p (click)="cancel()" class="skip font-16">CANCEL</p>
+
+        <ion-button (click)="done()" color="white"  size="medium"  slot="end" class="next-btn">
+          <span class="next"> Next</span> 
+        </ion-button>
+    </ion-item>   
+   
+
+    </ion-toolbar>
+</ion-footer>

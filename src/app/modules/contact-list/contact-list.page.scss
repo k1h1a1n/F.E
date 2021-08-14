@@ -1,0 +1,156 @@
+.div-section {
+  height: -webkit-fill-available;
+  position: relative;
+  background: transparent linear-gradient(180deg, #78B2F7 0%, #4895F1 100%) 0% 0% no-repeat padding-box;
+  margin: 0;
+}
+.total_contacts{
+  color: white;
+  padding: 5% 0% 0% 3%;
+}
+.contacts-title {
+  color: var(durity-color-text);
+  font-weight: bold;
+  opacity: 1;
+  padding: 8% 0% 10% 0%;
+}
+.contacts-bg {
+  width: 100%;
+  background: bottom center no-repeat;
+  background-size: contain;
+  
+  img{
+    height: 85%;
+    width: 85%;
+    position: absolute;
+    left: 7%;
+    
+  }
+
+}
+.durity-tabs-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+ 
+}
+hr{
+  height: 1px;
+  width: 85%;
+  background: var(--durity-color-line);
+}
+
+.durity-tabs {
+  display: inline-flex;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1.5%;
+
+  .tab1,
+  .tab2 {
+   color: var(--durity-link-color);
+   font-weight: bold;
+    width: 33%;
+    border-right: 1.5px solid #4895F1;
+  }
+  .tab3 {
+    color: var(--durity-link-color);
+   font-weight: bold;
+    width: 33%;
+  }
+}
+
+
+.inkbar {
+  width: 30%;
+  left: 0;
+  padding: 0px;
+  border-bottom: 4px solid #FF715B;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  transition: 0.5s ease-in-out;
+}
+.inkbar.group1 {
+  left: 3%;
+}
+.inkbar.group2 {
+  left: 35%;
+}
+.inkbar.group3 {
+  left: 68%;
+}
+
+
+.contact-toolbar {
+  padding: 5% 0% 1% 1%;
+
+}
+.contact-btn {
+  text-transform: initial;
+  font-weight: bold;
+  font-size: 15px;  
+  background: white;
+ color:black;
+  border-radius: 5px;
+  
+}
+.edit-btn{
+  font-size: 24px;
+  padding-right: 20px;
+}
+.delete-contact-btn {
+  font-size: 24px;
+  margin-top: 5%;
+  color: #FF715B;
+}
+.durity-bg-img {
+  text-align: center;
+  
+}
+.contact-card {
+  background: white;
+  padding: 2% 4%;
+}
+.header-md:after {
+  background-image: none;
+}
+.total-contacts {
+  color: white;
+  font-weight: bold;
+  padding-left: 4%;
+  font-size: 18px;
+
+}
+ 
+
+  
+ 
+.contacts {
+  border: 1px solid black;
+
+}
+
+.next-btn{
+  background: white 0% 0% no-repeat padding-box;
+    color: black;
+
+    border-radius: 5px;
+    opacity: 1;
+    position: relative;
+    width: 30%;   
+}
+
+
+.next{
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.skip{
+  // text-transform: capitalize;
+  color:white;
+  font-weight: bold;
+ 
+
+}
+
+

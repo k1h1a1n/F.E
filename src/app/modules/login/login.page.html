@@ -1,0 +1,102 @@
+
+
+
+
+
+
+
+
+
+<ion-card class="log-card-top">
+    <ion-row>
+    <ion-col size="5">
+    <h1  class="head">Durity</h1>
+    <p  class="head">Keeping you & your family secure</p>
+    </ion-col>
+    <ion-col size="7">
+        <ion-card class="log-card">
+            <img src="assets/imgs/Family.png" class="log-img">
+        </ion-card>
+    </ion-col>
+    </ion-row>
+</ion-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ion-content class="no-scroll">
+    <div class="div-section">
+        <!-- <div class="login-radial-gradient"></div> -->
+        <!--<div class="img-section" padding text-center>
+            <img src="./assets/imgs/Group 3032.png" class="login-logo" alt="Login Page">-->
+            <!-- <p style="font-size: 37px;font-weight: bold;font-family: 'PlayfairDisplay-Bold, Playfair Display';color: #fff;">Durity</p> -->
+        <!--</div>-->
+        <h2 style="font-weight: 800;margin-left:10%">Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" #login="ngForm">
+            <div class="welcome-back">
+                <div class="login-padding">
+                    <ion-item class="signin-input" lines="none">
+                        <ion-input type="email" placeholder="Email"  formControlName="email"></ion-input>
+                    </ion-item>
+                </div>
+                <div
+                    *ngIf="loginForm.get('email').invalid  && (loginForm.get('email').touched || loginForm.get('email').dirty || login.submitted)">
+                    <small class="error" *ngIf="loginForm.get('email').errors.required">Email is required</small>
+                    <small class="error" *ngIf="loginForm.get('email').errors.email">Enter a valid email</small>
+
+                </div>
+                <div class="login-padding">
+                    <ion-item class="signin-input" lines="none">
+                        <ion-input [type]="password == true ? 'password' : 'text'" placeholder="Password" formControlName="password"></ion-input>
+                        <ion-icon *ngIf="password == true" ios="ios-eye-off" (click)= "passwordEyeOff()" md="md-eye-off"></ion-icon>
+                        <ion-icon *ngIf="password !== true" ios="ios-eye" (click)= "passwordEye()" md="md-eye"></ion-icon>
+                    </ion-item>
+
+                </div>
+                <div
+                    *ngIf="loginForm.get('password').invalid  && (loginForm.get('password').touched || loginForm.get('password').dirty || login.submitted)">
+                    <small class="error" *ngIf="loginForm.get('password').errors.required">Password is required</small>
+
+
+                </div>
+            </div>
+            <div style="padding-bottom: 3%;"class="pl-1 pr-1 forgot-password" text-center>
+                <span><small><a class="font-14" style="color:#0047A7" (click)="goto('forgot')">Forgot Password?</a></small></span>
+            </div>
+            <div class="signin-padding">
+                <ion-button expand="block" style="--background: #0047A7;
+                --border-radius: 0px;" class="log-btn" type="submit"><span>Login</span></ion-button>
+            </div>
+        </form>
+            <br>
+            <div  text-center>
+                 Or
+            </div>
+            <div padding class="sign-in-with-google">
+                <ion-button expand="block" class="durity-button" (click)="signInWithGoogle()">
+                    Sign Up/In with Google
+                    <img src="./assets/imgs/google.png" class="google-logo">
+                </ion-button>
+            </div>
+            <div text-center>
+                <span class="font-18"><small>New to Durity? <a class="create-account" style="color:#0047A7"
+                            (click)="goto('signUp')">Create Account</a></small></span>
+                <ion-row class="emptyspace"></ion-row>
+            </div>
+       
+    </div>
+</ion-content>

@@ -1,0 +1,152 @@
+<ion-content scroll='false' *ngIf="isMoreInfo == true && isaboutEncription == false">
+  <ion-toolbar text-center class="toolBar">
+    <span style="text-align: center;"><span  class="font-24 font-bold">Your data is </span> <span style="font-size: 24px; font-weight:bold"> super </span><span class="font-24 font-bold">secure with Durity</span></span>
+  </ion-toolbar>
+  <div padding class="encrypt-content">
+    <div class="image">
+      <img src="assets/imgs/image.svg" alt="encryption">
+    </div>
+    <div class="security-info">
+      <p class="font-14" >
+        Durity encrypts all your confidential files before they are uploaded to the cloud applying industry-standard highest 
+        security 256-bit AES encryption algorithm. 
+        <br>
+        <p class="font-14" >
+        Due to the secure encryption methods used to store your data, no one can see what you have uploaded. Your vault is 
+        completely private.</p>
+        
+        <p class="font-14" >
+        We are using leading Encryption technologies to secure your data and protect user privacy. Our proven security model 
+        sets the standard for transparency and best practices.
+      </p>
+    </div>
+    <div class="link"  (click)=" aboutEncryption()">
+      <small><a>Know more about encryption</a></small>
+    </div>
+   
+  
+  
+</div>
+
+</ion-content>
+<ion-footer *ngIf="isMoreInfo == true && isaboutEncription == false">
+  <div class="next-btn">
+    <button  class="got-it" (click)="lockMoreInfo()" float-right>
+     Got It
+    </button>
+  </div>
+</ion-footer>
+
+
+<ion-content scroll='false'  *ngIf="isMoreInfo == false">
+  <!--<div>
+    <section class="progress-section">
+      <ol class="progress-bar">
+        <li class="is-complete"><span></span></li>
+        <li class="is-complete"><span></span></li>
+      </ol>
+    </section>
+  </div>
+  <ion-toolbar text-center>
+      <div class="durity-back-btn security-back">
+          <ion-buttons slot="start" style="margin-top: 2%; ">
+              <ion-button  slot="icon-only" fill="clear" size="small" (click)="goBack()" class="back-btn">
+                  <ion-icon name="ios-arrow-back"></ion-icon>
+                  <small style="font-weight: bold;">Back</small>
+              </ion-button>
+          </ion-buttons>
+        </div>
+        <br>
+        <br>
+        
+    </ion-toolbar>-->
+    <div class="upload" (click)="uploadInfo()">
+      <img class="uploadimg" src="../../../../../assets/imgs/upload icon.svg">
+      <span class="uploadInfo">Upload information you want us to deliver to your beneficiaries.</span>
+      <span class="arrows"><img src="{{uploadCardIcon}}" /></span>
+    </div>
+    <div>
+      <div *ngIf="isUploadInfo == true" class="uploadDoc">
+        <ion-row class="uploadDocRow" (click)="uploadDoc()">
+          <ion-col size="2" ><span class="number">1</span></ion-col>
+          <ion-col size="8"> Upload Document</ion-col>
+          <ion-col size="2" ><img src="{{isuploadDocArrow}}" /></ion-col>
+        </ion-row>
+        <ion-row class="uploadDocInfo" *ngIf="isuploadDoc == true">
+          Upload important files like insurances, medical reports, property papers, bank documents, investments, etc. You can write a note, save passwords and also upload audio/video files.
+        </ion-row>
+        <ion-row class="assignBeneficiaryRow" (click)="assignBeneficiary()">
+          <ion-col size="2" ><span class="number">2</span></ion-col>
+          <ion-col size="8">Assign Benefeciary</ion-col>
+          <ion-col size="2" ><img src="{{isAssignBinaryArrow}}" /></ion-col>
+        </ion-row>
+        <ion-row class="assignBeneficiaryInfo" *ngIf="isAssignBeneficiary == true">
+          You can add members as beneficiaries to each document. Beneficiaries are the people who will be given access to those documents in an emergency situation after a complete verification process.
+          </ion-row>
+        
+<!--<span class="arrows"><img src="../../../../../assets/imgs/Downarrow Icon.svg" /></span> -->
+      </div>
+    </div>
+    <!--<div class="willCategory">
+    <div class="will" (click)="willInfo()">
+      <img class="willImg" src="../../../../../assets/imgs/will icon.svg">
+      <span class="willInfo">Use the template designed by our lawyers & create your Will in just 5 minutes.</span>
+      <span class="arrows"><img src="{{isWillArrow}}" /></span>
+    </div>
+    <div *ngIf="isWillInfo == true" class="willDoc">
+      <ion-row class="willDocData">
+        <ion-col size="2" ><span class="number">1</span></ion-col>
+        <ion-col size="10"> Click on the "Create your Will" option in the home screen.</ion-col>
+      </ion-row>
+      <ion-row class="willDocData">
+        <ion-col size="2" ><span class="number">2</span></ion-col>
+        <ion-col size="10"> Enter your family details.</ion-col>
+      </ion-row>
+      <ion-row class="willDocData">
+        <ion-col size="2" ><span class="number">3</span></ion-col>
+        <ion-col size="10" class="willInfoThree"> Download the Will, print it & get it signed along with 2 witnesses to make it legally valid.</ion-col>
+      </ion-row>
+      <ion-row class="willQes">
+        <p *ngFor="let questions of willQes"><a href="https://will.durity.life/">{{questions}}</a></p>
+      </ion-row>
+    </div>
+  </div>-->
+  <div class="lock">
+    <ion-row (click)= "LockInfo()"> 
+      <ion-col size="2" class="lockIcons" style="text-align: center;">
+        <!-- <ion-icon style="zoom:2.0; color:#3863CF" name="lock"></ion-icon> -->
+        <img style="text-align: center;" src="../../../../../assets/imgs/LockIcon.svg">
+      </ion-col>
+      <ion-col size="8" class="lockHedding">
+        No one other than you can access your data
+      </ion-col>
+      <ion-col size="2" class="lockIcons arrowIcon">
+        <img src="{{isLockArrow}}" />
+      </ion-col>
+    </ion-row>
+
+  </div>
+  <div *ngIf="isLockInfo == true" class="lockData">
+    <span>
+      All your information is encrypted even before it leaves your device 
+      so it is impossible for anyone other than you to access or read it (100% guaranteed). <br>
+      For additional security, you can also encrypt(lock) your information with your fingerprint
+       or create a password for the file. To know more about how we secure your information, <a (click)="lockMoreInfo()">click here.</a>
+    </span>
+  </div>
+
+</ion-content>
+<ion-footer no-border>
+  <!--<ion-toolbar class="durity-bg">
+       
+       <ion-item lines="none" class="durity-bg">
+      <p (click)="skip()" class="skip font-16" >Skip</p>
+      <button  (click)="next()" class="nextBtn font-16">Next</button>
+  </ion-item>   
+ 
+
+  </ion-toolbar>-->
+</ion-footer>
+
+
+<app-encryption-popover (someEvent)="aboutEncryption($event)" [isDisplay]="isaboutEncription"*ngIf="isaboutEncription == true" style="height: 700px;"></app-encryption-popover>

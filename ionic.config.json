@@ -1,0 +1,7 @@
+{
+  "name": "durityApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

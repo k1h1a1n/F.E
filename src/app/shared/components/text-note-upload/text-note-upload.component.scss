@@ -1,0 +1,183 @@
+ion-card{
+    box-shadow: 0 3px 5px rgba(0,0,0,.16);
+  } 
+   .doc{
+     
+     left:5%;
+    
+   }
+   .upload-content{
+     padding: 2px;
+   }
+   ion-input{
+     font-size:15px;
+   }
+   .help-btn{
+    font-size:22px;
+    color:#FF715B;
+    text-align: left;
+   }
+   .delete-contact-btn{
+    font-size:22px;
+    color:rgb(233, 78, 54);
+   }
+   .image-icon{
+     width:40%;
+     margin-left: 10%;
+   }
+   .name{
+     font-size: 16px;
+     font-weight: bold;
+   }
+   p{ 
+  
+     font-size: 14px;
+     font-weight: bold;
+   }
+   .selection{
+     padding-left: 8px;
+    
+   }
+   .name{
+     display: inline;
+   }
+   ion-select{
+     border: solid 1px;
+     border-radius: 5px;
+     height:40px;
+     border-color: skyblue;
+   }
+   ion-input{
+     font-size:15px;
+     border-bottom: 1px solid skyblue !important;
+     
+   }
+   .select-doc{
+    text-align:center;
+   font-weight: bold;
+   padding-top: 2px;
+   font-family: 'Source Sans Pro', sans-serif;
+   font-size: 16px;
+  }
+   .action-button{
+     font-size: 25px;
+   }
+   .encrypt_btn{
+     text-transform: capitalize;
+     font-weight: bold;
+   }
+   .upload{
+     padding-left:10%;
+   }
+   .add_more{
+     text-transform: capitalize;
+   }
+   .help-btn{
+    font-size: 25px;
+    color:#FFA89A;
+    padding-top: 10%;
+    padding-right: 5%;
+    float: left;
+    
+    
+  }
+  .help-btn .tooltiptext{
+   visibility: hidden;
+   width: 150px;
+   background-color:#FFA89A;
+   color: #fff;
+   text-align: center;
+   border-radius: 5px;
+   padding: 2px 0;
+   font-size: 16px;
+   position: absolute;
+   z-index: 1;
+   bottom: 80%;
+   text-align: center;
+   left: 50%;
+   margin-left: -116px;
+   opacity: 0;
+   transition: opacity 0.3s;
+  }
+  .help-btn .tooltiptext::after {
+   content: "";
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   margin-left: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: #FFA89A transparent transparent transparent;
+  }
+  .help-btn:hover .tooltiptext {
+   visibility: visible;
+   opacity: 1;
+  }
+   ion-title{
+     font-weight: bold;
+     text-align: center;
+     font-size: 16px;
+     font-family: 'Source Sans Pro', sans-serif;
+   }
+   
+  ion-card-tile{
+     font-weight: bold;
+     color:black;
+     font-size: 16px;
+   }
+   small{
+     font-size: 14px;
+    }
+    .add-more{
+      padding:5px;
+    }
+    .select-type{
+     padding:0px 8px 8px 8px;
+    }
+   .upload-doc{
+     text-align:center;
+     font-weight: bold;
+     padding-top: 2px;
+     //  padding-left:40px;
+     // padding-right: -20px;
+     font-family: 'Source Sans Pro', sans-serif;
+     font-size: 16px;
+   }
+  .contacts-title {
+    padding-left: 10%;
+    text-align: center;
+    font-size: 1rem;
+    color: var(durity-color-text);
+    font-weight: bold;
+    opacity: 0.9;
+  }
+  
+  .selector {
+    font-family: SFNSDisplay;
+    font-size: 12px;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+    color: #29235e;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center;
+    border: solid 2px #e8ebf0;
+    background-color: #ffffff;
+    text-align: center;
+  
+  }
+    
+  
+  
+  .rec{
+    // padding-left:60%;
+    margin-bottom:-10%;
+    color:#fff;
+    background:#FF715B ;
+    border-radius: 2px;
+    border: 1px solid #FF715B;
+    width:32%;
+    float: right;
+    height: 10%;
+  }
+  

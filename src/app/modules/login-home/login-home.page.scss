@@ -1,0 +1,186 @@
+.login-home-page {
+  
+  .div-section {
+    height: -webkit-fill-available;
+    position: relative;
+    background: transparent linear-gradient(180deg, #78B2F7 0%, #163899 100%) 0% 0% no-repeat padding-box;
+    margin: 0;
+    overflow-y: hidden;
+  }
+
+
+  // Media Queries
+
+  // device max-width: 320px;
+  @media screen and (max-width: 320px) {
+    .img-section img {
+      padding-top: 5%;
+      width: 40%;
+      position: relative;
+    }
+
+    .button-section {
+      margin-top: 12%;
+    }
+
+    .radial-gradient {
+      top: -25%;
+      left: -25%;
+      width: 125%;
+      height: 60%;
+      background: linear-gradient(137deg, #78B2F700 0%, #77B2F6 100%) 0% 0% no-repeat padding-box;
+      position: absolute;
+      border-radius: 100% 100% 100% 100%;
+      
+    }
+
+    .img-section2{
+      width: 95%;
+      text-align: center;
+      position: relative;
+      left: 2%;
+    }
+  
+  }
+
+  // Responsive Device or Galaxy S5;
+  @media screen and (min-width: 321px) and (max-width: 360px) {
+    .img-section img {
+      padding-top: 5%;
+      width: 40%;
+      position: relative;
+    }
+
+    .button-section {
+      margin-top: 20%;
+    }
+  
+    .radial-gradient {
+      top: -25%;
+      left: -25%;
+      width: 125%;
+      height: 60%;
+      background: linear-gradient(137deg, #78B2F700 0%, #77B2F6 100%) 0% 0% no-repeat padding-box;
+      position: absolute;
+      border-radius: 100% 100% 100% 100%;
+    }
+    
+  }
+
+  // Device min-width: 361px and max-width: 374px;
+  @media screen and (min-width: 361px) and (max-width: 374px) {
+  
+    .img-section img {
+      padding-top: 5%;
+      width: 40%;
+      position: relative;  
+    }
+
+    .button-section {
+      margin-top: 23%;
+    }
+
+    .radial-gradient {
+      top: -25%;
+      left: -25%;
+      width: 125%;
+      height: 60%;
+      background: linear-gradient(137deg, #78B2F700 0%, #77B2F6 100%) 0% 0% no-repeat padding-box;
+      position: absolute;
+      border-radius: 100% 100% 100% 100%;
+    }
+    
+    .img-section2{
+      text-align: center;
+      position: relative;
+      padding-top: 3%;
+    }
+  }
+
+  // Device min-width: 375px and max-width: 411px;
+  @media screen and (min-width: 375px) and (max-width: 410px) {
+    .img-section img {
+      padding-top: 10%;
+      width: 42%;
+      position: relative;
+    }
+    .button-section {
+      margin-top: 20%;
+    }
+    .radial-gradient {
+      top: -22%;
+      left: -20%;
+      width: 125%;
+      height: 60%;
+      background: linear-gradient(137deg, #78B2F700 0%, #77B2F6 100%) 0% 0% no-repeat padding-box;
+      position: absolute;
+      border-radius: 100% 100% 100% 100%;
+    }
+
+  }
+  
+
+  // Device min-width: 412px;
+  @media screen and (min-width: 411px) and (max-width: 480px){
+
+    .img-section img {
+      padding-top: 5%;
+      width: 42%;
+      position: relative;
+    }
+    
+    .radial-gradient {
+      top: -24%;
+      left: -25%;
+      width: 125%;
+      height: 60%;
+      background: linear-gradient(137deg, #78B2F700 0%, #77B2F6 100%) 0% 0% no-repeat padding-box;
+      position: absolute;
+      border-radius: 100% 100% 100% 100%;
+    }
+
+    .button-section {
+      margin-top: 23%;
+    }
+    
+    .img-section2{
+      text-align: center;
+      position: relative;
+      padding-top: 3%;
+    }
+
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px){
+
+    .img-section img {
+      padding-top: 5%;
+      width: 30%;
+      position: relative;
+    }
+    
+    .radial-gradient {
+      top: -24%;
+      left: -25%;
+      width: 125%;
+      height: 60%;
+      background: linear-gradient(137deg, #78B2F700 0%, #77B2F6 100%) 0% 0% no-repeat padding-box;
+      position: absolute;
+      border-radius: 100% 100% 100% 100%;
+    }
+
+    .button-section {
+      margin-top: 15%;
+    }
+
+    .img-section2{
+      text-align: center;
+      position: relative;
+      padding-top: 3%;
+      width: 100%;
+    }
+
+  }
+
+
+
+}
